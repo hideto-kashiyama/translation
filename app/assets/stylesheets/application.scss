@@ -1,0 +1,267 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap";
+ @import "font-awesome";
+
+
+/*試用版のみ　新規購入ボタンなど隠す*/
+.hid {
+    
+    visibility: hidden;
+   
+}
+
+
+
+.hcap{
+    
+   margin-top: 60px; 
+   
+}
+
+
+.row {
+    
+    display: flex;
+    
+}
+
+
+li {
+margin-bottom: 5px;
+}
+
+.toplink {
+    
+    color:white;
+   
+}
+
+p.navbar-right a {
+    
+     margin-right: 30px;
+     color:white;
+    
+}
+
+#logincap {
+  
+   color: white;  
+    
+}
+
+.login_btn {
+ margin-top: 20px;
+  background-color: #333;
+  border: 2px solid #333;
+  color: #fff;
+  line-height: 30x;
+  width:400px;
+  height:40px;
+   font-size:40; 
+}
+
+#signup_btn {
+    
+    margin-top: 20px;
+    font-size:23px; 
+}
+
+
+.main {
+ margin-top: 280px;
+   /*padding-top:10px;
+  margin-top:50px;
+  height:auto;
+  padding-bottom:10px;
+  margin-bottom:80px;*/
+}
+
+.container {
+    margin-left: 10px; 
+     
+  margin-top: 60px;
+  z-index: 0;
+}
+
+.mainhome {
+   
+  margin-top: 80px;
+  z-index: 0;
+  
+}
+
+.navbar-brand {
+    font-size:18px;
+    margin-top: 3px;  
+     color:white;
+}
+
+ /* navbar 全体の背景色とボーダーカラー */
+.navbar-default {
+      z-index: 1;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      background-color: #65baad;
+      border-color: #3e6962;
+       
+       height: 40px;
+       
+}
+
+
+
+/* navbar deviceのみ*/
+.navbar-default1 {
+ 
+background-color: Black;
+border-color: #3e6962;
+height: 10px;
+
+
+}
+
+.fontawesome_submit{
+    font-family: FontAwesome;
+}
+
+#result_btn {
+    margin-top: 8px;
+   padding: 0;
+width: 50px;
+height: 40px;
+position: absolute;
+left: 170px;
+top: 0;
+border-radius:0 2px 2px 0;
+background:#778899;   
+color:#fff;
+border:solid 3px #eaeaea;
+border-left:none;
+font-weight:bold;
+font-size:16px;
+outline: 0;
+}
+
+.btn {
+    
+    margin-top: 8px;
+    margin-left: 8px;
+    
+    width:50px;
+    font-size:12px;
+    
+    text-decoration:none;
+    display:block;
+    text-align:center;
+    padding:2px 0 5px;
+    color:#fff;
+    background-color:Black;
+    border-radius:10px;
+  }
+
+
+
+div.collapse.navbar-collapse.navbar-right {
+  text-align: right;
+  display: block;
+  color:white;
+}
+
+  /*will_pagenateのデザイン変更　参考ページhttp://mislav.github.io/will_paginate/?page=2　*/
+  
+.digg_pagination {
+   
+   margin-left: 30px; 
+   
+    
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+
+
+/* navbar テキストカラー */
+.navbar-default .navbar-nav > li > a {
+color: #ffffff;
+}
+
+
+#navbar-header {
+    
+   color: white;
+}
+.hogewaku{
+    
+ margin-top: 10px; 
+  
+}
+
+.hoge{
+ 
+ font-size: 1.5em;
+  
+ 
+}
+
+h1 {
+position: relative;
+padding: 0.25em 0;
+
+font-weight : 200;
+font-family: "Century Gothic";
+}
+h1:after {
+content: "";
+display: block;
+height: 4px;
+background: -moz-linear-gradient(to right, rgb(200,200, 200), transparent);
+background: -webkit-linear-gradient(to right, rgb(200,200, 200) transparent);
+background: linear-gradient(to right, rgb(200,200, 200), transparent);
+}
+
+/* ▼グループの囲み */
+fieldset {
+   margin: 1em 0px;         /* 外側の余白 */
+   padding-top: 0.6em;      /* 内側の余白 */
+   background-color: #ccc;  /* 背景色 */
+   
+   
+}
+

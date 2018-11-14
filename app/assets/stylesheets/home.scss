@@ -1,0 +1,196 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tbtn {
+    visibility:hidden;
+}
+
+.translabel {
+   
+   color: blue;   
+    border-radius: 20px;  
+}
+
+
+/*マイクの囲み */
+.up_group {
+    
+ display: inline-block;  
+   /*   インラインブロック要素にする */
+ 
+}
+
+#rscap {
+  
+  font-size: 0.3em;  
+  margin-left: 10px;
+  
+}
+
+#recap {
+    
+  font-size: 0.8em;  
+  margin-left: 10px;
+  margin-top: 10px;
+  
+}
+
+#gchcap {
+    
+  font-size: 0.8em;  
+  margin-left: 10px;
+  
+}
+
+
+
+.rcap {
+    
+  font-size: 0.3em;  
+  margin-left: 10px;
+  
+}
+
+.mic {
+    
+    margin-bottom: 0px;
+    margin-left: 8px;
+    margin-right: 10px;
+    background-color:white;
+    border-radius: 20px;  
+     /* ボーダーをなくす */
+    border-style: none;
+}
+
+.mic1 {
+    
+    margin-bottom: 0px;
+    margin-left: 8px;
+    margin-right: 10px;
+    background-color:white;
+    border-radius: 12px;  
+     /* ボーダーをなくす */
+    border-style: none;
+}
+
+#result_text {
+    
+   margin-top: 10px; 
+   border-color:green;
+    
+    
+}
+
+#txtTarget {
+    
+     margin-top: 10px; 
+   border-color:firebrick;
+    
+    
+}
+
+
+#stcap {
+    width:100px;
+    margin-left: 0px;
+    
+    /* 文字サイズを1指定 */
+    font-size: 0.8em;
+
+    /* 文字の太さをboldに指定 
+    font-weight: bold;*/
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 5px 5px;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+
+    /* ボタンの影の指定
+     * 影の横幅を2px
+     * 縦長を2px
+     * ぼかしを3px
+     * 広がりを1px
+     * 色を#666（グレー）に指定 */
+     box-shadow: 2px 2px 3px 1px #666;
+    -moz-box-shadow: 2px 2px 3px 1px #666;
+    -webkit-box-shadow: 2px 2px 3px 1px #666;
+
+    /* テキストの影の指定
+     * 影の横幅を1px
+     * 縦長を1px
+     * ぼかしを2px
+     * 色を#000（黒）に指定 */
+    text-shadow: 1px 1px 2px #000;
+
+    /* グラデーションの指定 */
+    background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+    background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
+
+    /* 角丸の指定 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 12px;  
+    
+    
+}
+
+#tclear {
+    margin-top: -50px;
+    margin-left: 100px;
+    
+    /* 文字サイズを1指定 */
+    font-size: 0.8em;
+
+    /* 文字の太さをboldに指定 
+    font-weight: bold;*/
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 5px 15px;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+
+    /* ボタンの影の指定
+     * 影の横幅を2px
+     * 縦長を2px
+     * ぼかしを3px
+     * 広がりを1px
+     * 色を#666（グレー）に指定 */
+    box-shadow: 2px 2px 3px 1px #666;
+    -moz-box-shadow: 2px 2px 3px 1px #666;
+    -webkit-box-shadow: 2px 2px 3px 1px #666;
+
+    /* テキストの影の指定
+     * 影の横幅を1px
+     * 縦長を1px
+     * ぼかしを2px
+     * 色を#000（黒）に指定 */
+    text-shadow: 1px 1px 2px #000;
+
+    /* グラデーションの指定 */
+    background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+    background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
+
+    /* 角丸の指定 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+button.button8:hover {
+    /* 透明度を20%に指定 */
+    opacity: 0.8;
+}
+
+
+
