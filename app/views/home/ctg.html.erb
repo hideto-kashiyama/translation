@@ -1,0 +1,66 @@
+<div class="container">
+    
+<meta charset="UTF-8">   
+
+<h2>この会話を登録します</h2>
+<%= form_tag('/home', method: :post, id: "tou") do %>
+
+
+        <div><textarea id="result_text" name="jtxt" rows="10" cols="60" ></textarea></div>
+        <div><textarea id="txtTarget" name="etxt" rows="10" cols="60" ></textarea></div>
+        <div><textarea id="memo" name="mtxt" rows="10" cols="60" ></textarea></div>
+        
+    <p>シチュエーションを選択してください<br>
+    
+    <select name='st'>
+       <% @categories.each do |ctg| %> 
+         <option value="<%= ctg.id %>"><%= ctg.ctg %></option>
+       <% end %>
+     </select>
+    
+     </p>
+
+<% end %> 
+
+<input type="button" value="登録" onclick="regist()">
+
+
+     <% @categories.each do |ctg| %>
+            
+         <li><%= ctg.ctg%></a></li>
+        
+      <% end %>
+   
+ <script>
+ 
+ 　$('[name=st]').change(function() {
+    // 選択されているvalue属性値を取り出す category_id
+    var val = $('[name=st').val();
+    console.log(val);
+    
+　　});
+ 
+    $(function(){
+        
+       var query = location.search;
+       var value1 = query.split('&');
+     　console.log(decodeURIComponent(value1[0]));
+     　var value2 = value1[0].split('=');
+     　console.log(decodeURIComponent(value2[1]));
+       var value3 = value1[1].split('=');
+     　console.log(decodeURIComponent(value3[1]));
+ 　　 
+           $('#result_text').text(decodeURIComponent(value2[1]));
+           $('#txtTarget').text(decodeURIComponent(value3[1]));
+           
+    });
+    
+    
+    function regist() {
+    
+       $('#tou').submit();
+    
+    }
+
+    
+ </script>

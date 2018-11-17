@@ -27,10 +27,59 @@
 </button>
 
 <button id="tclear" onclick="txtclear()">テキストクリア</button>
+<!--<a href="/home/ctg">登録ページへ</a>-->
 
 
-
+  
+ <button id= "tlink">登録ページへ</button>
+  
 <script>
+
+$(function(){
+    
+    $('#tlink').click(function() {
+   
+        var param = $("#result_text").val();
+        param = encodeURIComponent(param);
+         
+        var paramt = $("#txtTarget").val();
+        paramt= encodeURIComponent(paramt);
+        
+          //文字が入ってる時だけ実行
+        if (param != ""){
+             
+            if (paramt != ""){
+      
+             window.location.href="/home/ctg?param=" + param +"&" + "?paramt=" + paramt;
+      　　　
+      　　　 }else{
+      　　　 
+      　　　 alert('翻訳文がありません' );
+      　　　     
+      　　　}
+      　　　
+        }else{
+            
+            
+　            alert('テキストがありません');
+            
+        }　
+      　　
+        
+      /*if (param != ""){
+            //文字が入ってる時だけ
+            param = escape(param);
+            //エスケープ処理
+          //$(this).attr("/home/ctg?param=" + param);
+           window.location.href="/home/ctg?param=" + param;
+            // でもOK
+        }else{
+            //リンク無効
+            return false;
+        }*/
+    });
+});
+
 
  var stopflag=1; //録音状態　1: 停止状態　0:録音中状態
 
@@ -136,18 +185,18 @@
             };
             
              recognition.onspeechstart= function() {
+                 
                  if (gid==1) { 
-               recognition.lang='ja-JP';
+                     
+                   recognition.lang='ja-JP';
                    console.log("会話中日本語認識中");
+                   
                  } else {
                      
-                      recognition.lang='en-US';
-                　　　console.log("録音状態からリスタート");
+                  recognition.lang='en-US';
+            　　　console.log("録音状態からリスタート");
                  } 
-                
-               
-            
-                 
+             
              };   
                  
             

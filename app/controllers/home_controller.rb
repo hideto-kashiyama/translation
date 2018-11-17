@@ -19,9 +19,33 @@ class HomeController < ApplicationController
       format.html
       format.js
     end
- 
+    
   end
   
+ 
+  
+   def ctg 
+     
+      @categories = Category.all
+    
+   end
+   
+   def create
+     
+       str = Time.now.to_s
+
+     tval=str.gsub(/[^0-9]/,"")
+
+     dtval="7-"+ tval[2...-4]
+
+     master=Master.new(user_id: 7, j: params[:jtxt], e: params[:jtxt], memo: params[:mtxt], category_id: params[:st], dt: Time.now, fn: dtval)
+     master.save
+     
+      redirect_to index_home_path
+      
+   
+   end
+   
   def ibmttsj 
   
     fstr = params[:fstr]

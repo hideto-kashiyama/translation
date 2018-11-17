@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @master.user_id %>
+</p>
+
+<p>
+  <strong>J:</strong>
+  <%= @master.j %>
+</p>
+
+<p>
+  <strong>E:</strong>
+  <%= @master.e %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @master.category_id %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @master.memo %>
+</p>
+
+<p>
+  <strong>Coment:</strong>
+  <%= @master.coment %>
+</p>
+
+<p>
+  <strong>Fn:</strong>
+  <%= @master.fn %>
+</p>
+
+<p>
+  <strong>Dt:</strong>
+  <%= @master.dt %>
+</p>
+
+<p>
+  <strong>Public:</strong>
+  <%= @master.public %>
+</p>
+
+<%= link_to 'Edit', edit_master_path(@master) %> |
+<%= link_to 'Back', masters_path %>

@@ -1,0 +1,53 @@
+<%= form_for(@master) do |f| %>
+  <% if @master.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@master.errors.count, "error") %> prohibited this master from being saved:</h2>
+
+      <ul>
+      <% @master.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :j %><br>
+    <%= f.text_field :j %>
+  </div>
+  <div class="field">
+    <%= f.label :e %><br>
+    <%= f.text_field :e %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.number_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :memo %><br>
+    <%= f.text_field :memo %>
+  </div>
+  <div class="field">
+    <%= f.label :coment %><br>
+    <%= f.text_field :coment %>
+  </div>
+  <div class="field">
+    <%= f.label :fn %><br>
+    <%= f.text_field :fn %>
+  </div>
+  <div class="field">
+    <%= f.label :dt %><br>
+    <%= f.datetime_select :dt %>
+  </div>
+  <div class="field">
+    <%= f.label :public %><br>
+    <%= f.number_field :public %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
