@@ -1,0 +1,14 @@
+   
+      
+     <ul class="hoge">
+     
+      <% @categories.each do |ctg| %>
+        
+           <li><a href="<%= home_e100_path(category_id: ctg.id) %>"><%= ctg.ctg %></a></li>
+       
+      <% end %> 
+       
+     </ul>
+
+      
+   

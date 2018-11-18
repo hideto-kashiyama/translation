@@ -3,23 +3,21 @@ Rails.application.routes.draw do
   resources :masters
   resources :categories
   devise_for :users
- 
+
    get 'home/index'
-
-  post 'home/index'
- 
- 
-  get 'home/ibmttsj'
-  
-  post 'home/ibmttsj'
- 
-  get 'home/ctg'
-  post 'home/ctg'
-  
- get 'home/create'
-  post 'home/create'
-
+   post 'home/index'
    
+    get 'home/ibmttsj'
+    post 'home/ibmttsj'
+   
+   get 'home/ctg'
+   
+   post 'home/ctgs'
+   
+   get 'home/master'
+   
+   get 'home/e100'
+  
    
   root to: "home#index"
 

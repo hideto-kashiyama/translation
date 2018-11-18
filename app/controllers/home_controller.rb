@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
-   #before_action :authenticate_user!
+ before_action :authenticate_user!
   #def index
      # flash[:success] = "メッセージ"
       
@@ -19,33 +19,47 @@ class HomeController < ApplicationController
       format.html
       format.js
     end
-    
+  
+ end 
+ 
+  def master
+      
+       @categories=Category.all
+       @masters = Master.where(category_id: params[:category_id])
+       #@masters = Master.all
+       
   end
   
- 
+  def e100
+      
+     @ctg = Category.find_by_id(params[:category_id])
+   # @masters = Master.all
+    @masters = Master.where(category_id: params[:category_id])
+      
+  end
   
-   def ctg 
-     
-      @categories = Category.all
+  def ctg
+      
+       @categories=Category.all
+       
+  end
+ 
+   def ctgs 
     
-   end
-   
-   def create
-     
-       str = Time.now.to_s
+     str = Time.now.to_s
 
      tval=str.gsub(/[^0-9]/,"")
 
-     dtval="7-"+ tval[2...-4]
+     dtval="8-"+ tval[2...-4]+".mp3"
+     #音声データのファイル名作成
 
-     master=Master.new(user_id: 7, j: params[:jtxt], e: params[:jtxt], memo: params[:mtxt], category_id: params[:st], dt: Time.now, fn: dtval)
+     master=Master.new(user_id: 9, j: params[:jtxt], e: params[:etxt], memo: params[:mtxt], category_id: params[:st], dt: Time.now, fn: dtval)
      master.save
      
-      redirect_to index_home_path
-      
-   
+     redirect_to :action => "index"
+ 
    end
-   
+ 
   def ibmttsj 
   
     fstr = params[:fstr]

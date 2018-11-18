@@ -31,14 +31,29 @@
 
 
   
- <button id= "tlink">登録ページへ</button>
-  
+ <button id= "tlink">登録ページへ</button><br>
+ 
+ <button id= "blink">登録された文章ページへ</button>
+ 
+ 
+ 
 <script>
 
 $(function(){
     
+    $('#blink').click(function() {
+        
+        location.href="/home/master";
+    
+     });
+});
+
+$(function(){
+    
     $('#tlink').click(function() {
-   
+        
+        recstop();//録音停止
+        
         var param = $("#result_text").val();
         param = encodeURIComponent(param);
          
@@ -64,19 +79,8 @@ $(function(){
 　            alert('テキストがありません');
             
         }　
-      　　
-        
-      /*if (param != ""){
-            //文字が入ってる時だけ
-            param = escape(param);
-            //エスケープ処理
-          //$(this).attr("/home/ctg?param=" + param);
-           window.location.href="/home/ctg?param=" + param;
-            // でもOK
-        }else{
-            //リンク無効
-            return false;
-        }*/
+    
+       
     });
 });
 

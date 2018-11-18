@@ -3,40 +3,45 @@
 <meta charset="UTF-8">   
 
 <h2>この会話を登録します</h2>
-<%= form_tag('/home', method: :post, id: "tou") do %>
-
+<%= form_tag('/home/ctgs', method: :post, id: "tou") do %>
 
         <div><textarea id="result_text" name="jtxt" rows="10" cols="60" ></textarea></div>
         <div><textarea id="txtTarget" name="etxt" rows="10" cols="60" ></textarea></div>
         <div><textarea id="memo" name="mtxt" rows="10" cols="60" ></textarea></div>
-        
-    <p>シチュエーションを選択してください<br>
-    
-    <select name='st'>
-       <% @categories.each do |ctg| %> 
-         <option value="<%= ctg.id %>"><%= ctg.ctg %></option>
-       <% end %>
-     </select>
-    
-     </p>
+         <input type="hidden" id="p" name="st" value="" />
 
 <% end %> 
 
+<%= form_tag('/home/ctg', method: :get ) do %>
+ 
+  <p>シチュエーション*必須<br>
+    
+    <select name='ost' id="stid" autofocus>
+        
+    　 <option value="">選択してください</option>
+    　
+       <% @categories.each do |ctg| %> 
+         <option value="<%= ctg.id %>"><%= ctg.ctg %></option>
+       <% end %>
+       
+    </select>
+    
+  </p>
+ 
+
+ <% end %> 
+    
 <input type="button" value="登録" onclick="regist()">
 
-
-     <% @categories.each do |ctg| %>
-            
-         <li><%= ctg.ctg%></a></li>
-        
-      <% end %>
+    
    
  <script>
  
- 　$('[name=st]').change(function() {
+ 　$('[name=ost]').change(function() {
     // 選択されているvalue属性値を取り出す category_id
-    var val = $('[name=st').val();
-    console.log(val);
+    var val = $('[name=ost]').val();
+        console.log(val);
+    $('#p').val(val);
     
 　　});
  
@@ -57,8 +62,17 @@
     
     
     function regist() {
-    
-       $('#tou').submit();
+        
+        if ($('[name=st').val()=="") {
+            
+            alert("シチュエーションを選択してください。");
+            $('#stid').click();
+            
+        } else {
+            
+           $('#tou').submit();
+        
+        }
     
     }
 
