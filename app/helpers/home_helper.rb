@@ -12,7 +12,9 @@ def translate
         q: @transval,
         target: "en",
         source: "ja",
-        key: "AIzaSyBt9WU7gsxgB5uF8hJaIbWbKGOEWBX_0qo"
+        key: ENV["GAPIKEY"]
+        
+        
       }
       url.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(url)
@@ -30,7 +32,9 @@ def translatej
         q: @transval,
         target: "ja",
         source: "en",
-        key: "AIzaSyBt9WU7gsxgB5uF8hJaIbWbKGOEWBX_0qo"
+        key: ENV["GAPIKEY"]
+        
+        
       }
       url.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(url)
