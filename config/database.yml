@@ -21,6 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
+  host: translation.kwes.co.jp
   adapter: mysql2
   encoding: utf8
   reconnect: false
@@ -28,4 +29,3 @@ production:
   pool: 5
   username: kwes
   password: <%= ENV['DB_PASSWORD'] %>
-  host: localhost
