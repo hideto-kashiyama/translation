@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
- #before_action :authenticate_user!
+ before_action :authenticate_user!
   #def index
      # flash[:success] = "メッセージ"
       
@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   #require 'rest-client'
   
    # require 'net/http'
-    require 'net/https'
+    require 'net/http'
     require 'uri'
     require 'json' 
   
