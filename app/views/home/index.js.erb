@@ -3,8 +3,10 @@
 
   //helpers/home_helper.rb  translate英訳　translatej 和訳
   
-(function (){
-  
+$(function() {
+
+  if("#result_text" != "") {
+
   if(gid==1) {
        var transtext="<%= translate %>";
        
@@ -35,7 +37,10 @@
      }
  
   speechSynthesis.speak(uttr);
-})();
+  
+  }
+  
+});
 
 
 
