@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   
   #require 'rest-client'
   
-   # require 'net/http'
+   # require 'net/https'
     require 'net/http'
     require 'uri'
     require 'json' 

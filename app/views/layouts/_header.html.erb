@@ -14,4 +14,16 @@
         </form>-->
 				
 		</a>
+		
+		<a><%= current_user.name %></a><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+		
+		
+		<!--<ul>
+        
+         <p class="navbar-text navbar-right">
+          <a class="toplink" href="/dynamic_pages/home">トップページへ</a>
+          <a><%= current_user.name %></a><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+          </p>-->
+      
+     </ul>
 	</nav>
