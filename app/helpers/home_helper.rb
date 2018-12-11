@@ -29,6 +29,8 @@ def translatej
     
     if @transval.nil?
       
+     else
+      
       params = {
          
         q: @transval,
