@@ -26,6 +26,8 @@ end
 def translatej 
     
     url = URI.parse('https://www.googleapis.com/language/translate/v2')
+    
+    if @transval.nil?
       
       params = {
          
@@ -34,12 +36,14 @@ def translatej
         source: "en",
         key: ENV["GAPIKEY"]
         
-        
       }
+      
+      
       url.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(url)
       JSON.parse(res.body)["data"]["translations"].first["translatedText"]
-     
+      
+     end
 end
 
 
