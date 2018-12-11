@@ -3,41 +3,6 @@
 
   //helpers/home_helper.rb  translate英訳　translatej 和訳
  
-$(function() {
-
-  if(gid==1) {
-       var transtext="<%= translate %>";
-       
-     } else {
-     
-        var transtext="<%= translatej%>";
-     }  
- 
- var txt=transtext.replace( /&amp;#39;/g , "'" );
-
- $('#txtTarget').val(txt);
- 
-  // unsupported.
-    if (!'SpeechSynthesisUtterance' in window) {
-        alert('Speech synthesis(音声合成) APIには未対応です.');
-        return;
-    }
-   
-   var text =  $('#txtTarget').val();
- 
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-     if(gid==1) {
-       uttr.lang = 'en-US';
-     } else {
-     
-        uttr.lang = 'ja-JP';
-     }
- 
-  speechSynthesis.speak(uttr);
-
-});
-
 
 
 
