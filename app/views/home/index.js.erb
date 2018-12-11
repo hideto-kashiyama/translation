@@ -2,10 +2,8 @@
  //参考https://github.com/codegrid/2016-web-speech-api/blob/gh-pages/speech_synthesis/demo_simple_en.html
 
   //helpers/home_helper.rb  translate英訳　translatej 和訳
-  
+ 
 $(function() {
-
-  if("#result_text" != "") {
 
   if(gid==1) {
        var transtext="<%= translate %>";
@@ -37,9 +35,7 @@ $(function() {
      }
  
   speechSynthesis.speak(uttr);
-  
-  }
-  
+
 });
 
 

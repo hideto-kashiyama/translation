@@ -18,7 +18,12 @@ def translate
       }
       url.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(url)
-      JSON.parse(res.body)["data"]["translations"].first["translatedText"]
+      
+      json = res.body
+      # レスポンスのjsonの言語の翻訳結果の部分のパラメータをパースする
+      "#{JSON.parse(json)["data"]["translations"].first["translatedText"]}"
+      
+      #JSON.parse(res.body)["data"]["translations"].first["translatedText"]
      
 end
 
@@ -27,10 +32,7 @@ def translatej
     
     url = URI.parse('https://www.googleapis.com/language/translate/v2')
     
-    if @transval.nil?
-      
-     else
-      
+    
       params = {
          
         q: @transval,
@@ -39,16 +41,13 @@ def translatej
         key: ENV["GAPIKEY"]
         
       }
-      
-      
-      url.query = URI.encode_www_form(params)
-      res = Net::HTTP.get_response(url)
-      JSON.parse(res.body)["data"]["translations"].first["translatedText"]
-      
-     end
+    
+  url.query = URI.encode_www_form(params)
+  res = Net::HTTP.get_response(url)
+  json = res.body
+  # レスポンスのjsonの言語の翻訳結果の部分のパラメータをパースする
+  "#{JSON.parse(json)["data"]["translations"].first["translatedText"]}"
+  
 end
-
-
-
 
 end
