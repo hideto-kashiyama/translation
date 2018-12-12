@@ -20,11 +20,8 @@ def translate
       res = Net::HTTP.get_response(url)
       
       json = res.body
-      # レスポンスのjsonの言語の翻訳結果の部分のパラメータをパースする
-      "#{JSON.parse(json)["data"]["translations"].first["translatedText"]}"
       
-      #JSON.parse(res.body)["data"]["translations"].first["translatedText"]
-     
+      
 end
 
 
@@ -45,8 +42,6 @@ def translatej
   url.query = URI.encode_www_form(params)
   res = Net::HTTP.get_response(url)
   json = res.body
-  # レスポンスのjsonの言語の翻訳結果の部分のパラメータをパースする
-  "#{JSON.parse(json)["data"]["translations"].first["translatedText"]}"
   
 end
 
