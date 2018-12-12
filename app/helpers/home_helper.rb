@@ -19,9 +19,13 @@ def translate
       url.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(url)
       
-      json = res.body
-      
-      
+      if res.nil?
+    
+      else
+        
+        JSON.parse(res.body)["data"]["translations"].first["translatedText"]
+  
+       end
 end
 
 
@@ -41,8 +45,15 @@ def translatej
     
   url.query = URI.encode_www_form(params)
   res = Net::HTTP.get_response(url)
-  json = res.body
   
+  if res.nil?
+    
+      else
+        
+       JSON.parse(res.body)["data"]["translations"].first["translatedText"]
+  
+  end
+ 
 end
 
 def test
