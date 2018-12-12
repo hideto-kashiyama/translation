@@ -24,7 +24,6 @@ $(function() {
     
 });
 
-
 //翻訳→音声合成
 function trans() {
     
@@ -86,3 +85,6 @@ function trans() {
    
 
 }
+
+
+
