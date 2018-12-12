@@ -29,15 +29,13 @@
 <button id="tclear" onclick="txtclear()">テキストクリア</button>
 <!--<a href="/home/ctg">登録ページへ</a>-->
 
-
-  
  <button id= "tlink">登録ページへ</button><br>
  
  <button id= "blink">登録された文章ページへ</button>
  
- 
-
 <script>
+
+
 $(function(){
     
     $('#blink').click(function() {
@@ -222,10 +220,65 @@ $(function(){
                        
                           $('#result_text').text(results[i][0].transcript);
                          
-                          gengochk(results[i][0].transcript);
+                            gengochk(results[i][0].transcript);
                          
-                          $("#tbtn").click();//翻訳開始
-                       
+                         var txt1;
+    
+                            　   txt1="翻訳中..........."
+                            　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
+                            　   
+                              //helpers/home_helper.rb  translate英訳　translatej 和訳
+                              if(gid==1) {
+                                   
+                                   var transtext="<%= translatej %>";
+                                   
+                                   
+                                 } else {
+                                 
+                                   var transtext="<%= translate%>";
+                                 
+                                　 
+                                 }  
+                             
+                             var txt=transtext.replace( /&amp;#39;/g , "'" );
+                            
+                             $('#txtTarget').val(txt);
+                             
+                             //音声合成
+                             
+                                 // unsupported.
+                                /*if (!'SpeechSynthesisUtterance' in window) {
+                                    alert('Speech synthesis(音声合成) APIには未対応です.');
+                                    return;
+                                }*/
+                               
+                                var text =  $('#txtTarget').val();
+                             
+                                var uttr = new SpeechSynthesisUtterance();
+                                uttr.text = text;
+                                
+                                 if(gid==1) {
+                                   uttr.lang = 'en-US';
+                                 } else {
+                                 
+                                    uttr.lang = 'ja-JP';
+                                 }
+                             
+                              speechSynthesis.speak(uttr);
+                              
+                             // $(function(){
+                                  
+                                setTimeout(function(){
+                                    txt1="";
+                                    $('.translabel').text("");
+                                    $('.translabel').text("翻訳完了！");
+                                    tenmetut('translabel');//点滅
+                                    
+                                },2000);
+                                
+                            　// });
+   
+                         
                          }
                      
                     }
@@ -240,6 +293,8 @@ $(function(){
                // recognition.start();
 
    /*ここまで録音による翻訳*/
+   
+   
 
 //#result_textに文字を直接入力またはコピペした場合の翻訳
 //言語判定　gid取得 　1: 日本語　0:英語
@@ -462,68 +517,6 @@ function tenmetut(v) {　//翻訳完了！
 		
 })(jQuery);
 　　
-//翻訳→音声合成
-function trans() {
-    
-     var txt1;
-    
-　   txt1="翻訳中..........."
-　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
-　   
-  //helpers/home_helper.rb  translate英訳　translatej 和訳
-  if(gid==1) {
-       
-       var transtext="<%= translatej %>";
-       
-       
-     } else {
-     
-       var transtext="<%= translate%>";
-     
-    　 
-     }  
- 
- var txt=transtext.replace( /&amp;#39;/g , "'" );
-
- $('#txtTarget').val(txt);
- 
- //音声合成
- 
-     // unsupported.
-    /*if (!'SpeechSynthesisUtterance' in window) {
-        alert('Speech synthesis(音声合成) APIには未対応です.');
-        return;
-    }*/
-   
-    var text =  $('#txtTarget').val();
- 
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-    
-     if(gid==1) {
-       uttr.lang = 'en-US';
-     } else {
-     
-        uttr.lang = 'ja-JP';
-     }
- 
-  speechSynthesis.speak(uttr);
-  
- // $(function(){
-      
-    setTimeout(function(){
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
-        
-    },2000);
-    
-　// });
-   
-
-}
-
 
 
 
