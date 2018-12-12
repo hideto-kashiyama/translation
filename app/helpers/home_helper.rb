@@ -50,4 +50,10 @@ def translatej
   
 end
 
+def test
+ 
+ print 'こんにちは'
+
+end
+
 end
