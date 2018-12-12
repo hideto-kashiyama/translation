@@ -4,13 +4,13 @@ module HomeHelper
     require 'json'
     
 def translate 
+  
+  if @transval.nil?
     
+   else
+        
     url = URI.parse('https://www.googleapis.com/language/translate/v2')
     
-      if @transval.nil?
-    
-      else
-        
       params = {
          
         q: @transval,
@@ -25,18 +25,20 @@ def translate
       
         JSON.parse(res.body)["data"]["translations"].first["translatedText"]
   
-       end
+  end
+  
 end
 
 
 def translatej 
+  
+  if @transval.nil?
+  
+  else
+      
+     url = URI.parse('https://www.googleapis.com/language/translate/v2')
     
-    url = URI.parse('https://www.googleapis.com/language/translate/v2')
-    
-    if @transval.nil?
-    
-      else
-        
+  
       params = {
          
         q: @transval,
