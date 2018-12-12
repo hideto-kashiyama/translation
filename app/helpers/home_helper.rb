@@ -22,7 +22,7 @@ def translate
       
       url.query = URI.encode_www_form(params)
       res = Net::HTTP.get_response(url)
-      
+      Rails.logger.info(res)
         JSON.parse(res.body)["data"]["translations"].first["translatedText"]
   
   end
