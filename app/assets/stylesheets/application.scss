@@ -16,8 +16,17 @@
 
  @import "bootstrap";
  @import "font-awesome";
+ 
+ .jumbotron {
+    
+    background-color: #F8F8FF;
+}
 
-
+@media (min-width: 768px) {
+        .container {
+          max-width: 730px;
+        }
+      }
 /*試用版のみ　新規購入ボタンなど隠す
 .hid {
     
@@ -25,7 +34,11 @@
    
 }*/
 
-
+.aitjs {
+    
+    visibility: hidden;
+    
+}
 
 .hcap{
     
@@ -51,11 +64,24 @@ margin-bottom: 5px;
    
 }
 
-p.navbar-right a {
+.navbar-right {
+ 
+     font-size:14px;
     
-     margin-right: 30px;
      color:white;
+     /*margin-left: 20px;*/
+}
+
+.radio_group {
+    font-size:14px;
+    margin-top: 3px;  
+     color:white;
+    /*margin-left: 20px;*/
+}
+
+.ipt {
     
+    margin-left: 5px
 }
 
 #logincap {
@@ -91,12 +117,7 @@ p.navbar-right a {
   margin-bottom:80px;*/
 }
 
-.container {
-    margin-left: 10px; 
-     
-  margin-top: 60px;
-  z-index: 0;
-}
+
 
 .mainhome {
    
@@ -107,9 +128,13 @@ p.navbar-right a {
 
 .navbar-brand {
     font-size:18px;
-    margin-top: 3px;  
+    margin-top: 3px; 
+    
+    margin-left: 10px; 
      color:white;
 }
+
+
 
  /* navbar 全体の背景色とボーダーカラー */
 .navbar-default {

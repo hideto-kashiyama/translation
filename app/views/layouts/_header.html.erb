@@ -4,27 +4,23 @@
       
     <a class="navbar-brand">
 		  
-				<span ><i class="fa fa-rebel" style="color: white">　自動翻訳システム</i></span>
-				
-	<!--	<form method="get" action="/home/ibmttsj">
-			   
-              <input id="result_text2" type="text" placeholder="検索キーワードを入力" name="fstr" /> 
-              <input id="result_btn" type="submit" value="IBM" />
-              
-        </form>-->
-				
-	</a>
-		
-	<a><%= current_user.name %></a><%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>-
+	<span ><i class="fa fa-rebel" style="color: white">　自動翻訳システム</i></span>
+
+　<span class="radio_group">　日本語音声選択
+ 
+    <input class="ipt" type="radio" name="sp" value=0 checked>AITalk_ruby
+    <input class="ipt" type="radio" name="sp" value=1 >AITalk_js
+    <input class="ipt" type="radio" name="sp" value=2 >google
+    <%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %>
+    
+ </span>
+ 
+</a>
 
 		
-		
-		<!--<ul>
-        
-         <p class="navbar-text navbar-right">
-          <a class="toplink" href="/dynamic_pages/home">トップページへ</a>
-         
-          </p>-->
-      
-     </ul>
+	  <p class="navbar-text navbar-right">
+          <!--<a class="toplink" href="/dynamic_pages/home">トップページへ</a>-->
+          
+          </p>
+    
 	</nav>

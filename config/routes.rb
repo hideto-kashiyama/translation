@@ -7,8 +7,8 @@ Rails.application.routes.draw do
    get 'home/index'
    post 'home/index'
    
-    get 'home/ibmttsj'
-    post 'home/ibmttsj'
+    get 'home/aitalk'
+   post 'home/aitalk'
    
    get 'home/ctg'
    
@@ -17,8 +17,9 @@ Rails.application.routes.draw do
    get 'home/master'
    
    get 'home/e100'
-  
    
+   
+  
   root to: "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

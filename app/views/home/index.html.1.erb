@@ -1,6 +1,6 @@
  <div class="jumbotron">
 
-<div class="container">
+<div class="container center-block">
     
 <meta charset="UTF-8">   
 
@@ -20,12 +20,15 @@
    <% end %></div>  
    
    <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
-  
+  <div><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
       <br>
   <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget", size: "60x5" %></div>
 
+ <!--  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
+    <button onclick="AIT()">AITalkでもう一度しゃべる</button>-->
+    
 
-　　　
+　　　<% end %></div>  
 　　
       <div><button class="mic1" type="submit" onclick ="speak()">
     
@@ -37,13 +40,7 @@
 
 
  <button id= "tlink">登録ページへ</button><br>
- <div><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
- <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
-    <button id="aibtn" onclick="AIT()">AITalkでもう一度しゃべる</button>
 
- <% end %></div>  
- 
- 
  <!--<button id="fclear" onclick="delf()">ファイルクリア</button> -->
   
  <!--<a href="/home/e100">登録済文章ページへ</a></div>-->
@@ -60,25 +57,14 @@
 <script>
 
 
-　$("#txtTarget").keyup(function(e){
-　    
-　    if(e.which == 13){　//エンターキー　アップ時
-　    console.log("up!")
-　    
-　      $("#aimbtn").click();//
-　    
-　    }
-
-
-});
 	
 //AITalkのmp3削除
 
 
 //AITalk音声合成
 function AITalk_start() {
-    
-       //ファイル名作成  
+  
+      //ファイル名作成  
     var dt = new Date();
     
     var y= dt.getFullYear();
@@ -98,9 +84,9 @@ function AITalk_start() {
     
     $('#txtfn').val(fn);
     
-     <%= atk %>
+    <%= atk %>
     
-     AIT();
+    AIT();
     
 }
 
@@ -108,7 +94,7 @@ function AITalk_start() {
 function AIT() {
     
    var txt = $('#txtfn').val();
-   var mp3fn="tempmp3/" + txt + ".mp3";
+   var mp3fn="jsf/" + txt + ".mp3";
   
      console.log(mp3fn);
   
@@ -179,12 +165,12 @@ function trans() {
      if(gid==1) {
          
        uttr.lang = 'en-US';
-       //speechSynthesis.speak(uttr);
+       speechSynthesis.speak(uttr);
        
      } else {
          
            uttr.lang = 'ja-JP';
-           //speechSynthesis.speak(uttr);
+           speechSynthesis.speak(uttr);
       
      }
  
@@ -193,7 +179,7 @@ function trans() {
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-        speechSynthesis.speak(uttr);
+        
     },2000);
 
 }
@@ -237,41 +223,38 @@ function trans_ait() {
      if(gid==1) {
          
        uttr.lang = 'en-US';
-       //speechSynthesis.speak(uttr);
+       speechSynthesis.speak(uttr);
        
-      setTimeout(function(){
+       // setTimeout(function(){
         
             txt1="";
             $('.translabel').text("");
             $('.translabel').text("翻訳完了！");
             tenmetut('translabel');//点滅
             console.log("google english")
-            
-            speechSynthesis.speak(uttr);
            
-      },2000);
+        // },2000);
  
      } else {
          
         if ( radio_sp==0 ) {
-             $("#aimbtn").click();//AITalk ruby音声
-            //setTimeout(function(){
+            
+            setTimeout(function(){
                 txt1="";
                 $('.translabel').text("");
                 $('.translabel').text("翻訳完了！");
                 tenmetut('translabel');//点滅
-               
-            
-               // AITalk_start();//AITalk ruby音声
                 
-               // AIT();
+                $("#aimbtn").click();//AITalk ruby音声
+            
+                //AITalk_start();//AITalk ruby音声
                   console.log("AITruby")
     
-            //},500);
+            },500);
     
         } else {
          
-      //setTimeout(function(){
+            setTimeout(function(){
             txt1="";
             $('.translabel').text("");
             $('.translabel').text("翻訳完了！");
@@ -280,7 +263,7 @@ function trans_ait() {
               start();//AITalk javascript音声
               console.log("AITjs")
     
-      // },500);
+            },500);
     
         }
         

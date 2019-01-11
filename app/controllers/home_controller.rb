@@ -6,18 +6,20 @@ before_action :authenticate_user!
       
   #end
   
- 
-  
-  
  def index
+  
     @transval = params[:transval]
-   
-    respond_to do |format|
+    @speakval = params[:speakval]
+    @fnval = params[:fnval]
+    
+      respond_to do |format|
       format.html
       format.js
     end
   
  end 
+ 
+ 
  
   def master
       
@@ -56,7 +58,5 @@ before_action :authenticate_user!
      redirect_to :action => "index"
  
    end
- 
- 
 
 end

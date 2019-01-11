@@ -2,7 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 #tbtn {
+    visibility:hidden;
+}
+
+#txtfn {
+    
+    visibility:hidden; 
+}
+
+#aimbtn {
+    visibility:hidden;
+}
+
+#aibtn {
     visibility:hidden;
 }
 
@@ -24,14 +38,14 @@
 #rscap {
   
   font-size: 0.3em;  
-  margin-left: 10px;
+  /*margin-left: 10px;*/
   
 }
 
 #recap {
     
   font-size: 0.8em;  
-  margin-left: 10px;
+ margin-left: 10px;
   margin-top: 10px;
   
 }
@@ -39,7 +53,7 @@
 #gchcap {
     
   font-size: 0.8em;  
-  margin-left: 10px;
+ /* margin-left: 10px;*/
   
 }
 
@@ -48,15 +62,15 @@
 .rcap {
     
   font-size: 0.3em;  
-  margin-left: 10px;
+ /* margin-left: 10px;*/
   
 }
 
 .mic {
     
     margin-bottom: 0px;
-    margin-left: 8px;
-    margin-right: 10px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
     background-color:white;
     border-radius: 20px;  
      /* ボーダーをなくす */
@@ -66,8 +80,8 @@
 .mic1 {
     
     margin-bottom: 0px;
-    margin-left: 8px;
-    margin-right: 10px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
     background-color:white;
     border-radius: 12px;  
      /* ボーダーをなくす */

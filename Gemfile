@@ -77,3 +77,5 @@ gem "font-awesome-rails"
 gem 'aws-sdk'
 
 gem 'gon'
+
+gem "sprockets", '3.7.2'
