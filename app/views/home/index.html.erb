@@ -253,6 +253,11 @@ function trans_ait() {
  
      } else {
          
+     $('#txtTarget').change(function() {
+      //値が変更されたときの処理
+      
+   
+         
         if ( radio_sp==0 ) {
              $("#aimbtn").click();//AITalk ruby音声
             //setTimeout(function(){
@@ -283,6 +288,8 @@ function trans_ait() {
       // },500);
     
         }
+        
+      });
         
      }
      
