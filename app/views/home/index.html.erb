@@ -260,33 +260,13 @@ function trans_ait() {
          
         if ( radio_sp==0 ) {
              $("#aimbtn").click();//AITalk ruby音声
-            //setTimeout(function(){
-                txt1="";
-                $('.translabel').text("");
-                $('.translabel').text("翻訳完了！");
-                tenmetut('translabel');//点滅
-               
-            
-               // AITalk_start();//AITalk ruby音声
-                
-               // AIT();
-                  console.log("AITruby")
-    
-            //},500);
-    
+          
         } else {
          
-      //setTimeout(function(){
-            txt1="";
-            $('.translabel').text("");
-            $('.translabel').text("翻訳完了！");
-            tenmetut('translabel');//点滅
-            
+    
               start();//AITalk javascript音声
               console.log("AITjs")
-    
-      // },500);
-    
+  
         }
         
       });
@@ -437,11 +417,11 @@ function recstop() {　//音声入力停止
                 　　　console.log("英語認識中");
                  }
              　　
-             　　recognition.onnomatch = function() {
+             　　//recognition.onnomatch = function() {
                
                　　　 $('#result_text').text("もう一度試してください");
                
-          　　　  };
+          　　　//  };
             
             };
             

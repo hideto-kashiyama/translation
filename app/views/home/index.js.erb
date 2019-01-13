@@ -39,7 +39,7 @@ $(function() {
  
      } else {
      
-      var radio_sp= $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 1 :google
+      var radio_sp= $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk_ruby  1:AITalk_js    2:google
          
          if ( radio_sp==2 ) {
              
@@ -48,9 +48,12 @@ $(function() {
            
           } else {
           
+         // $('#txtTarget').change(function() {
+              //値が変更されたときの処理
+              
             if ( radio_sp==0 ) {
              $("#aimbtn").click();//AITalk ruby音声
-           // setTimeout(function(){
+          setTimeout(function(){
                 txt1="";
                 $('.translabel').text("");
                 $('.translabel').text("翻訳完了！");
@@ -61,9 +64,9 @@ $(function() {
                 //AITalk_start();//AITalk ruby音声
                   console.log("AITruby")
     
-           // },500);
+           },500);
     
-        } else {
+           } else {
          
             setTimeout(function(){
             txt1="";
@@ -78,12 +81,13 @@ $(function() {
     
         }
         
+       //});
           
-         }   
+      }   
 
      }
      
-     <%= atk %>
+     //<%= atk %>
      
 // AITalk WebAPI を扱うクラス
 		function AITalkWebAPI()	{
