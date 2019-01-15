@@ -24,9 +24,6 @@
       <br>
   <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget", size: "60x5" %></div>
 
-
-　　　
-　　
       <div><button class="mic1" type="submit" onclick ="speak()">
     
       <i class="fa fa-volume-up fa-3x"><a class="rcap">もう一度しゃべる</a></i><br>
@@ -58,283 +55,6 @@
   </div>
   
 <script>
-
-
-　$("#txtTarget").keyup(function(e){
-　    
-　    if(e.which == 13){　//エンターキー　アップ時
-　    console.log("up!")
-　    
-　      $("#aimbtn").click();//
-　    
-　    }
-
-
-});
-	
-//AITalkのmp3削除
-
-
-//AITalk音声合成
-function AITalk_start() {
-    
-       //ファイル名作成  
-    var dt = new Date();
-    
-    var y= dt.getFullYear();
-    
-    //1月が0、12月が11。そのため+1をする。
-    var m = dt.getMonth()+1;
-    
-    var d= dt.getDate();
-    
-    var h = dt.getHours();
-    
-    var m = dt.getMinutes();
-    
-    var s= dt.getSeconds();
-    
-    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
-    
-    $('#txtfn').val(fn);
-    
-     <%= atk %>
-     
-      setTimeout(function(){
-        
-           
-     var txt = $('#txtfn').val();
-     var mp3fn="tempmp3/" + txt + ".mp3";
-     
-   
-        console.log(mp3fn+"はダウンロードされました。");
-
-       audioElem = new Audio();
-       audioElem.src = mp3fn;
-       audioElem.play();
-    
-  },2000);
-  
-}
-
-//AITalkでもう一度しゃべる
-function AIT() {
- 
-    
-   var txt = $('#txtfn').val();
-   var mp3fn="tempmp3/" + txt + ".mp3";
-   
-       audioElem = new Audio();
-       audioElem.src = mp3fn;
-       audioElem.play();
-       
- 　 
-  
-}
-
- var radio_sp
-
-function transmaster() {
-    
-      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 1 :google
-         
-         if ( radio_sp==2 ) {
-             
-            console.log("google")
-            trans();
-          
-         } else {
-             
-            console.log("AIT")
-            trans_ait()
-         
-         }   
-  
-}
-
-//翻訳→音声合成
-function trans() {
-    
-     var txt1;
-    
-　   txt1="翻訳中......"
-　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
-　   
-  //helpers/home_helper.rb  translate英訳　translatej 和訳
-    if(gid==1) {
-       
-       var transtext="<%= translatej %>";
-       
-       
-     } else {
-     
-       var transtext="<%= translate%>";
-     
-    　 
-     }  
- 
- var txt=transtext.replace( /&amp;#39;/g , "'" );
-
- $('#txtTarget').val(txt);
- 
- //音声合成
- 
-     // unsupported.
-    /*if (!'SpeechSynthesisUtterance' in window) {
-        alert('Speech synthesis(音声合成) APIには未対応です.');
-        return;
-    }*/
-   
-    var text =  $('#txtTarget').val();
- 
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-    
-     if(gid==1) {
-         
-       uttr.lang = 'en-US';
-       //speechSynthesis.speak(uttr);
-       
-     } else {
-         
-           uttr.lang = 'ja-JP';
-           //speechSynthesis.speak(uttr);
-      
-     }
- 
-    setTimeout(function(){
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
-        speechSynthesis.speak(uttr);
-    },2000);
-
-}
-
-//翻訳→音声合成
-function trans_ait() {
-    
-     radio_sp = $("input[name='sp']:checked").val();
-     
-     var txt1;
-    
-　   txt1="翻訳中..........."
-　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
-　   
-  //helpers/home_helper.rb  translate英訳　translatej 和訳
-    if(gid==1) {
-       
-       var transtext ="<%= translatej %>";
-       
-     } else {
-     
-       var transtext ="<%= translate%>";
-       	
-     }  
- 
- var txt=transtext.replace( /&amp;#39;/g , "'" );
-
- $('#txtTarget').val(txt);
-
- //音声合成
- 
-     // unsupported.
-    /*if (!'SpeechSynthesisUtterance' in window) {
-        alert('Speech synthesis(音声合成) APIには未対応です.');
-        return;
-    }*/
-    var text =  $('#txtTarget').val();
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-    
-     if(gid==1) {
-         
-       uttr.lang = 'en-US';
-       //speechSynthesis.speak(uttr);
-       
-      setTimeout(function(){
-        
-            txt1="";
-            $('.translabel').text("");
-            $('.translabel').text("翻訳完了！");
-            tenmetut('translabel');//点滅
-            console.log("google english")
-            
-            speechSynthesis.speak(uttr);
-           
-      },2000);
- 
-     } else {
-         
-     $('#txtTarget').change(function() {
-      //値が変更されたときの処理
-      
-   
-         
-        if ( radio_sp==0 ) {
-            
-             $("#aimbtn").click();//AITalk ruby音声
-          
-        } else {
-         
-    
-              start();//AITalk javascript音声
-              console.log("AITjs")
-  
-        }
-        
-      });
-        
-     }
-     
-}
-
-$(function(){
-    
-    $('#blink').click(function() {
-        
-        location.href="/home/master";
-    
-     });
-});
-
-$(function(){
-    
-    $('#tlink').click(function() {
-        
-        recstop();//録音停止
-        
-        var param = $("#result_text").val();
-        param = encodeURIComponent(param);
-         
-        var paramt = $("#txtTarget").val();
-        paramt= encodeURIComponent(paramt);
-        
-          //文字が入ってる時だけ実行
-        if (param != ""){
-             
-            if (paramt != ""){
-      
-             window.location.href="/home/ctg?param=" + param +"&" + "?paramt=" + paramt;
-      　　　
-      　　　 }else{
-      　　　 
-      　　　 alert('翻訳文がありません' );
-      　　　     
-      　　　}
-      　　　
-        }else{
-            
-            
-　            alert('テキストがありません');
-            
-        }　
-    
-       
-    });
-});
-
 
  var stopflag=1; //録音状態　1: 停止状態　0:録音中状態
 
@@ -567,6 +287,286 @@ function recstop() {　//音声入力停止
      
 　});
 　
+
+
+　$("#txtTarget").keyup(function(e){
+　    
+　    if(e.which == 13){　//エンターキー　アップ時
+　    console.log("up!")
+　    
+　      $("#aimbtn").click();//
+　    
+　    }
+
+
+});
+	
+//AITalkのmp3削除
+
+
+//AITalk音声合成
+function AITalk_start() {
+    
+       //ファイル名作成  
+    var dt = new Date();
+    
+    var y= dt.getFullYear();
+    
+    //1月が0、12月が11。そのため+1をする。
+    var m = dt.getMonth()+1;
+    
+    var d= dt.getDate();
+    
+    var h = dt.getHours();
+    
+    var m = dt.getMinutes();
+    
+    var s= dt.getSeconds();
+    
+    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
+    
+    $('#txtfn').val(fn);
+    
+     <%= atk %>
+     
+         var txt = $('#txtfn').val();
+         var mp3fn="tempmp3/" + txt + ".mp3";
+         
+            console.log(mp3fn);
+ setTimeout(function(){
+        txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
+       
+           audioElem = new Audio();
+           audioElem.src = mp3fn;
+           audioElem.play();
+    
+ },500);
+  
+}
+
+//AITalkでもう一度しゃべる
+function AIT() {
+ 
+    
+   var txt = $('#txtfn').val();
+   var mp3fn="tempmp3/" + txt + ".mp3";
+   
+       audioElem = new Audio();
+       audioElem.src = mp3fn;
+       audioElem.play();
+       
+ 　 
+  
+}
+
+ var radio_sp
+
+function transmaster() {
+    
+      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 1 :google
+         
+         if ( radio_sp==2 ) {
+             
+            console.log("google")
+            trans();
+          
+         } else {
+             
+            console.log("AIT")
+            trans_ait()
+         
+         }   
+  
+}
+
+//翻訳→音声合成
+function trans() {
+    
+     var txt1;
+    
+　   txt1="翻訳中......"
+　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
+　   
+  //helpers/home_helper.rb  translate英訳　translatej 和訳
+    if(gid==1) {
+       
+       var transtext="<%= translatej %>";
+       
+       
+     } else {
+     
+       var transtext="<%= translate%>";
+     
+    　 
+     }  
+ 
+ var txt=transtext.replace( /&amp;#39;/g , "'" );
+
+ $('#txtTarget').val(txt);
+ 
+ //音声合成
+ 
+     // unsupported.
+    /*if (!'SpeechSynthesisUtterance' in window) {
+        alert('Speech synthesis(音声合成) APIには未対応です.');
+        return;
+    }*/
+   
+    var text =  $('#txtTarget').val();
+ 
+    var uttr = new SpeechSynthesisUtterance();
+    uttr.text = text;
+    
+     if(gid==1) {
+         
+       uttr.lang = 'en-US';
+       //speechSynthesis.speak(uttr);
+       
+     } else {
+         
+           uttr.lang = 'ja-JP';
+           //speechSynthesis.speak(uttr);
+      
+     }
+ 
+    setTimeout(function(){
+        txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
+        speechSynthesis.speak(uttr);
+    },2000);
+
+}
+
+//翻訳→音声合成
+function trans_ait() {
+    
+     radio_sp = $("input[name='sp']:checked").val();
+     
+     var txt1;
+    
+　   txt1="翻訳中..........."
+　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
+　   
+  //helpers/home_helper.rb  translate英訳　translatej 和訳
+    if(gid==1) {
+       
+       var transtext ="<%= translatej %>";
+       
+     } else {
+     
+       var transtext ="<%= translate%>";
+       	
+     }  
+ 
+ var txt=transtext.replace( /&amp;#39;/g , "'" );
+
+ $('#txtTarget').val(txt);
+
+ //音声合成
+ 
+     // unsupported.
+    /*if (!'SpeechSynthesisUtterance' in window) {
+        alert('Speech synthesis(音声合成) APIには未対応です.');
+        return;
+    }*/
+    var text =  $('#txtTarget').val();
+    var uttr = new SpeechSynthesisUtterance();
+    uttr.text = text;
+    
+     if(gid==1) {
+         
+       uttr.lang = 'en-US';
+       //speechSynthesis.speak(uttr);
+       
+      setTimeout(function(){
+        
+            txt1="";
+            $('.translabel').text("");
+            $('.translabel').text("翻訳完了！");
+            tenmetut('translabel');//点滅
+            console.log("google english")
+            
+            speechSynthesis.speak(uttr);
+           
+      },2000);
+ 
+     } else {
+         
+     $('#txtTarget').change(function() {
+      //値が変更されたときの処理
+      
+   
+         
+        if ( radio_sp==0 ) {
+            
+             $("#aimbtn").click();//AITalk ruby音声
+          
+        } else {
+         
+    
+              start();//AITalk javascript音声
+              console.log("AITjs")
+  
+        }
+        
+      });
+        
+     }
+     
+}
+
+$(function(){
+    
+    $('#blink').click(function() {
+        
+        location.href="/home/master";
+    
+     });
+});
+
+$(function(){
+    
+    $('#tlink').click(function() {
+        
+        recstop();//録音停止
+        
+        var param = $("#result_text").val();
+        param = encodeURIComponent(param);
+         
+        var paramt = $("#txtTarget").val();
+        paramt= encodeURIComponent(paramt);
+        
+          //文字が入ってる時だけ実行
+        if (param != ""){
+             
+            if (paramt != ""){
+      
+             window.location.href="/home/ctg?param=" + param +"&" + "?paramt=" + paramt;
+      　　　
+      　　　 }else{
+      　　　 
+      　　　 alert('翻訳文がありません' );
+      　　　     
+      　　　}
+      　　　
+        }else{
+            
+            
+　            alert('テキストがありません');
+            
+        }　
+    
+       
+    });
+});
+
+
+
 //}); 
 
 

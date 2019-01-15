@@ -26,17 +26,7 @@ $(function() {
      if(gid==1) {
         uttr.lang = 'en-US';
        speechSynthesis.speak(uttr);
-       
-       setTimeout(function(){
-        
-            txt1="";
-            $('.translabel').text("");
-            $('.translabel').text("翻訳完了！");
-            tenmetut('translabel');//点滅
-            console.log("google english")
-           
-        },2000);
- 
+      
      } else {
      
       var radio_sp= $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk_ruby  1:AITalk_js    2:google
@@ -48,24 +38,11 @@ $(function() {
            
           } else {
           
-         // $('#txtTarget').change(function() {
-              //値が変更されたときの処理
-              
+      
             if ( radio_sp==0 ) {
-             $("#aimbtn").click();//AITalk ruby音声
-          setTimeout(function(){
-                txt1="";
-                $('.translabel').text("");
-                $('.translabel').text("翻訳完了！");
-                tenmetut('translabel');//点滅
-                
-              
             
-                //AITalk_start();//AITalk ruby音声
-                  console.log("AITruby")
-    
-           },500);
-    
+             $("#aimbtn").click();//AITalk ruby音声
+            
            } else {
          
             setTimeout(function(){
@@ -77,11 +54,10 @@ $(function() {
               start();//AITalk javascript音声
               console.log("AITjs")
     
-            },500);
+            },10);
     
         }
-        
-       //});
+    
           
       }   
 
