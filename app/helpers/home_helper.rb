@@ -102,9 +102,10 @@ def atk
       
       File.binwrite(file_name, res.body)
       
+    
   　  else
-  　    
-    　　　　　　　puts ""
+  　 
+  　 puts ""
     end
   
    end

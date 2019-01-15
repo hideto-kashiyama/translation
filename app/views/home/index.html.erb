@@ -99,22 +99,36 @@ function AITalk_start() {
     $('#txtfn').val(fn);
     
      <%= atk %>
+     
+      setTimeout(function(){
+        
+           
+     var txt = $('#txtfn').val();
+     var mp3fn="tempmp3/" + txt + ".mp3";
+     
+   
+        console.log(mp3fn+"はダウンロードされました。");
+
+       audioElem = new Audio();
+       audioElem.src = mp3fn;
+       audioElem.play();
     
-     AIT();
-    
+  },2000);
+  
 }
 
 //AITalkでもう一度しゃべる
 function AIT() {
+ 
     
    var txt = $('#txtfn').val();
    var mp3fn="tempmp3/" + txt + ".mp3";
-  
-     console.log(mp3fn);
-  
-   audioElem = new Audio();
-   audioElem.src = mp3fn;
-   audioElem.play();
+   
+       audioElem = new Audio();
+       audioElem.src = mp3fn;
+       audioElem.play();
+       
+ 　 
   
 }
 
@@ -259,6 +273,7 @@ function trans_ait() {
    
          
         if ( radio_sp==0 ) {
+            
              $("#aimbtn").click();//AITalk ruby音声
           
         } else {
@@ -419,7 +434,7 @@ function recstop() {　//音声入力停止
              　　
              　　//recognition.onnomatch = function() {
                
-               　　　 $('#result_text').text("もう一度試してください");
+               　　　 //$('#result_text').text("もう一度試してください");
                
           　　　//  };
             
