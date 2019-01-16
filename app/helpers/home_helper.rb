@@ -105,7 +105,8 @@ def atk
     
   　  else
   　 
-  　 puts ""
+  　 puts "failed"
+  　 
     end
   
    end

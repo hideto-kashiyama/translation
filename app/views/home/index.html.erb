@@ -64,6 +64,7 @@
  
 　 // 録音(音声認識)による翻訳開始
 function recstart() { //音声入力開始
+
 　      $('#recap').hide();//現在音声入力停止中
 　     
 　      if (stopflag==1) { //停止状態なら　初期状態
@@ -94,7 +95,7 @@ function recstart() { //音声入力開始
 　     
            if (jeflag==1) {
                
-                   recognition.stop()
+                   //recognition.stop()
                    
                    jeflag=0;
                    
@@ -106,7 +107,7 @@ function recstart() { //音声入力開始
                     
                    
                 } else {
-                    recognition.stop()
+                    //recognition.stop()
                    
                     jeflag=1;
                     
@@ -115,6 +116,7 @@ function recstart() { //音声入力開始
                      tenmetu('mic');//点滅
                     $('#rscap').css('color', 'green');
                     gid=1;
+                    
                 
                 }
     
@@ -152,11 +154,11 @@ function recstop() {　//音声入力停止
                 　　　console.log("英語認識中");
                  }
              　　
-             　　//recognition.onnomatch = function() {
+             　//　recognition.onnomatch = function() {
                
                　　　 //$('#result_text').text("もう一度試してください");
                
-          　　　//  };
+          　　    // };
             
             };
             
@@ -195,7 +197,7 @@ function recstop() {　//音声入力停止
                        
                           $('#result_text').text(results[i][0].transcript);
                          
-                            gengochk(results[i][0].transcript);
+                            //gengochk(results[i][0].transcript);
                          console.log("chang!")
                          
                              $("#tbtn").click();//翻訳開始
