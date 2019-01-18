@@ -145,7 +145,7 @@ function recstop() {　//音声入力停止
            recognition.interimResults = false
         　 recognition.continuous = true
            //最大2個の認識仮説を取得する
-          recognition.maxAlternatives = 2;
+          recognition.maxAlternatives = 1;
            
            recognition.onstart = function() {
               
