@@ -142,10 +142,10 @@ function recstop() {　//音声入力停止
 　 
 　 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
            var recognition = new webkitSpeechRecognition();
-           recognition.interimResults = true;
-        　 recognition.continuous = true;
+           recognition.interimResults = false
+        　 recognition.continuous = true
            //最大2個の認識仮説を取得する
-           recognition.maxAlternatives = 2;
+          recognition.maxAlternatives = 2;
            
            recognition.onstart = function() {
               
