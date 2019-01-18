@@ -66,6 +66,8 @@
 function recstart() { //音声入力開始
 
 　      $('#recap').hide();//現在音声入力停止中
+　      
+　      //console.log("フラグ"+jeflag+" 判定"+gid+ " 状態"+stopflag);
 　     
 　      if (stopflag==1) { //停止状態なら　初期状態
 　     　  console.log('初期状態');
@@ -95,7 +97,7 @@ function recstart() { //音声入力開始
 　     
            if (jeflag==1) {
                
-                   //recognition.stop()
+                  recognition.stop()
                    
                    jeflag=0;
                    
@@ -104,10 +106,10 @@ function recstart() { //音声入力開始
                       tenmetue('mic');//点滅
                     $('#rscap').css('color', 'Red');
                     gid=0;
-                    
-                   
+                    console.log("フラグ"+jeflag+" 判定"+gid+ " 状態"+stopflag);
+                  
                 } else {
-                    //recognition.stop()
+                   recognition.stop()
                    
                     jeflag=1;
                     
@@ -116,8 +118,8 @@ function recstart() { //音声入力開始
                      tenmetu('mic');//点滅
                     $('#rscap').css('color', 'green');
                     gid=1;
-                    
-                
+                    console.log("フラグ"+jeflag+" 判定"+gid+ " 状態"+stopflag);
+               
                 }
     
 　     }         
@@ -128,6 +130,8 @@ function recstop() {　//音声入力停止
 　      
 　      recognition.stop()
 　      stopflag=1;
+　      jeflag=1;
+　      gid=1;
 　      $('#rscap').text("音声入力開始");
         $('#rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
@@ -141,17 +145,22 @@ function recstop() {　//音声入力停止
            recognition.interimResults = true;
         　 recognition.continuous = true;
            //最大2個の認識仮説を取得する
-           //recognition.maxAlternatives = 2;
+           recognition.maxAlternatives = 2;
            
            recognition.onstart = function() {
+              
                  if (gid==1) { 
-                   recognition.lang='ja-JP';
-                   console.log("日本語認識中");
-                   
-                 } else {
-                     
+                    console.log(gid);
                       recognition.lang='en-US';
-                　　　console.log("英語認識中");
+                　　　console.log("日本語認識中");  
+                   
+                 }
+                   
+                 if (gid==0){
+                     
+                　　　console.log(gid);
+                   recognition.lang='ja-JP';
+                   console.log("英語認識中");
                  }
              　　
              　//　recognition.onnomatch = function() {
@@ -162,20 +171,23 @@ function recstop() {　//音声入力停止
             
             };
             
-             recognition.onspeechstart= function() {
+           recognition.onspeechstart= function() {
                  
-                 if (gid==1) { 
-                     
-                   recognition.lang='ja-JP';
-                   console.log("会話中日本語認識中");
+                  if (gid==1) { 
+                    console.log(gid);
+                      recognition.lang='en-US';
+                　　　console.log("リススタート日本語認識中");  
                    
-                 } else {
+                 }
+                   
+                 if (gid==0){
                      
-                  recognition.lang='en-US';
-            　　　console.log("録音状態からリスタート");
-                 } 
+                　　　console.log(gid);
+                   recognition.lang='ja-JP';
+                   console.log("リススタート英語認識中");
+                 }
              
-             };   
+             };  
                  
             
          
@@ -197,7 +209,7 @@ function recstop() {　//音声入力停止
                        
                           $('#result_text').text(results[i][0].transcript);
                          
-                            //gengochk(results[i][0].transcript);
+                           gengochk(results[i][0].transcript);
                          console.log("chang!")
                          
                              $("#tbtn").click();//翻訳開始
