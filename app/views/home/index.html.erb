@@ -191,15 +191,15 @@ function recstop() {　//音声入力停止
                  
             
          
-            recognition.onend= function() {
+            //recognition.onend= function() {
                 
-                if (stopflag==0) { 
+                //if (stopflag==0) { 
                     
-                   recognition.start();
+                  // recognition.start();
                  
-                 }
+                 //}
                 
-            }
+           // }
             
            
             recognition.onresult = function(event) {
@@ -437,12 +437,12 @@ function trans() {
      if(gid==1) {
          
        uttr.lang = 'en-US';
-       //speechSynthesis.speak(uttr);
+       speechSynthesis.speak(uttr);
        
      } else {
          
            uttr.lang = 'ja-JP';
-           //speechSynthesis.speak(uttr);
+           speechSynthesis.speak(uttr);
       
      }
  
@@ -451,7 +451,7 @@ function trans() {
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-        speechSynthesis.speak(uttr);
+        //speechSynthesis.speak(uttr);
     },2000);
 
 }
