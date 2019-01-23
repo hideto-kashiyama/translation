@@ -143,7 +143,7 @@ function recstop() {　//音声入力停止
 　 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
            var recognition = new webkitSpeechRecognition();
            recognition.interimResults = false
-        　 recognition.continuous = true
+        　 recognition.continuous = false
            //最大1個の認識仮説を取得する
           recognition.maxAlternatives = 1;
            
