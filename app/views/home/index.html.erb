@@ -191,15 +191,15 @@ function recstop() {　//音声入力停止
                  
             
          
-            //recognition.onend= function() {
+            recognition.onend= function() {
                 
-                //if (stopflag==0) { 
+               if (stopflag==0) { 
                     
-                  // recognition.start();
+                 recognition.start();
                  
-                 //}
+               }
                 
-           // }
+            }
             
            
             recognition.onresult = function(event) {
@@ -438,6 +438,8 @@ function trans() {
          
        uttr.lang = 'en-US';
        speechSynthesis.speak(uttr);
+       
+       
        
      } else {
          

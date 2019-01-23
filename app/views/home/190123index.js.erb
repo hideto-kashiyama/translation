@@ -1,0 +1,80 @@
+  
+   radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
+         
+   if ( radio_sp==2 ) {
+              
+                if(gid==1) {
+       
+                   
+                   var transtext="<%= translate%>";
+                 } else {
+                 
+                   var transtext="<%= translatej %>";
+                 
+                 }  
+             
+           var txt=transtext.replace( /&amp;#39;/g , "'" );
+         
+           $('#txtTarget').val(txt);
+ 
+           var text =  $('#txtTarget').val();
+ 
+           var uttr = new SpeechSynthesisUtterance();
+           uttr.text = text;
+    
+              if(gid==1) {
+                  
+                uttr.lang = 'en-US';
+                speechSynthesis.speak(uttr);
+                
+              } else {
+                  
+                    uttr.lang = 'ja-JP';
+                    speechSynthesis.speak(uttr);
+               
+              }
+ 
+    
+  } else {
+         
+           if(gid==1) {
+       
+                   var transtext="<%= translate%>";
+                   
+             } else {
+             
+               
+               var transtext="<%= translatej %>";
+               
+             }  
+             
+                  var txt=transtext.replace( /&amp;#39;/g , "'" );
+                
+                  $('#txtTarget').val(txt);
+        
+                  var text =  $('#txtTarget').val();
+                  
+           if(gid==1) {
+  
+           uttr.lang = 'en-US';
+           speechSynthesis.speak(uttr);
+           
+          
+            } else {
+  
+              <%= atk %>
+                  
+             $("#aimbtn").click();//AITalk ruby音声
+     
+             }
+             
+  }
+  
+  
+  
+
+ 
+ 
+
+ 
+
