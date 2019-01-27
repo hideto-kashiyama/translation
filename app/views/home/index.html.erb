@@ -395,7 +395,7 @@ function trans() {
      } else {
          
            uttr.lang = 'ja-JP';
-          // speechSynthesis.speak(uttr);
+         speechSynthesis.speak(uttr);
       
      }
  
@@ -404,7 +404,6 @@ function trans() {
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-      speechSynthesis.speak(uttr);
      
     },2000);
 
@@ -439,8 +438,8 @@ function transj() {
      } else {
          
            uttr.lang = 'ja-JP';
-          // speechSynthesis.speak(uttr);
-      
+         speechSynthesis.speak(uttr);
+    
      }
  
     setTimeout(function(){
@@ -448,8 +447,7 @@ function transj() {
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-      speechSynthesis.speak(uttr);
-     
+      
     },2000);
 
 }
@@ -492,7 +490,7 @@ function trans_ait() {
      if (gid) {
          
        uttr.lang = 'en-US';
-       //speechSynthesis.speak(uttr);
+          speechSynthesis.speak(uttr);
        
       setTimeout(function(){
         
@@ -502,7 +500,7 @@ function trans_ait() {
             tenmetut('translabel');//点滅
             console.log("google english")
             
-            speechSynthesis.speak(uttr);
+         
            
            
       },2000);
