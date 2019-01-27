@@ -6,18 +6,18 @@
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
  
-          <i class="fa fa-microphone fa-3x"><span id="rscap">日本語音声入力開始</aspan></i>
+          <i class="fa fa-microphone fa-3x"><a class="rscap">日本語音声入力開始</a></i>
           
 </button>
-<button class="mic1" type="submit" onclick ="recstarte()">
-   <i class="fa fa-microphone fa-3x"><span id="rscape">英語音声入力開始</span></i>
+<button class="mic" type="submit" onclick ="recstarte()">
+   <i class="fa fa-microphone fa-3x"><a class="rscape">英語音声入力開始</a></i>
 </button>
 
-<button id="stcap" onclick="recstop()">Stop!</button></div>
+<button id="stcap" onclick="recstop()">音声入力停止</button></div>
 
 <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
 
-  <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text", size: "55x5" %></div>
+  <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text", size: "60x5" %></div>
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="transmaster()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
@@ -25,24 +25,30 @@
    
    <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
   
-  <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget", size: "55x5" %></div>
+      <br>
+  <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget", size: "60x5" %></div>
 
-      <div class="low_group"><button class="mic2" type="submit" onclick ="speak()">
+      <div><button class="mic1" type="submit" onclick ="speak()">
     
-      <i class="fa fa-volume-up fa-3x"><a class="rcap">もう一度しゃべる</a></i>
+      <i class="fa fa-volume-up fa-3x"><a class="rcap">もう一度しゃべる</a></i><br>
  
-      </button>
+      </button></div> 
 
-     <button id="tclear" onclick="txtclear()">テキストクリア</button>
-    <button id= "tlink">この会話を登録</button></div> <br>
-    <a href="/home/e100">登録済会話集</a></div>
-    
- <div class="up_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
+<button id="tclear" onclick="txtclear()">テキストクリア</button>
+
+
+ <button id= "tlink">登録ページへ</button><br>
+ <div><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
     <button id="aibtn" onclick="AIT()">AITalkでもう一度しゃべる</button>
 
  <% end %></div>  
-
+ 
+ 
+ <!--<button id="fclear" onclick="delf()">ファイルクリア</button> -->
+  
+ <!--<a href="/home/e100">登録済文章ページへ</a></div>-->
+  
   <div class="aitjs">
         <div id="status">読み込み中です。</div> <br>
 		<audio id="audio" controls autoplay></audio>
@@ -54,136 +60,167 @@
   
 <script>
 
-window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-var recognition = new webkitSpeechRecognition();
-var recognitione = new webkitSpeechRecognition();
+ var stopflag=1; //録音状態　1: 停止状態　0:録音中状態
+
+ //var jeflag=1; //言語切り替えフラグ　1: 日本語　0:英語
 
  var gid; //言語判定　true: 日本語　false:英語
  
-// *ここから録音(音声認識)による翻訳開始
-var flag_speech = 0;
-
-function recstart() {
-     $('#rscap').text("日本語認識中.........");
-          　   　　　　
-     //tenmetu('mic');//点滅
-              
-    $('#rscap').css('color','white'); 
-    $('.mic').css('background-color', 'green');    
-recognitione.stop();
-gid=true
-recognition.lang = 'ja-JP';
-recognition.interimResults = false;
-recognition.continuous = true;
-
-recognition.onsoundstart = function(){
-  console.log("日本語認識中");
-};
-
-recognition.onnomatch = function(){
-  console.log("もう一度試してください");
-};
-
-recognition.onerror= function(){
-  console.log("エラー");
-};
-
-recognition.onspeechstart= function() {
- console.log("リスタート日本語認識中");  
-}; 
-
-recognition.onsoundend = function(){
-  
-   console.log("日本語認識完了")
-  
-};
- 
-recognition.onresult = function(event){
-    var results = event.results;
-    for (var i = event.resultIndex; i<results.length; i++){
-      if(results[i].isFinal) {
-        $('#result_text').text(results[i][0].transcript);
-        console.log(gid);
-        $("#stcap").click(); //音声入力停止
-        
-        $("#tbtn").click();//英訳開始
-         console.log("英訳完了");
-      }
-    }
-};
-
-   flag_speech = 0;
-  
-   recognition.start();
-}
-
-var flag_speeche = 0;
- 
-function recstarte() {
-    
-   $('#rscape').text("英語認識中.........");
-  　  　　　
-      //tenmetu('mic');//点滅
-　 $('#rscape').css('color', 'white');
-　 $('.mic1').css('background-color', 'red'); 
-　 
-  recognition.stop();
-  gid=false
-
-recognitione.lang = 'en-US';
-recognitione.interimResults = false;
-recognitione.continuous = true;
- 
-recognitione.onsoundstart = function(){
-  console.log("英語認識中");
-};
-recognitione.onnomatch = function(){
-   console.log("もう一度試してください");
-};
-recognitione.onerror= function(){
-  console.log("エラー");
-};
-recognitione.onsoundend = function(){
- console.log("英語認識完了")
-};
- 
-recognitione.onresult = function(event){
-    var resultse = event.results;
-    for (var i = event.resultIndex; i<resultse.length; i++){
-      if(resultse[i].isFinal) {
-       　$('#result_text').text(resultse[i][0].transcript);
-       　 console.log(gid);
-         $("#stcap").click(); //音声入力停止
-         
-         $("#tbtnj").click();//和訳訳開始
-         console.log("和訳完了");
+　 // 録音(音声認識)による翻訳開始
+function recstart() { //日本語音声入力開始
+recstop();
+      gid=true;
+      stopflag=0;//start状態にする
       
-      }
-    }
+ $('.rscap').text("");//音声入力開始を消す
+          　   $('.rscap').text("日本語認識中.........");
+          　   　　　　
+              tenmetu('mic');//点滅
+              
+    　    $('.rscap').css('color','green'); 
+    　    
+    　         
+                 recognition.start();//startして
+                  
     
-};
-    flag_speeche = 0;
-    recognitione.start();
+　      }
+　      
+function recstarte() { //英語音声入力開始
+recstop();
+　　　　   gid=false;
+　　　　    stopflag=0;//start状態にする
+　        
+　        
+　            $('.rscape').text("");//音声入力開始を消す
+              　  $('.rscape').text("英語認識中.........");
+              　  　　　
+                  tenmetu('mic');//点滅
+　 　             $('.rscape').css('color', 'Red');
+　 　   
+                 recognition.start();//startして
+        
 }
-
+　 
+　 
 function recstop() {　//音声入力停止
 　      
-　      recognition.stop();
-　    　recognitione.stop();
-　      $('#rscap').text("日本語音声入力開始");
-        $('#rscap').css('color', 'black');
+　      recognition.stop()
+　      stopflag=1;
+　     // jeflag=1;
+　      
+　      $('.rscap').text("日本語音声入力開始");
+        $('.rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
-        $('#rscape').text("英語音声入力開始");
-        $('#rscape').css('color', 'black');
-        $('.mic1').css('background-color', 'white');
+         $('.rscape').text("英語音声入力開始");
+        $('.rscape').css('color', 'black');
+        $('.mic').css('background-color', 'white');
+        //$('.recape').show();
         $('.translabel').text("");
 　      
  }
+ 
+  window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+           var recognition = new webkitSpeechRecognition();
+           recognition.interimResults = false//    中間結果表示
+        　 recognition.continuous = true
+        　
+           //最大1個の認識仮説を取得する
+         recognition.maxAlternatives = 1;
+           
+           recognition.onstart = function() {
+                  
+                 if (gid) {
+                     
+                     console.log(gid);
+                      recognition.lang='ja-JP';
+                　　　console.log("日本語認識中");  
+                   
+                 } else {
+                   
+                   console.log(gid);
+                   recognition.lang='en-US';
+                   console.log("英語認識中");
+                   
+                 }
+             　　
+             };
+               
+               recognition.onnomatch = function() {
+               recognition.stop()
+                  //$('#result_text').text("もう一度試してください");
+                  
+               
+               };
+               
+               recognition.onerror= function(){
+                   recognition.stop();
+                    //$("#result_text").text("エラー");
+                };
+            
+           recognition.onspeechstart= function() {
+                 
+                  if (gid) { 
+                    console.log(gid);
+                      recognition.lang='ja-JP';
+                　　　console.log("リスタート日本語認識中");  
+                   
+                 } else {
+                
+                　 console.log(gid);
+                   recognition.lang='en-US';
+                   console.log("リスタート英語認識中");
+                 }
+             
+             };  
+                 
+            recognition.end = function() {
+               //recognition.stop();
+               console.log("認識完了")
+            }
+         
+            recognition.onresult = function(event) {
+               
+                var results = event.results;
+                for (var i = event.resultIndex; i < results.length; i++) {
+                    if (results[i].isFinal) {
+                       
+                          $('#result_text').text(results[i][0].transcript);
+                         
+                           //gengochk(results[i][0].transcript);
+                         
+                             console.log(gid);
+                             
+                       $("#stcap").click();     
+                        
+                       if (gid) {  
+                             
+                    　     $("#tbtn").click();//翻訳開始
+                    　       console.log("英訳完了")
+                       } else {
+                           
+                             $("#tbtnj").click();//翻訳開始
+                              console.log("和訳完了")
+                       }
+    　        
+                     }
+                     
+                    }
+                };
+                
+               if (stopflag==0) {　//録音中なら
+                
+                   recognition.onend = () => { recognition.start() };
+                
+                }
+　 
+　 
+               // recognition.start();
 
    /*ここまで録音による翻訳*/
-  
+   
+   
 
-//＊ここから#result_textに文字を直接入力またはコピペした場合の翻訳
+//#result_textに文字を直接入力またはコピペした場合の翻訳
 //言語判定　gid取得 　1: 日本語　0:英語
  function gengochk(value) { // 録音による翻訳の言語判定（日本語か英語か）に使う
 　    

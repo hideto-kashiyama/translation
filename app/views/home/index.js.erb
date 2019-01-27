@@ -1,18 +1,11 @@
-  //Web Speech Synthesis API（音声合成API）
- //参考https://github.com/codegrid/2016-web-speech-api/blob/gh-pages/speech_synthesis/demo_simple_en.html
-//$(function() {
- //var selectval=$("input[name='je']:checked").val(); //$('[name=gengo]').val();
-  //英語0 日本語1
-//console.log(selectval);
-   
-  //helpers/home_helper.rb  translate英訳　translatej 和訳
-  if(gid==1) {
+  if (gid) { 
        var transtext="<%= translate %>";
-       
-     } else {
+  } else {     
+    var transtext="<%= translatej %>";
      
-        var transtext="<%= translatej %>";
-     }  
+   }   
+  
+     
  
  var txt=transtext.replace( /&amp;#39;/g , "'" );
 
@@ -23,7 +16,7 @@
  
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
-     if(gid==1) {
+     if (gid) {
         uttr.lang = 'en-US';
       speechSynthesis.speak(uttr);
       

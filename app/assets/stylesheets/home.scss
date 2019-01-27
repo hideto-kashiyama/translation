@@ -7,6 +7,10 @@
     visibility:hidden;
 }
 
+#tbtnj {
+    visibility:hidden;
+}
+
 #txtfn {
     
     visibility:hidden; 
@@ -29,13 +33,22 @@
 
 /*マイクの囲み */
 .up_group {
-    
+   
  display: inline-block;  
    /*   インラインブロック要素にする */
+ border-style: none;
+}
+
+
+#rscap {
+  
+  font-size: 0.3em;  
+  /*margin-left: 10px;*/
  
 }
 
-#rscap {
+
+#rscape {
   
   font-size: 0.3em;  
   /*margin-left: 10px;*/
@@ -72,9 +85,9 @@
     /*margin-left: 8px;*/
    /* margin-right: 10px;*/
     background-color:white;
-    border-radius: 20px;  
-     /* ボーダーをなくす */
-    border-style: none;
+    border-radius: 12px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
 }
 
 .mic1 {
@@ -84,8 +97,8 @@
    /* margin-right: 10px;*/
     background-color:white;
     border-radius: 12px;  
-     /* ボーダーをなくす */
-    border-style: none;
+     /* ボーダーをなくす 
+    border-style: none;*/
 }
 
 #result_text {
@@ -106,7 +119,7 @@
 
 
 #stcap {
-    width:100px;
+    width:60px;
     margin-left: 0px;
     
     /* 文字サイズを1指定 */
@@ -156,7 +169,7 @@
 
 #tclear {
     margin-top: -50px;
-    margin-left: 10px;
+    margin-left: 1px;
     
     /* 文字サイズを1指定 */
     font-size: 0.8em;
@@ -202,7 +215,7 @@
 }
 #tlink {
     margin-top: -50px;
-    margin-left: 10px;
+    margin-left: 1px;
     
     /* 文字サイズを1指定 */
     font-size: 0.8em;
