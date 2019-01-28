@@ -21,7 +21,7 @@
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="transmaster()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
-   <% end %></div>  
+  <% end %></div>  
    
    <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
   
@@ -55,8 +55,8 @@
 <script>
 
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-var recognition = new webkitSpeechRecognition();
-var recognitione = new webkitSpeechRecognition();
+var recognition = new webkitSpeechRecognition();//日本語
+var recognitione = new webkitSpeechRecognition();//英語
 
  var gid; //言語判定　true: 日本語　false:英語
  
@@ -69,8 +69,13 @@ function recstart() {
      //tenmetu('mic');//点滅
               
     $('#rscap').css('color','white'); 
-    $('.mic').css('background-color', 'green');    
-recognitione.stop();
+    $('.mic').css('background-color', 'green');   
+    
+　　　　recognitione.stop();
+　　　　$('#rscape').text("英語音声入力開始");
+        $('#rscape').css('color', 'black');
+        $('.mic1').css('background-color', 'white');
+        $('.translabel').text("");
 gid=true
 recognition.lang = 'ja-JP';
 recognition.interimResults = false;
@@ -106,7 +111,7 @@ recognition.onresult = function(event){
         console.log(gid);
         $("#stcap").click(); //音声入力停止
         
-        $("#tbtn").click();//英訳開始
+        $("#tbtn").click();//英訳開始　transmaster()
          console.log("英訳完了");
       }
     }
@@ -127,9 +132,13 @@ function recstarte() {
 　 $('#rscape').css('color', 'white');
 　 $('.mic1').css('background-color', 'red'); 
 　 
-  recognition.stop();
+        recognition.stop();
+  　　 　 $('#rscap').text("日本語音声入力開始");
+        $('#rscap').css('color', 'black');
+        $('.mic').css('background-color', 'white');
+        $('.translabel').text("");
+        
   gid=false
-
 recognitione.lang = 'en-US';
 recognitione.interimResults = false;
 recognitione.continuous = true;
@@ -252,8 +261,6 @@ function recstop() {　//音声入力停止
      }
      
 　});
-　
-
 
 　$("#txtTarget").keyup(function(e){
 　    
@@ -309,7 +316,7 @@ function AITalk_start() {
            audioElem.src = mp3fn;
            audioElem.play();
     
- },500);
+ },10);
   
 }
 
@@ -323,16 +330,14 @@ function AIT() {
        audioElem = new Audio();
        audioElem.src = mp3fn;
        audioElem.play();
-       
- 　 
   
 }
 
  var radio_sp
 
-function transmaster() {
+function transmaster() {　//認識後txttargetに和英訳　
    
-      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 1 :google
+      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
          
          if ( radio_sp==2 ) {
              
@@ -350,23 +355,23 @@ function transmaster() {
 
 function transmasterj() {
   
-      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 1 :google
+      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
          
          if ( radio_sp==2 ) {
              
             console.log("google")
-            transj();
+            transj();//google
           
          } else {
              
             console.log("AIT")
-            trans_aitj()
+            trans_aitj()//AITalk
          
          }   
   
 }
 
-//翻訳→音声合成
+//和英翻訳→英語音声合成google
 function trans() {
     
      var txt1;
@@ -387,27 +392,19 @@ function trans() {
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
     
-     if (gid) {
-         
        uttr.lang = 'en-US';
-       speechSynthesis.speak(uttr);
-     
-     } else {
-         
-           uttr.lang = 'ja-JP';
-         speechSynthesis.speak(uttr);
       
-     }
- 
     setTimeout(function(){
         txt1="";
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
+        
+         speechSynthesis.speak(uttr);
      
     },2000);
 
-}//翻訳→音声合成
+}//英和翻訳→日本語音声合成google
 function transj() {
     
      var txt1;
@@ -427,39 +424,24 @@ function transj() {
  
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
-    
-     if (gid) {
+   
          
-       uttr.lang = 'en-US';
-       speechSynthesis.speak(uttr);
-       
-       
-       
-     } else {
+          uttr.lang = 'ja-JP';
          
-           uttr.lang = 'ja-JP';
-         speechSynthesis.speak(uttr);
-    
-     }
- 
     setTimeout(function(){
         txt1="";
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-      
+        speechSynthesis.speak(uttr);
+        
     },2000);
 
 }
 
-
-
-
-//翻訳→音声合成
+//英和翻訳→日本語音声合成AITalk
 function trans_ait() {
-    
-     radio_sp = $("input[name='sp']:checked").val();
-     
+   
      var txt1;
     
 　   txt1="翻訳中..........."
@@ -467,68 +449,23 @@ function trans_ait() {
 　   
   //helpers/home_helper.rb  translate英訳　translatej 和訳
    
-     
-      var transtext ="<%= translate %>";
-       	
-
- 
+      var transtext ="<%= translatej %>";
+  
  var txt=transtext.replace( /&amp;#39;/g , "'" );
 
  $('#txtTarget').val(txt);
 
- //音声合成
- 
-     // unsupported.
-    /*if (!'SpeechSynthesisUtterance' in window) {
-        alert('Speech synthesis(音声合成) APIには未対応です.');
-        return;
-    }*/
-    var text =  $('#txtTarget').val();
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-    
-     if (gid) {
-         
-       uttr.lang = 'en-US';
-          speechSynthesis.speak(uttr);
-       
-      setTimeout(function(){
-        
-            txt1="";
-            $('.translabel').text("");
-            $('.translabel').text("翻訳完了！");
-            tenmetut('translabel');//点滅
-            console.log("google english")
-            
-         
-           
-           
-      },2000);
- 
-     } else {
-         
      $('#txtTarget').change(function() {
       //値が変更されたときの処理
       
-   
-         
-        if ( radio_sp==0 ) {
-            
              $("#aimbtn").click();//AITalk ruby音声
-          
-        } else {
-         
-    
-              start();//AITalk javascript音声
-              console.log("AITjs")
-  
-        }
+     
         
       });
-        
-     }
-     
+ 
 }
+
+
 
 $(function(){
     
@@ -583,28 +520,44 @@ $(function(){
 
 //もう一度しゃべる
 function speak() {
-
+    
+ radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
+    
  var text = $('#txtTarget').val();
  
  if (text!="") {
+     
+           var uttr = new SpeechSynthesisUtterance();
+            uttr.text = text;
+            
+   if ( radio_sp==2 ) { //google
 
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-    
-    if (gid) {
-        
-        uttr.lang = 'en-US';
-        speechSynthesis.speak(uttr);
-        
-      } else {
-         
-       
-               console.log("AITalk音声合成開始")
-             
-            　 $("#aimbtn").click();//AITalk音声合成開始;
+            if (gid) {
                 
-        
-     }
+                uttr.lang = 'en-US';
+                speechSynthesis.speak(uttr);
+                
+              } else {
+                 
+                uttr.lang ='ja-JP'; 
+                speechSynthesis.speak(uttr);
+                
+             }
+             
+   } else {
+       if (gid) {
+                
+                uttr.lang = 'en-US';
+                speechSynthesis.speak(uttr);
+                
+              } else {
+               console.log("AITalk")
+               AIT();
+                
+             }
+       
+               
+   }
   
   
   } else {
