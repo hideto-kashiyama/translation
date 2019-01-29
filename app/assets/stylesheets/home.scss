@@ -33,10 +33,11 @@
 
 /*マイクの囲み */
 .up_group {
-   
+  font-size: 1em;   
  display: inline-block;  
    /*   インラインブロック要素にする */
  border-style: none;
+ margin-top: -150px;
 }
 
 
@@ -119,11 +120,11 @@
 
 
 #stcap {
-    width:60px;
+    width:80px;
     margin-left: 0px;
     
     /* 文字サイズを1指定 */
-    font-size: 0.8em;
+    font-size: 1em;
 
     /* 文字の太さをboldに指定 
     font-weight: bold;*/

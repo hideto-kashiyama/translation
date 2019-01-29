@@ -1,26 +1,36 @@
+<h6 align="center">・自動翻訳システム</h6>
+<h2 align="center">Smart Speech</h2>
 
-    <!-- 固定ナビゲーションバー -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      
-    <a class="navbar-brand">
-		  
-	<span ><i class="fa fa-rebel" style="color: white">　自動翻訳システム</i></span>
-
-　<span class="radio_group">　日本語音声選択
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-center">
+            
+            
+            
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                <span class="radio_group">　日本語音声選択
  
-    <input class="ipt" type="radio" name="sp" value=0 >AITalk_ruby
-    <!--<input class="ipt" type="radio" name="sp" value=1 >AITalk_js-->
-    <input class="ipt" type="radio" name="sp" value=2 checked>google
-    <%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %>
-    
- </span>
- 
-</a>
-
-		
-	  <p class="navbar-text navbar-right">
-          <!--<a class="toplink" href="/dynamic_pages/home">トップページへ</a>-->
-          
-          </p>
-    
-	</nav>
+                    <input class="ipt" type="radio" name="sp" value=0 >ﾌﾟﾚﾐｱﾑ
+                    <!--<input class="ipt" type="radio" name="sp" value=1 >AITalk_js-->
+                    <input class="ipt" type="radio" name="sp" value=2 checked>ｽﾀﾝﾀﾞｰﾄﾞ
+                    <%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %>
+                    
+                 </span>
+                 </li>
+               <!-- <li class="nav-item active">
+                    <a class="nav-link" href="#">新規登録</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">データ一覧</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">エクスポート</a>
+                </li>-->
+            </ul>
+        </div>
+    </nav>
+     

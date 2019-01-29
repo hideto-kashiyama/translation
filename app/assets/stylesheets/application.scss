@@ -64,13 +64,6 @@ margin-bottom: 5px;
    
 }
 
-.navbar-right {
- 
-     font-size:14px;
-    
-     color:white;
-     /*margin-left: 20px;*/
-}
 
 .radio_group {
     font-size:14px;
@@ -126,29 +119,10 @@ margin-bottom: 5px;
   
 }
 
-.navbar-brand {
-    font-size:18px;
-    margin-top: 3px; 
-    
-    margin-left: 10px; 
-     color:white;
+.navbar-toggle {
+    z-index: 2;
 }
 
-
-
- /* navbar 全体の背景色とボーダーカラー */
-.navbar-default {
-      z-index: 1;
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      background-color: #65baad;
-      border-color: #3e6962;
-       
-       height: 40px;
-       
-}
 
 
 
@@ -242,16 +216,7 @@ div.collapse.navbar-collapse.navbar-right {
       border-color: #000033; }
 
 
-/* navbar テキストカラー */
-.navbar-default .navbar-nav > li > a {
-color: #ffffff;
-}
 
-
-#navbar-header {
-    
-   color: white;
-}
 .hogewaku{
     
  margin-top: 10px; 
