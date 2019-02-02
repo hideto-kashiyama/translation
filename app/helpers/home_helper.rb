@@ -99,7 +99,7 @@ def atk
     when Net::HTTPSuccess
     
       file_name = "public/tempmp3/" + @fnval + ".mp3"
-      #file_name = "<%=Settings.tempmp3.root_path%>" + "/" + @fnval + ".mp3"
+     # file_name = "<%=Settings.mp3.root_path%>/"+ @fnval + ".mp3"
      
       File.binwrite(file_name, res.body)
       
