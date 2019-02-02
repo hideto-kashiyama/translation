@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :counts
   resources :masters
   resources :categories
   devise_for :users
@@ -18,7 +19,10 @@ Rails.application.routes.draw do
    
    get 'home/e100'
    
+   get 'home/count'
    
+   post 'home/counts'
+
   
   root to: "home#index"
 

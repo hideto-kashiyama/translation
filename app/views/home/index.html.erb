@@ -1,20 +1,19 @@
  
- 
- <div class="jumbotron text-center">
-
-<div class="container">
+<div class="container-fluid">
+   <div class="col-xs-12"> 
     
+  <div class="jumbotron text-center">  
 <meta charset="UTF-8">  
 
-<div class="col-xs-12">
+
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
  
-          <i class="fa fa-microphone fa-4x"><span id="rscap">日本語音声入力開始</aspan></i>
+          <i class="fa fa-microphone fa-5x"><span id="rscap">日本語音声入力開始</aspan></i>
           
 </button>
 <button class="mic1" type="submit" onclick ="recstarte()">
-   <i class="fa fa-microphone fa-4x"><span id="rscape">英語音声入力開始</span></i>
+   <i class="fa fa-microphone fa-5x"><span id="rscape">英語音声入力開始</span></i>
 </button>
 
 <button id="stcap" onclick="recstop()">Stop!</button></div>
@@ -23,7 +22,7 @@
 
   <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text", size: "80x7" %></div>
   <div><label class="translabel" ></label>
-  <button id="tbtn" onclick="transmaster()">翻訳</button>
+  <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
   <% end %></div>  
    
@@ -37,27 +36,103 @@
  
       </button>
 
-     <button id="tclear" onclick="txtclear()">テキストクリア</button>
     <button id= "tlink">この会話を登録</button>
-    <a href="/home/e100">登録済会話集</a></div>
+    <a href="/home/e100">登録済会話集</a></div><br>
     
- <div class="up_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
+ <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
     <button id="aibtn" onclick="AIT()">AITalkでもう一度しゃべる</button>
 
  <% end %></div>  
-
-  <div class="aitjs">
-        <div id="status">読み込み中です。</div> <br>
-		<audio id="audio" controls autoplay></audio>
+ 
+ <div><%= form_tag('/home/counts', method: :post, id: "toucnt") do %>
+     
+      <input type="text" id="gcnt" name="cntgoogle" size="10">
+      <input type="text" id="acnt" name="cntait" size="10">
+     
+ <% end %></div>  
+ 
+ <button id="gcls" onclick="cls()">語数登録</button>
+ <button id="cdel" onclick="cdel()">クッキー削除</button>
+ <button id="lout" onclick="lout()">閉じる</button>
+ 
+ 
   </div>
   
   </div>
   
   </div>
   
-  </div>
 <script>
+
+//クッキー設定
+var g_cookie
+var a_cookie
+   //DOMの準備ができたら呼ばれる。
+ $(function() {
+     
+        var gcookie = $.cookie('g_cookie');   //google語数
+        var acookie = $.cookie('a_cookie');   //ATlk語数
+      
+       
+        //google語数
+           if(gcookie){
+                
+             $('#gcnt').val(gcookie);
+             
+           } else {
+               
+            $('#gcnt').val(0);
+            
+           }
+           
+          //ATalk語数
+           if(acookie){
+                
+             $('#acnt').val(acookie);
+             
+           } else {
+               
+            $('#acnt').val(0);
+            
+           }
+           
+  
+}); 
+
+
+
+function cls() {//画面閉じる
+
+    $('#toucnt').submit();
+    　
+     console.log("クッキーを削除、語数登録完了！")
+      $.removeCookie('g_cookie');
+    　$.removeCookie('a_cookie');
+    alert("クッキーを削除、語数登録完了！");
+        
+ 
+}
+
+function cdel() {
+     $.removeCookie('g_cookie');
+    　$.removeCookie('a_cookie');
+    　alert("クッキーを削除しました");
+}
+
+function lout() {
+   
+   window.close();
+}
+
+//$(function(){
+    　//画面遷移時
+//window.addEventListener('beforeunload', function() {
+   
+    
+//}, false);
+
+//});
 
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 var recognition = new webkitSpeechRecognition();//日本語
@@ -68,7 +143,8 @@ var recognitione = new webkitSpeechRecognition();//英語
 // *ここから録音(音声認識)による翻訳開始
 var flag_speech = 0;
 
-function recstart() {
+function recstart() { //日本語音声入力開始ボタン
+    
      $('#rscap').text("日本語認識中.........");
           　   　　　　
      //tenmetu('mic');//点滅
@@ -81,7 +157,9 @@ function recstart() {
         $('#rscape').css('color', 'black');
         $('.mic1').css('background-color', 'white');
         $('.translabel').text("");
+        
 gid=true
+
 recognition.lang = 'ja-JP';
 recognition.interimResults = false;
 recognition.continuous = true;
@@ -90,19 +168,20 @@ recognition.onsoundstart = function(){
   console.log("日本語認識中");
 };
 
+recognition.onspeechstart= function() {
+ console.log("リスタート日本語認識中");  
+}; 
+
 recognition.onnomatch = function(){
   console.log("もう一度試してください");
 };
 
 recognition.onerror= function(){
+  $('#result_text').text("エラー：日本語でお話しください");  
   console.log("エラー");
 };
 
-recognition.onspeechstart= function() {
- console.log("リスタート日本語認識中");  
-}; 
-
-recognition.onsoundend = function(){
+recognition.onend = function(){
   
    console.log("日本語認識完了")
   
@@ -116,8 +195,9 @@ recognition.onresult = function(event){
         console.log(gid);
         $("#stcap").click(); //音声入力停止
         
-        $("#tbtn").click();//英訳開始　transmaster()
+        $("#tbtn").click();//英訳開始　trans()
          console.log("英訳完了");
+         
       }
     }
 };
@@ -129,8 +209,8 @@ recognition.onresult = function(event){
 
 var flag_speeche = 0;
  
-function recstarte() {
-    
+function recstarte() {　//英語音声入力開始ボタン
+
    $('#rscape').text("英語認識中.........");
   　  　　　
       //tenmetu('mic');//点滅
@@ -150,15 +230,24 @@ recognitione.continuous = true;
  
 recognitione.onsoundstart = function(){
   console.log("英語認識中");
+}; 
+
+recognitione.onspeechstart= function() {
+ console.log("リスタート日本語認識中");  
+
 };
 recognitione.onnomatch = function(){
    console.log("もう一度試してください");
 };
 recognitione.onerror= function(){
+    
+  $('#result_text').text("エラー：英語でお話しください");  
   console.log("エラー");
+  
 };
-recognitione.onsoundend = function(){
+recognitione.onend = function(){
  console.log("英語認識完了")
+ 
 };
  
 recognitione.onresult = function(event){
@@ -171,7 +260,7 @@ recognitione.onresult = function(event){
          
          $("#tbtnj").click();//和訳訳開始
          console.log("和訳完了");
-      
+       
       }
     }
     
@@ -198,35 +287,7 @@ function recstop() {　//音声入力停止
   
 
 //＊ここから#result_textに文字を直接入力またはコピペした場合の翻訳
-//言語判定　gid取得 　1: 日本語　0:英語
- function gengochk(value) { // 録音による翻訳の言語判定（日本語か英語か）に使う
-　    
-                let error;
-                
-                if(value.match(/[ぁ-ん]/g)){ //ひらがな含む
-                    
-                  error = true;
-                  
-                } else if (value.match(/[\u4E00-\u9FFF]/)) {　//漢字のみ　例えば　「明日」など
-            
-                　 error = true; 
-                  
-                }
-                
-                if(error){
-                    
-                    gid=1;
-                    console.log("japanese!"+gid);
-                   
-                 
-                }else{
-                    
-                    gid=0;
-                    console.log("english!"+gid);
-                   
-                }
-   
-　}
+
 //$(function() {
   
  　$("#result_text").keyup(function(e){
@@ -248,19 +309,20 @@ function recstop() {　//音声入力停止
                 
                 if(error){
                     
-                    gid=1;
+                    gid=true;
                     console.log("japanese!"+gid);
                 　  
                     $("#tbtn").click();//翻訳開始
                     
                 }else{
                     
-                    gid=0;
+                    gid=false;
                     console.log("english!"+gid);
                    
-                    $("#tbtn").click();//翻訳開始
+                    $("#tbtnj").click();//翻訳開始
                     
                 }
+                
                 //ここまで#result_textに文字を直接入力またはコピペした場合の翻訳
 　　　　　
      }
@@ -320,8 +382,31 @@ function AITalk_start() {
            audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
-    
+           
+           audioElem.addEventListener("ended", function(e) {
+               
+              console.log("end!");
+              
+              var cnt =$("#txtTarget").val().length
+                var acnt = $('#acnt').val();
+                
+                   if (acnt==0) {
+                       
+                     $("#acnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
+                     
+                   }
+                   
+                    $.cookie('a_cookie', $('#acnt').val()); 
+            
+          });  
+          
  },10);
+ 
+ 
   
 }
 
@@ -339,24 +424,6 @@ function AIT() {
 }
 
  var radio_sp
-
-function transmaster() {　//認識後txttargetに和英訳　
-   
-      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
-         
-         if ( radio_sp==2 ) {
-             
-            console.log("google")
-            trans();
-          
-         } else {
-             
-            console.log("AIT")
-            trans_ait()
-         
-         }   
-  
-}
 
 function transmasterj() {
   
@@ -377,8 +444,9 @@ function transmasterj() {
 }
 
 //和英翻訳→英語音声合成google
+
 function trans() {
-    
+  // $("#txtTarget").val("");
      var txt1;
     
 　   txt1="翻訳中......"
@@ -393,7 +461,7 @@ function trans() {
  $('#txtTarget').val(txt);
  
     var text =  $('#txtTarget').val();
- 
+    
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
     
@@ -404,14 +472,42 @@ function trans() {
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-        
-         speechSynthesis.speak(uttr);
+        speechSynthesis.speak(uttr);
      
     },500);
-
-}//英和翻訳→日本語音声合成google
-function transj() {
     
+    uttr.onend = function (event) {
+        console.log('喋った時間：' + event.elapsedTime + 's');
+        var tm =event.elapsedTime *10
+        console.log(parseInt(tm)+100);
+            setTimeout(function(){
+                console.log('終了' + $("#txtTarget").val().length);
+                var cnt =$("#txtTarget").val().length
+                console.log(cnt)
+                var gcnt = $('#gcnt').val();
+                
+                   if (gcnt==0) {
+                       
+                     $("#gcnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#gcnt').val(parseInt(cnt) + parseInt(gcnt));
+                     
+                   }
+                   
+                    $.cookie('g_cookie', $('#gcnt').val()); 
+            
+             },parseInt(tm)+100);
+ 
+    }
+    
+}
+
+
+//英和翻訳→日本語音声合成google
+function transj() {
+  
      var txt1;
     
 　   txt1="翻訳中......"
@@ -426,7 +522,7 @@ function transj() {
  $('#txtTarget').val(txt);
  
     var text =  $('#txtTarget').val();
- 
+    
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
    
@@ -439,17 +535,46 @@ function transj() {
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
         speechSynthesis.speak(uttr);
-        
+       
     },500);
-
+    
+     uttr.onend = function (event) {
+       
+        console.log('喋った時間：' + event.elapsedTime + 's');
+        var tm =event.elapsedTime *10
+        console.log(parseInt(tm)+100);
+            setTimeout(function(){
+                console.log('終了' + $("#txtTarget").val().length);
+                var cnt =$("#txtTarget").val().length
+                var gcnt = $('#gcnt').val();
+                
+                   if (gcnt==0) {
+                       
+                     $("#gcnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#gcnt').val(parseInt(cnt) + parseInt(gcnt));
+                    
+                   }
+                   
+                    $.cookie('g_cookie', $('#gcnt').val()); 
+            
+             },parseInt(tm)+100);
+ 
+    }
+    
+    
+   
 }
 
 //英和翻訳→日本語音声合成AITalk
-function trans_ait() {
-   
+function trans_aitj() {
+    
+     $('#kb').val(0);//語数登録区分　google
      var txt1;
     
-　   txt1="翻訳中..........."
+　   txt1="翻訳中..."
 　   wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
 　   
   //helpers/home_helper.rb  translate英訳　translatej 和訳
@@ -460,17 +585,15 @@ function trans_ait() {
 
  $('#txtTarget').val(txt);
 
-     $('#txtTarget').change(function() {
+   $('#txtTarget').change(function() {
       //値が変更されたときの処理
-      
-             $("#aimbtn").click();//AITalk ruby音声
-     
         
-      });
+         $("#aimbtn").click();//AITalk ruby音声合成
+         
+   });
+      
  
 }
-
-
 
 $(function(){
     

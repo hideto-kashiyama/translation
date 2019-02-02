@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   
 before_action :authenticate_user!
+
   #def index
+  
      # flash[:success] = "メッセージ"
       
   #end
@@ -11,6 +13,7 @@ before_action :authenticate_user!
     @transval = params[:transval]
     @speakval = params[:speakval]
     @fnval = params[:fnval]
+   
     
       respond_to do |format|
       format.html
@@ -58,5 +61,23 @@ before_action :authenticate_user!
      redirect_to :action => "index"
  
    end
-
+   
+   def count
+    
+     @counts=Count.all
+    
+   end
+   
+   def counts
+    
+        countg=Count.new(user_id: 11, dt: Time.now, chrcnt: params[:cntgoogle], kubun: 1)
+        countg.save
+     
+        counta=Count.new(user_id: 11, dt: Time.now, chrcnt: params[:cntait], kubun: 0)
+        counta.save
+      
+      redirect_to :action => "index"
+   
+   end
+  
 end

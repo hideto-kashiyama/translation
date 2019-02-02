@@ -83,8 +83,8 @@ def atk
   else
  
   params = {
-    username: 'WES',
-    password: 'p4yPMbXP',
+    username: ENV["AITalkID"],
+    password: ENV["AITalkPW"],
     ext: 'mp3',
     text: @speakval,
     speaker_name: 'nozomi_emo'

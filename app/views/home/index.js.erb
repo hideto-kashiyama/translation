@@ -1,59 +1,47 @@
-  if (gid) { 
+  
+  //helpers/home_helper.rb  translate英訳　translatej 和訳
+   if (gid) {
        var transtext="<%= translate %>";
-  } else {     
-    var transtext="<%= translatej %>";
+       
+     } else {
      
-   }   
+        var transtext="<%= translatej%>";
+     }  
  
  var txt=transtext.replace( /&amp;#39;/g , "'" );
 
  $('#txtTarget').val(txt);
  
- var text =  $('#txtTarget').val();
+  
+   var text =  $('#txtTarget').val();
  
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
-     if (gid) {
-     
-        uttr.lang = 'en-US';
-        
-       setTimeout(function(){
-       
-            txt1="";
-            $('.translabel').text("");
-            $('.translabel').text("翻訳完了！");
-            tenmetut('translabel');//点滅
-        
-           speechSynthesis.speak(uttr);
-     
-       },500);
-      
+    
+    if (gid) {
+       uttr.lang = 'en-US';
+        speechSynthesis.speak(uttr);
      } else {
      
-      var radio_sp= $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk_ruby  1:AITalk_js    2:google
+      var radio_sp= $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
          
          if ( radio_sp==2 ) {
              
-            setTimeout(function(){
-       
-                txt1="";
-                $('.translabel').text("");
-                $('.translabel').text("翻訳完了！");
-                tenmetut('translabel');//点滅
-        
-              speechSynthesis.speak(uttr);
-     
-           },500);
-           
+           uttr.lang = 'ja-JP';
+           speechSynthesis.speak(uttr);
+          
           } else {
           
-             $("#aimbtn").click();//AITalk ruby音声
-      
+            $("#aimbtn").click();//AITalk ruby音声合成
+          
          }   
 
      }
+
      
-    <%= atk %>
+		
+ <%= atk %>
+ 
 
 
  

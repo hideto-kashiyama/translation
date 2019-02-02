@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181114221625) do
+ActiveRecord::Schema.define(version: 20190131023943) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "ctg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "counts", force: :cascade do |t|
+    t.datetime "dt"
+    t.integer  "user_id"
+    t.integer  "chrcnt"
+    t.integer  "kubun"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

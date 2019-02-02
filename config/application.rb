@@ -28,6 +28,7 @@ module Workspace
     end
     
     config.time_zone = 'Tokyo'
+    
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     
     config.action_mailer.raise_delivery_errors = true
