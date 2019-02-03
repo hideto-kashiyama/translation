@@ -462,17 +462,18 @@ function trans() {
  $('#txtTarget').val(txt);
  
     var text =  $('#txtTarget').val();
-    
+    txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
+        
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
     
        uttr.lang = 'en-US';
       
     setTimeout(function(){
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
+        
         speechSynthesis.speak(uttr);
      
     },500);
@@ -524,6 +525,11 @@ function transj() {
  
     var text =  $('#txtTarget').val();
     
+     txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
+    
     var uttr = new SpeechSynthesisUtterance();
     uttr.text = text;
    
@@ -531,10 +537,7 @@ function transj() {
           uttr.lang = 'ja-JP';
          
     setTimeout(function(){
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
+       
         speechSynthesis.speak(uttr);
        
     },500);
