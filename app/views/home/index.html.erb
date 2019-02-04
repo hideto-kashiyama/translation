@@ -467,42 +467,7 @@ function trans() {
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
         
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-    
-       uttr.lang = 'en-US';
-      
-    setTimeout(function(){
-        
-        //speechSynthesis.speak(uttr);
-     
-    },500);
-    
-    uttr.onend = function (event) {
-        console.log('喋った時間：' + event.elapsedTime + 's');
-        var tm =event.elapsedTime *10
-        console.log(parseInt(tm)+100);
-            setTimeout(function(){
-                console.log('終了' + $("#txtTarget").val().length);
-                var cnt =$("#txtTarget").val().length
-                console.log(cnt)
-                var gcnt = $('#gcnt').val();
-                
-                   if (gcnt==0) {
-                       
-                     $("#gcnt").val(cnt);
-                     
-                   } else {
-                       
-                       $('#gcnt').val(parseInt(cnt) + parseInt(gcnt));
-                     
-                   }
-                   
-                    $.cookie('g_cookie', $('#gcnt').val()); 
-            
-             },parseInt(tm)+100);
- 
-    }
+   
     
 }
 
@@ -529,45 +494,6 @@ function transj() {
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
-    
-    var uttr = new SpeechSynthesisUtterance();
-    uttr.text = text;
-   
-         
-          uttr.lang = 'ja-JP';
-         
-    setTimeout(function(){
-       
-        //speechSynthesis.speak(uttr);
-       
-    },500);
-    
-     uttr.onend = function (event) {
-       
-        console.log('喋った時間：' + event.elapsedTime + 's');
-        var tm =event.elapsedTime *10
-        console.log(parseInt(tm)+100);
-            setTimeout(function(){
-                console.log('終了' + $("#txtTarget").val().length);
-                var cnt =$("#txtTarget").val().length
-                var gcnt = $('#gcnt').val();
-                
-                   if (gcnt==0) {
-                       
-                     $("#gcnt").val(cnt);
-                     
-                   } else {
-                       
-                       $('#gcnt').val(parseInt(cnt) + parseInt(gcnt));
-                    
-                   }
-                   
-                    $.cookie('g_cookie', $('#gcnt').val()); 
-            
-             },parseInt(tm)+100);
- 
-    }
-    
     
    
 }
