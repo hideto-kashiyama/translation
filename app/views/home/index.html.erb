@@ -1,8 +1,8 @@
- 
-<div class="container-fluid">
+<div class="jumbotron text-center"> 
+<div class="ontainer-fluid">
    <div class="col-xs-12"> 
     
-  <div class="jumbotron text-center">  
+    
 <meta charset="UTF-8">  
 
 
@@ -20,7 +20,7 @@
 
 <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
 
-  <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text", size: "80x7" %></div>
+  <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text" %></div>
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>

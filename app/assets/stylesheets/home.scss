@@ -2,7 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.radio_g {
+    
+    margin-top : 10px ; 
+    margin-left : 0px ; 
+    color: black;
+    border-radius: 7px;  
+            /* margin: 20px 10px; 外側の余白 */
+         /*padding: 5px;  内側の余白 */
+    background-color: #ffffff; /* 背景色 */
+    width: 260px;
+    
+   /*  vertical-align: middle; 「vertical-align」を指定してもテキストは縦方向中央揃いにならない */
+    text-align: left;
+   
+    line-height: 35px;
+    
+     border-radius:7px;
+    border-right:none;
+    border:solid 3px #eaeaea;
+    outline: 0;
+    font-size: 1.8em; 
+ 
+}
 
+#select_gengo{
+    margin-top : 10px ; 
+    margin-left : 0px ; 
+    width: 140px;
+    
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+   line-height: 35px;
+    outline: none;
+    background: #5F9EA0;
+    background-image: none;
+     color: white;
+ 
+  
+  border-radius:7px;
+    border-right:none;
+    border:solid 3px #eaeaea;
+    outline: 0;
+    font-size: 1.4em; 
+  
+}
 #tbtn {
     visibility:hidden;
 }
@@ -102,18 +147,36 @@
     
 }
 
-#result_text {
+.jumbotron {
+  
+  resize: none;
+  width:677px;
+  height:800px;  
     
-    font-size: 16px; 
+    
+}
+
+#result_text {
+
+ resize: none;
+  width:600px;
+  height:200px;
+    
+    font-size: 30px; 
    margin-top: 10px; 
    border-color:green;
   
 }
 
 #txtTarget {
-    font-size: 16px; 
-     margin-top: 10px; 
-   border-color:firebrick;
+    
+ resize: none;
+  width:600px;
+  height:200px;
+    
+    font-size: 30px; 
+   margin-top: 10px; 
+   border-color:green;
  
 }
 

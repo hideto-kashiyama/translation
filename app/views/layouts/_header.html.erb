@@ -8,18 +8,28 @@
         
         <div class="collapse navbar-collapse justify-content-center">
             
+            <li class="dropdown active">
+			<select id="select_gengo">
+              <option value=0>英語</option>
+              <option value=1>中国語</option>
+              <option value=2>韓国語</option>
+              <option value=3>ドイツ語</option>
+            </select></li>
             
+				</li>
             
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                <span class="radio_group">　日本語音声選択
+                <span class="radio_g">　日本語音声選択
  
                     <input class="ipt" type="radio" name="sp" value=0 >ﾌﾟﾚﾐｱﾑ
                     <!--<input class="ipt" type="radio" name="sp" value=1 >AITalk_js-->
                     <input class="ipt" type="radio" name="sp" value=2 checked>ﾍﾞｰｼｯｸﾞ
-                    <%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %>
+                   
                     
                  </span>
+                 
+                  <%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %>
                  </li>
                <!-- <li class="nav-item active">
                     <a class="nav-link" href="#">新規登録</a>
