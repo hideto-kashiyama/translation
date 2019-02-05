@@ -42,7 +42,7 @@ span.selectcap {
     text-overflow: ellipsis;
    line-height: 35px;
     outline: none;
-    background: #5F9EA0;
+    background: #483D8B;
     background-image: none;
      color: white;
  
@@ -76,6 +76,12 @@ span.selectcap {
     outline: 0;
     font-size: 1.4em; 
     
+}
+
+.lout {
+    
+    font-size: 1em; 
+    margin-left : 20px; 
 }
 #tbtn {
     visibility:hidden;

@@ -24,11 +24,10 @@
             </select></li>
             
             
-          
+          <span class="lout"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></span>
             </ul>
          
         </div>
-        
-        <p class="navbar-text navbar-right"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></p>
+       
     </nav>
      
