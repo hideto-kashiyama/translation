@@ -32,8 +32,8 @@
         uttr.onend = function (event) {
        
         console.log('喋った時間：' + event.elapsedTime + 's');
-        var tm =event.elapsedTime *10
-        console.log(parseInt(tm)+100);
+        var tm =event.elapsedTime
+        console.log(parseInt(tm));
             setTimeout(function(){
                 console.log('終了' + $("#txtTarget").val().length);
                 var cnt =$("#txtTarget").val().length
@@ -51,7 +51,7 @@
                    
                     $.cookie('g_cookie', $('#gcnt').val()); 
             
-             },parseInt(tm)+100);
+             },parseInt(tm));
              
              speechSynthesis.cancel();
         
@@ -79,8 +79,8 @@
            uttr.onend = function (event) {
        
         console.log('喋った時間：' + event.elapsedTime + 's');
-        var tm =event.elapsedTime *10
-        console.log(parseInt(tm)+100);
+        var tm =event.elapsedTime
+        console.log(parseInt(tm));
             setTimeout(function(){
                 console.log('終了' + $("#txtTarget").val().length);
                 var cnt =$("#txtTarget").val().length
@@ -98,7 +98,7 @@
                    
                     $.cookie('g_cookie', $('#gcnt').val()); 
             
-             },parseInt(tm)+100);
+             },parseInt(tm));
              
               speechSynthesis.cancel();
         
