@@ -22,8 +22,10 @@
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
-  <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
+  
   <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
+  <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
+  
   
   <% end %></div>  
    
@@ -75,16 +77,17 @@ window.onload = function () {
     };
     
   //DOMの準備ができたら呼ばれる。
-$(function() {    
+/*$(function() {    
     
     $('[name=sg]').change(function() {
         // 選択されている対話言語value属性値を取り出す
         var val = $('[name=sg]').val();
-       
-       $("#target").val(val) 
+       var values=val.split(','); // , 区切りで配列を取得
+       $("#target").val(values[0]); 
+      $("#source").val(values[1]);
     });
     
-}); 
+}); */
 
 //クッキー設定
 var g_cookie
@@ -151,7 +154,7 @@ window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 var recognition = new webkitSpeechRecognition();//日本語
 var recognitione = new webkitSpeechRecognition();//英語
 
- var gid; //言語判定　true: 日本語　false:英語
+ var gid; //言語判定　true: 日本語　false:日本語以外
  
 // *ここから録音(音声認識)による翻訳開始
 var flag_speech = 0;
@@ -237,7 +240,12 @@ function recstarte() {　//英語音声入力開始ボタン
         $('.translabel').text("");
         
   gid=false
-recognitione.lang = 'en-US';
+  
+   var val = $('[name=sg]').val();
+       var values=val.split(','); // , 区切りで配列を取得
+     console.log(values[1])
+recognitione.lang = values[1];
+
 recognitione.interimResults = false;
 recognitione.continuous = true;
  
@@ -461,6 +469,14 @@ function transmasterj() {
 //和英翻訳→英語音声合成google
 
 function trans() {
+     $("#source").val("ja");
+        // 選択されている対話言語value属性値を取り出す
+      var val = $('[name=sg]').val();
+       var values=val.split(','); // , 区切りで配列を取得
+       $("#target").val(values[0]); 
+ 
+    
+    
   // $("#txtTarget").val("");
      var txt1;
     
@@ -488,6 +504,14 @@ function trans() {
 
 //英和翻訳→日本語音声合成google
 function transj() {
+    
+    // 選択されている対話言語value属性値を取り出す
+      var val = $('[name=sg]').val();
+      var values=val.split(','); // , 区切りで配列を取得
+      console.log(values[0]);
+      $("#source").val(values[0]);
+        
+       $("#target").val("ja"); 
   
      var txt1;
     
@@ -514,6 +538,15 @@ function transj() {
 
 //英和翻訳→日本語音声合成AITalk
 function trans_aitj() {
+    
+     // 選択されている対話言語value属性値を取り出す
+      var val = $('[name=sg]').val();
+      var values=val.split(','); // , 区切りで配列を取得
+      console.log(values[0]);
+      $("#source").val(values[0]);
+        
+       $("#target").val("ja"); 
+  
     
      $('#kb').val(0);//語数登録区分　google
      var txt1;

@@ -15,8 +15,8 @@ def translate
       params = {
          
         q: @transval,
-        target: "en",
-        source: "ja",
+        target: @target,   #"en",
+        source: @source,   #"ja",
         key: ENV["GAPIKEY"]
         
       }
@@ -43,8 +43,8 @@ def translatej
       params = {
          
         q: @transval,
-        target: "ja",
-        source: "en",
+        target: @target, #"ja"
+        source:  @source, #"en",
         key: ENV["GAPIKEY"]
         
       }

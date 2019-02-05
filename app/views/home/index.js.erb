@@ -13,12 +13,15 @@
  $('#txtTarget').val(txt);
  
    var text =  $('#txtTarget').val();
+   
+   
  
     if (gid) {
-      
+       var val = $('[name=sg]').val();
+       var values=val.split(','); // , 区切りで配列を取得
        var uttr = new SpeechSynthesisUtterance();
        uttr.text = text;
-       uttr.lang = 'en-US';
+       uttr.lang = values[1];
        
         setTimeout(function(){
         
