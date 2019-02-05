@@ -1,11 +1,8 @@
 <div class="jumbotron text-center"> 
 <div class="ontainer-fluid">
    <div class="col-xs-12"> 
-    
-    
+
 <meta charset="UTF-8">  
-
-
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
  
@@ -21,16 +18,18 @@
 <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
 
   <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text" %></div>
-  <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
-  <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
+  
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
+  <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
+  <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
+  
   <% end %></div>  
    
    <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
   
-  <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget", size: "80x7" %></div>
+  <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget" %></div>
 
       <div class="low_group"><button class="mic2" type="submit" onclick ="speak()">
     
