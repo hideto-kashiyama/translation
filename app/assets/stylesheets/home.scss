@@ -8,7 +8,7 @@
     margin-left : 0px ; 
     color: black;
     border-radius: 7px;  
-            /* margin: 20px 10px; 外側の余白 */
+         /* margin: 20px 10px; 外側の余白 */
          /*padding: 5px;  内側の余白 */
     background-color: #ffffff; /* 背景色 */
     width: 260px;
@@ -33,6 +33,7 @@ span.selectcap {
 }
 
 #select_gengo{
+    
     margin-top : 10px ; 
     margin-left : 0px ; 
     width: 140px;
@@ -40,14 +41,14 @@ span.selectcap {
     cursor: pointer;
     text-indent: 0.01px;
     text-overflow: ellipsis;
-   line-height: 35px;
+    line-height: 35px;
     outline: none;
     background: #483D8B;
     background-image: none;
      color: white;
  
   
-  border-radius:7px;
+    border-radius:7px;
     border-right:none;
     border:solid 3px #eaeaea;
     outline: 0;
@@ -87,11 +88,15 @@ span.selectcap {
 #source {
      width:30px;
   height:20px;
+  
+  visibility:hidden;
 }
 
 #target {
    width:30px;
   height:20px; 
+  
+  visibility:hidden;
 }
 #tbtn {
     visibility:hidden;
@@ -111,7 +116,7 @@ span.selectcap {
 }
 
 #aibtn {
-    visibility:hidden;
+   /* visibility:hidden;*/
 }
 
 .translabel {

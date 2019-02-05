@@ -56,8 +56,8 @@
  <% end %></div>  
  
  <button id="gcls" onclick="cls()">語数登録</button>
- <button id="cdel" onclick="cdel()">クッキー削除</button>
- <button id="lout" onclick="lout()">閉じる</button>
+ <!--<button id="cdel" onclick="cdel()">クッキー削除</button>
+ <button id="lout" onclick="lout()">閉じる</button>-->
  
  
   </div>
@@ -70,9 +70,9 @@
 
 window.onload = function () {
     
-        $("#rscape").text("英語音声入力開始");
+       // $("#rscape").text("英語音声入力開始");
         
-        
+     // $('#gcls').click(); 
         
     };
     
@@ -133,7 +133,7 @@ function cls() {//語数登録、クッキーを削除完了！
      console.log("クッキーを削除、語数登録完了！")
       $.removeCookie('g_cookie');
     　$.removeCookie('a_cookie');
-    alert("語数登録、クッキーを削除完了！");
+    //alert("語数登録、クッキーを削除完了！");
         
  
 }
@@ -144,11 +144,6 @@ function cdel() {
     　alert("クッキーを削除しました");
 }
 
-function lout() {
-   
- window.open('about:blank','_self').close();
- 
-}
 
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 var recognition = new webkitSpeechRecognition();//日本語
@@ -436,11 +431,11 @@ function AIT() {
  
     
    var txt = $('#txtfn').val();
-   var mp3fn="tempmp3/" + txt + ".mp3";
+  var mp3fn="/tempmp3/" + txt + ".mp3";
    
        audioElem = new Audio();
-       audioElem.src = mp3fn;
-       audioElem.play();
+           audioElem.src = mp3fn;
+           audioElem.play();
   
 }
 
@@ -651,7 +646,9 @@ function speak() {
                 
               } else {
                console.log("AITalk")
-               AIT();
+               $("#aimbtn").click();
+              
+               //AIT();
                 
              }
        
