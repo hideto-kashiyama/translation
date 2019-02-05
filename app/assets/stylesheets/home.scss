@@ -25,6 +25,12 @@
     font-size: 1.8em; 
  
 }
+span.selectcap {
+
+   margin-left : 10px;
+   color: white;
+    
+}
 
 #select_gengo{
     margin-top : 10px ; 
@@ -47,6 +53,29 @@
     outline: 0;
     font-size: 1.4em; 
   
+}
+
+#select_jp{
+    margin-top : 10px ; 
+    margin-left : 0px ; 
+    width: 140px;
+    
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+   line-height: 35px;
+    outline: none;
+    background: #5F9EA0;
+    background-image: none;
+     color: white;
+ 
+  
+  border-radius:7px;
+    border-right:none;
+    border:solid 3px #eaeaea;
+    outline: 0;
+    font-size: 1.4em; 
+    
 }
 #tbtn {
     visibility:hidden;

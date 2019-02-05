@@ -21,6 +21,8 @@
 <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
 
   <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text" %></div>
+  <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
+  <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
@@ -65,6 +67,26 @@
   
 <script>
 
+window.onload = function () {
+    
+        $("#rscape").text("英語音声入力開始");
+        
+        
+        
+    };
+    
+  //DOMの準備ができたら呼ばれる。
+$(function() {    
+    
+    $('[name=sg]').change(function() {
+        // 選択されている対話言語value属性値を取り出す
+        var val = $('[name=sg]').val();
+       
+       $("#target").val(val) 
+    });
+    
+}); 
+
 //クッキー設定
 var g_cookie
 var a_cookie
@@ -102,14 +124,14 @@ var a_cookie
 
 
 
-function cls() {//画面閉じる
+function cls() {//語数登録、クッキーを削除完了！
 
     $('#toucnt').submit();
     　
      console.log("クッキーを削除、語数登録完了！")
       $.removeCookie('g_cookie');
     　$.removeCookie('a_cookie');
-    alert("クッキーを削除、語数登録完了！");
+    alert("語数登録、クッキーを削除完了！");
         
  
 }
@@ -125,15 +147,6 @@ function lout() {
  window.open('about:blank','_self').close();
  
 }
-
-//$(function(){
-    　//画面遷移時
-//window.addEventListener('beforeunload', function() {
-   
-    
-//}, false);
-
-//});
 
 window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 var recognition = new webkitSpeechRecognition();//日本語
@@ -427,8 +440,10 @@ function AIT() {
  var radio_sp
 
 function transmasterj() {
+    
+    
   
-      radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
+      radio_sp = $("#select_jp").val(); //$("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk   2 :google
          
          if ( radio_sp==2 ) {
              
@@ -573,7 +588,7 @@ $(function(){
 //もう一度しゃべる
 function speak() {
     
- radio_sp = $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
+ radio_sp = $("#select_jp").val();// $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
     
  var text = $('#txtTarget').val();
  

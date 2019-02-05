@@ -8,39 +8,27 @@
         
         <div class="collapse navbar-collapse justify-content-center">
             
-            <li class="dropdown active">
-			<select id="select_gengo">
+            <li class="dropdown active"><span class="selectcap" >対話言語選択</span>
+			<select id="select_gengo" name="sg">
               <option value=0>英語</option>
               <option value=1>中国語</option>
               <option value=2>韓国語</option>
               <option value=3>ドイツ語</option>
+            </select><span class="selectcap" >日本語音声選択</span>
+            
+			<select id="select_jp">
+			    
+              <option value=0>プレミアム</option>
+              <option value=2>ベーシック</option>
+              
             </select></li>
             
-				</li>
             
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                <span class="radio_g">　日本語音声選択
- 
-                    <input class="ipt" type="radio" name="sp" value=0 >ﾌﾟﾚﾐｱﾑ
-                    <!--<input class="ipt" type="radio" name="sp" value=1 >AITalk_js-->
-                    <input class="ipt" type="radio" name="sp" value=2 checked>ﾍﾞｰｼｯｸﾞ
-                   
-                    
-                 </span>
-                 
-                  <%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %>
-                 </li>
-               <!-- <li class="nav-item active">
-                    <a class="nav-link" href="#">新規登録</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">データ一覧</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">エクスポート</a>
-                </li>-->
+          
             </ul>
+         
         </div>
+        
+        <p class="navbar-text navbar-right"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></p>
     </nav>
      

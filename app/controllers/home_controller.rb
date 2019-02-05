@@ -11,9 +11,10 @@ before_action :authenticate_user!
  def index
   
     @transval = params[:transval]
+    @target = params[:target]
+    @source = params[:source]
     @speakval = params[:speakval]
     @fnval = params[:fnval]
-   
     
       respond_to do |format|
       format.html
