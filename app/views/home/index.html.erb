@@ -6,11 +6,11 @@
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
  
-          <i class="fa fa-microphone fa-5x"><span id="rscap">日本語音声入力開始</aspan></i>
+          <i class="fa fa-microphone fa-5x"><span id="rscap">日本語でしゃべる</aspan></i>
           
 </button>
 <button class="mic1" type="submit" onclick ="recstarte()">
-   <i class="fa fa-microphone fa-5x"><span id="rscape">英語音声入力開始</span></i>
+   <i class="fa fa-microphone fa-5x"><span id="rscape">英語でしゃべる</span></i>
 </button>
 
 <button id="stcap" onclick="recstop()">Stop!</button></div>
@@ -38,6 +38,7 @@
       <i class="fa fa-volume-up fa-4x"><a class="rcap">もう一度しゃべる</a></i>
  
       </button>
+　　<button id="tclear" onclick="txtclear()">テキストクリア</button>
 
     <button id= "tlink">この会話を登録</button>
     <a href="/home/e100">登録済会話集</a></div><br>
@@ -55,8 +56,8 @@
      
  <% end %></div>  
  
- <button id="gcls" onclick="cls()">語数登録</button>
- <!--<button id="cdel" onclick="cdel()">クッキー削除</button>
+<!-- <button id="gcls" onclick="cls()">語数登録</button>
+ <button id="cdel" onclick="cdel()">クッキー削除</button>
  <button id="lout" onclick="lout()">閉じる</button>-->
  
  
@@ -76,22 +77,16 @@
         
    // };
     
- //$(window).load(function () {
+//$(window).load(function () {
      
      
-   
  
 //});
 
-var chozon
-    
   //DOMの準備ができたら呼ばれる。
 //$(function() {    
-    //if (chozon!=0) {
-        
-      // $('#gcls').click(); 
-       //chozon=0;
-    //}
+    
+       
 
 //}); 
 
@@ -144,10 +139,14 @@ function cls() {//語数登録、クッキーを削除完了！
  
 }
 
-function cdel() {
-     $.removeCookie('g_cookie');
-    　$.removeCookie('a_cookie');
-    　alert("クッキーを削除しました");
+function txtclear() {　　//テキストクリア 語数登録、クッキーを削除
+    
+     $('#result_text').val("");
+     $('#txtTarget').val("");
+     $('.translabel').hide();
+     
+     cls();
+     
 }
 
 
@@ -672,13 +671,6 @@ function speak() {
  
 }
 
-function txtclear() {　　//テキストクリア
-    
-     $('#result_text').val("");
-     $('#txtTarget').val("");
-     $('.translabel').hide();
-     
-}
 
  function wfin(txt,idv) { //タイプライターのようにテキストを1文字ずつ表示させる関数
      　　　//txt:テキスト　idv 囲む要素のid
