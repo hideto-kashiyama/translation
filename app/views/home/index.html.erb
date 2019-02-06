@@ -68,26 +68,32 @@
   
 <script>
 
-window.onload = function () {
+//window.onload = function () {
     
        // $("#rscape").text("英語音声入力開始");
         
      // $('#gcls').click(); 
         
-    };
+   // };
+    
+ //$(window).load(function () {
+     
+     
+   
+ 
+//});
+
+var chozon
     
   //DOMの準備ができたら呼ばれる。
-/*$(function() {    
-    
-    $('[name=sg]').change(function() {
-        // 選択されている対話言語value属性値を取り出す
-        var val = $('[name=sg]').val();
-       var values=val.split(','); // , 区切りで配列を取得
-       $("#target").val(values[0]); 
-      $("#source").val(values[1]);
-    });
-    
-}); */
+//$(function() {    
+    //if (chozon!=0) {
+        
+      // $('#gcls').click(); 
+       //chozon=0;
+    //}
+
+//}); 
 
 //クッキー設定
 var g_cookie
@@ -402,7 +408,9 @@ function AITalk_start() {
            audioElem.addEventListener("ended", function(e) {
                
               console.log("end!");
-              
+             audioElem.pause();
+             audioElem.currentTime = 0;
+             
               var cnt =$("#txtTarget").val().length
                 var acnt = $('#acnt').val();
                 
@@ -645,6 +653,7 @@ function speak() {
                 speechSynthesis.speak(uttr);
                 
               } else {
+                  
                console.log("AITalk")
                $("#aimbtn").click();
               
