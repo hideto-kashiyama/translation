@@ -394,7 +394,7 @@ function recstop() {　//音声入力停止
 //AITalk音声合成
 function AITalk_start() {
     
-      //ファイル名作成  
+       //ファイル名作成  
     var dt = new Date();
     
     var y= dt.getFullYear();
@@ -414,16 +414,45 @@ function AITalk_start() {
     
     $('#txtfn').val(fn);
     
-    <%= atk %>
-    
-   var txt = $('#txtfn').val();
-   var mp3fn="/tempmp3/" + txt + ".mp3";  
-   console.log(mp3fn);
+     <%= atk %>
+     
+         var txt = $('#txtfn').val();
+         var mp3fn="/tempmp3/" + txt + ".mp3";
+         
+            console.log(mp3fn);
+
+       
+           audioElem = new Audio();
+           audioElem.src = mp3fn;
+           audioElem.play();
+           
+           audioElem.addEventListener("ended", function(e) {
+               
+              console.log("end!");
+             audioElem.pause();
+             audioElem.currentTime = 0;
+             
+              var cnt =$("#txtTarget").val().length
+                var acnt = $('#acnt').val();
+                
+                   if (acnt==0) {
+                       
+                     $("#acnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
+                     
+                   }
+                   
+                    $.cookie('a_cookie', $('#acnt').val()); 
+            
+          });  
+          
+ 
+ 
+ 
   
-   audioElem = new Audio();
-   audioElem.src = mp3fn;
-   audioElem.play();
-    
 }
 
 //AITalkでもう一度しゃべる
