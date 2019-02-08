@@ -558,30 +558,6 @@ function trans_aitj() {
  $('#txtTarget').val(txt);
 
 
-          //ファイル名作成  
-    var dt = new Date();
-    
-    var y= dt.getFullYear();
-    
-    //1月が0、12月が11。そのため+1をする。
-    var m = dt.getMonth()+1;
-    
-    var d= dt.getDate();
-    
-    var h = dt.getHours();
-    
-    var m = dt.getMinutes();
-    
-    var s= dt.getSeconds();
-    
-    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
-    
-   
-
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
       
  
 }
