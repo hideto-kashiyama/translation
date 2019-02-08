@@ -106,14 +106,74 @@
     
           } else {
           
-            $("#aimbtn").click();//AITalk ruby音声合成
+            //ファイル名作成  
+    var dt = new Date();
+    
+    var y= dt.getFullYear();
+    
+    //1月が0、12月が11。そのため+1をする。
+    var m = dt.getMonth()+1;
+    
+    var d= dt.getDate();
+    
+    var h = dt.getHours();
+    
+    var m = dt.getMinutes();
+    
+    var s= dt.getSeconds();
+    
+    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
+    
+    $('#txtfn').val(fn);
+    
+     <%= atk %>
+     
+         var txt = $('#txtfn').val();
+         var mp3fn="/tempmp3/" + txt + ".mp3";
+         
+            console.log(mp3fn);
+ //setTimeout(function(){
+        txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
+       
+           audioElem = new Audio();
+           audioElem.src = mp3fn;
+           audioElem.play();
+           
+           audioElem.addEventListener("ended", function(e) {
+               
+              console.log("end!");
+             audioElem.pause();
+             audioElem.currentTime = 0;
+             
+              var cnt =$("#txtTarget").val().length
+                var acnt = $('#acnt').val();
+                
+                   if (acnt==0) {
+                       
+                     $("#acnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
+                     
+                   }
+                   
+                    $.cookie('a_cookie', $('#acnt').val()); 
+            
+          });  
+          
+ //},500);
+ 
+ 
           
          }   
 
      }
  	
- <%= atk %>
- 
+
 
 
  

@@ -419,7 +419,7 @@ function AITalk_start() {
          var mp3fn="/tempmp3/" + txt + ".mp3";
          
             console.log(mp3fn);
- setTimeout(function(){
+ //setTimeout(function(){
         txt1="";
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
@@ -432,8 +432,8 @@ function AITalk_start() {
            audioElem.addEventListener("ended", function(e) {
                
               console.log("end!");
-             //audioElem.pause();
-             //audioElem.currentTime = 0;
+             audioElem.pause();
+             audioElem.currentTime = 0;
              
               var cnt =$("#txtTarget").val().length
                 var acnt = $('#acnt').val();
@@ -452,7 +452,7 @@ function AITalk_start() {
             
           });  
           
- },500);
+ //},500);
  
  
   
