@@ -221,11 +221,11 @@ recognition.onresult = function(event){
       if(results[i].isFinal) {
         $('#result_text').text(results[i][0].transcript);
         console.log(gid);
-        $("#stcap").click(); //音声入力停止
+        //$("#stcap").click(); //音声入力停止
         
         $("#tbtn").click();//英訳開始　trans()
          console.log("英訳完了");
-         
+         recstop();
       }
     }
 };
@@ -300,10 +300,11 @@ recognitione.onresult = function(event){
       if(resultse[i].isFinal) {
        　$('#result_text').text(resultse[i][0].transcript);
        　 console.log(gid);
-         $("#stcap").click(); //音声入力停止
+         //$("#stcap").click(); //音声入力停止
          
          $("#tbtnj").click();//和訳訳開始
          console.log("和訳完了");
+         recstop();
        
       }
     }
@@ -425,7 +426,7 @@ function AITalk_start() {
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅
        
-           audioElem = new Audio();
+          var audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
            
@@ -465,7 +466,7 @@ function AIT() {
    var txt = $('#txtfn').val();
   var mp3fn="/tempmp3/" + txt + ".mp3";
    
-       audioElem = new Audio();
+     var audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
   
@@ -589,7 +590,28 @@ function trans_aitj() {
 
  $('#txtTarget').val(txt);
 
-  txt1="";
+
+          //ファイル名作成  
+    var dt = new Date();
+    
+    var y= dt.getFullYear();
+    
+    //1月が0、12月が11。そのため+1をする。
+    var m = dt.getMonth()+1;
+    
+    var d= dt.getDate();
+    
+    var h = dt.getHours();
+    
+    var m = dt.getMinutes();
+    
+    var s= dt.getSeconds();
+    
+    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
+    
+   
+
+        txt1="";
         $('.translabel').text("");
         $('.translabel').text("翻訳完了！");
         tenmetut('translabel');//点滅

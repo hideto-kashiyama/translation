@@ -16,17 +16,17 @@
    
    
  
-    if (gid) {
+ if (gid) {
        var val = $('[name=sg]').val();
        var values=val.split(','); // , 区切りで配列を取得
        var uttr = new SpeechSynthesisUtterance();
        uttr.text = text;
        uttr.lang = values[1];
        
-        setTimeout(function(){
+       setTimeout(function(){
         
           speechSynthesis.speak(uttr);
-     console.log("2回");
+          console.log("2回");
        },500);
        
         uttr.onend = function (event) {
@@ -55,7 +55,7 @@
              
              speechSynthesis.cancel();
         
-    }
+          }
     
         
         
@@ -63,7 +63,7 @@
      
       var radio_sp= $("#select_jp").val();  
          
-         if ( radio_sp==2 ) {
+       if ( radio_sp==2 ) {
          
            var uttr = new SpeechSynthesisUtterance();
            uttr.text = text;  
@@ -78,10 +78,10 @@
            
            uttr.onend = function (event) {
        
-        console.log('喋った時間：' + event.elapsedTime + 's');
-        var tm =event.elapsedTime
-        console.log(parseInt(tm));
-            setTimeout(function(){
+             console.log('喋った時間：' + event.elapsedTime + 's');
+             var tm =event.elapsedTime
+             console.log(parseInt(tm));
+             setTimeout(function(){
                 console.log('終了' + $("#txtTarget").val().length);
                 var cnt =$("#txtTarget").val().length
                 var gcnt = $('#gcnt').val();
@@ -101,79 +101,19 @@
              },parseInt(tm));
              
               speechSynthesis.cancel();
+              
+             }
         
-           }
-    
           } else {
           
-            //ファイル名作成  
-    var dt = new Date();
-    
-    var y= dt.getFullYear();
-    
-    //1月が0、12月が11。そのため+1をする。
-    var m = dt.getMonth()+1;
-    
-    var d= dt.getDate();
-    
-    var h = dt.getHours();
-    
-    var m = dt.getMinutes();
-    
-    var s= dt.getSeconds();
-    
-    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
-    
-    $('#txtfn').val(fn);
-    
-     <%= atk %>
-     
-         var txt = $('#txtfn').val();
-         var mp3fn="/tempmp3/" + txt + ".mp3";
-         
-            console.log(mp3fn);
- //setTimeout(function(){
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
-       
-           audioElem = new Audio();
-           audioElem.src = mp3fn;
-           audioElem.play();
-           
-           audioElem.addEventListener("ended", function(e) {
-               
-              console.log("end!");
-             audioElem.pause();
-             audioElem.currentTime = 0;
-             
-              var cnt =$("#txtTarget").val().length
-                var acnt = $('#acnt').val();
-                
-                   if (acnt==0) {
-                       
-                     $("#acnt").val(cnt);
-                     
-                   } else {
-                       
-                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
-                     
-                   }
-                   
-                    $.cookie('a_cookie', $('#acnt').val()); 
-            
-          });  
+          $("#aimbtn").click();
           
- //},500);
- 
- 
           
          }   
 
      }
  	
-
+<%= atk %>
 
 
  
