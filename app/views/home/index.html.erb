@@ -421,11 +421,11 @@ function AITalk_start() {
          
             console.log(mp3fn);
 
-       
+     setTimeout(function(){  
            audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
-           
+      
            audioElem.addEventListener("ended", function(e) {
                
               console.log("end!");
@@ -449,7 +449,7 @@ function AITalk_start() {
             
           });  
           
- 
+     },500); 
  
 }
 
