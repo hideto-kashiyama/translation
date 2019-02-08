@@ -9,11 +9,12 @@
           <i class="fa fa-microphone fa-5x"><span id="rscap">日本語でしゃべる</aspan></i>
           
 </button>
+
 <button class="mic1" type="submit" onclick ="recstarte()">
    <i class="fa fa-microphone fa-5x"><span id="rscape">英語でしゃべる</span></i>
-</button>
+</button></div>
 
-<button id="stcap" onclick="recstop()">Stop!</button></div>
+<!--<button id="stcap" onclick="recstop()">Stop!</button></div>-->
 
 <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
 
@@ -26,7 +27,6 @@
   <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
   <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
   
-  
   <% end %></div>  
    
    <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
@@ -35,7 +35,7 @@
 
       <div class="low_group"><button class="mic2" type="submit" onclick ="speak()">
     
-      <i class="fa fa-volume-up fa-4x"><a class="rcap">もう一度しゃべる</a></i>
+      <i class="fa fa-volume-up fa-4x"><span class="rcap">もう一度しゃべる</span></i>
  
       </button>
 　　<button id="tclear" onclick="txtclear()">テキストクリア</button>
@@ -67,6 +67,7 @@
   
   </div>
   
+
 <script>
 
 //window.onload = function () {
@@ -84,11 +85,11 @@
 //});
 
   //DOMの準備ができたら呼ばれる。
-//$(function() {    
-    
+$(function() {    
+  
        
 
-//}); 
+}); 
 
 //クッキー設定
 var g_cookie
@@ -159,8 +160,19 @@ var recognitione = new webkitSpeechRecognition();//英語
 // *ここから録音(音声認識)による翻訳開始
 var flag_speech = 0;
 
+var stcnt=0;//日本語しゃべるボタン押した回数
+var stecnt=0; //英語しゃべるボタン押した回数
 function recstart() { //日本語音声入力開始ボタン
+    stcnt=stcnt+1;//日本語しゃべるボタン押した回数
     
+    //押した回数偶数の場合
+　　if ((stcnt % 2 ) == 0 ) {
+　　    console.log(stcnt+":偶数");
+　　    recstop();
+　　    
+　　} else {
+　　    console.log(stcnt+":奇数");
+　　
      $('#rscap').text("日本語認識中.........");
           　   　　　　
      //tenmetu('mic');//点滅
@@ -223,15 +235,26 @@ recognition.onresult = function(event){
    recognition.start();
 }
 
+}
+
 var flag_speeche = 0;
  
 function recstarte() {　//英語音声入力開始ボタン
-
+ 　　stecnt=stecnt+1;//英語ボタン押した回数
+     //押した回数偶数の場合
+　　if ((stecnt % 2 ) == 0 ) {
+　　    console.log(stecnt+":偶数");
+　　    recstop();
+　　    
+　　} else {
+　　    console.log(stecnt+":奇数");
+    
+    
    $('#rscape').text("英語認識中.........");
   　  　　　
       //tenmetu('mic');//点滅
 　 $('#rscape').css('color', 'white');
-　 $('.mic1').css('background-color', 'red'); 
+　 $('.mic1').css('background-color', '#FF69B4'); 
 　 
         recognition.stop();
   　　 　 $('#rscap').text("日本語音声入力開始");
@@ -290,14 +313,16 @@ recognitione.onresult = function(event){
     recognitione.start();
 }
 
+}
+
 function recstop() {　//音声入力停止
 　      
 　      recognition.stop();
 　    　recognitione.stop();
-　      $('#rscap').text("日本語音声入力開始");
+　      $('#rscap').text("日本語でしゃべる");
         $('#rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
-        $('#rscape').text("英語音声入力開始");
+        $('#rscape').text("英語でしゃべる");
         $('#rscape').css('color', 'black');
         $('.mic1').css('background-color', 'white');
         $('.translabel').text("");
@@ -564,12 +589,10 @@ function trans_aitj() {
 
  $('#txtTarget').val(txt);
 
-   $('#txtTarget').change(function() {
-      //値が変更されたときの処理
-        
-         $("#aimbtn").click();//AITalk ruby音声合成
-         
-   });
+  txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
       
  
 }
