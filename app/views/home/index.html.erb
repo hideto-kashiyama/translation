@@ -420,11 +420,7 @@ function AITalk_start() {
          var mp3fn="/tempmp3/" + txt + ".mp3";
          
             console.log(mp3fn);
- setTimeout(function(){
-        txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
+
        
           var audioElem = new Audio();
            audioElem.src = mp3fn;
@@ -453,7 +449,7 @@ function AITalk_start() {
             
           });  
           
- },100);
+ 
  
  
   
