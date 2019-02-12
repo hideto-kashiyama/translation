@@ -80,8 +80,9 @@
 <script>
 
  $(window).on('load resize', function(){
-        var w = $(window).width()*1.2;
+        var w = $(window).width();
         $('div.jumbotron').attr('width', w);
+        alert(w);
     });
 
 
