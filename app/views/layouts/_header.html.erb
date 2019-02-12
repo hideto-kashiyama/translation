@@ -1,14 +1,14 @@
 
-<h6>自動翻訳システム</h6><h2 align="center">Smart Speech</h2>
-
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
+<h6>自動翻訳アプリ</h6><h1 align="center">Smart Speech</h1>
+<!-- <nav class="navbar  navbar-default">-->
+ <nav class="navbar navbar-expand-sm mt-3 mb-3">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         
         <div class="collapse navbar-collapse justify-content-center">
             
-            <li class="dropdown active"><span class="selectcap" >対話言語選択</span>
+            <span class="selectcap" >対話言語選択</span>
 			<select id="select_gengo" name="sg">
 			  
               <option value="en,en-US">英語</option>
@@ -23,7 +23,7 @@
               <option value=0>プレミアム</option>
               <option value=2>ベーシック</option>
               
-            </select></li>
+            </select>
             
             
           <span class="lout"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></span>

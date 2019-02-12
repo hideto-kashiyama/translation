@@ -1,6 +1,24 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.up_group {
+   font-size: 0.9em;   
+  display: inline-block;  
+    /* インラインブロック要素にする */
+ border-style: none;
+ margin-top: -150px;  
+    
+}
+
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
 
 .radio_g {
     
@@ -35,7 +53,7 @@ span.selectcap {
 #select_gengo{
     
     margin-top : 10px ; 
-    margin-left : 0px ; 
+    margin-left : 5px ; 
     width: 140px;
     
     cursor: pointer;
@@ -43,22 +61,23 @@ span.selectcap {
     text-overflow: ellipsis;
     line-height: 35px;
     outline: none;
-    background: #1E90FF;
+    background: white;
+   
     background-image: none;
-     color: white;
+      color: black;
  
   
-    border-radius:7px;
+   border-radius: 12px;  
     border-right:none;
     border:solid 3px #eaeaea;
     outline: 0;
     font-size: 1.4em; 
-  
+  border-color: #FF99FF;
 }
 
 #select_jp{
     margin-top : 10px ; 
-    margin-left : 0px ; 
+    margin-left : 5px ; 
     width: 140px;
     
     cursor: pointer;
@@ -66,17 +85,17 @@ span.selectcap {
     text-overflow: ellipsis;
    line-height: 35px;
     outline: none;
-    background: #FF99FF;
+     background: white;
     background-image: none;
-     color: white;
+     color: black;
  
-  
-  border-radius:7px;
+   
+ border-radius: 12px;  
     border-right:none;
     border:solid 3px #eaeaea;
     outline: 0;
     font-size: 1.4em; 
-    
+    border-color: #006600;
 }
 
 .lout {
@@ -108,7 +127,7 @@ span.selectcap {
 
 #txtfn {
     
-  /*  visibility:hidden; */
+ visibility:hidden; 
 }
 
 #aimbtn {
@@ -127,14 +146,14 @@ span.selectcap {
 }
 
 
-/*マイクの囲み */
+/*マイクの囲み 
 .up_group {
   font-size: 0.9em;   
  display: inline-block;  
-   /*   インラインブロック要素にする */
+   /*   インラインブロック要素にする 
  border-style: none;
  margin-top: -150px;
-}
+}*/
 
 
 #rscap {
@@ -167,12 +186,32 @@ span.selectcap {
   
 }
 
+
 .rcap {
-    
-  font-size: 0.3em;  
- /* margin-left: 10px;*/
-  
+  display: inline-block;
+  text-decoration: none;
+  background: #ff8181;
+  color: #FFF;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #bd6565;
+  transition: .4s;
 }
+
+.rcap:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
+
 
 .mic {
     
@@ -180,9 +219,10 @@ span.selectcap {
     /*margin-left: 8px;*/
    /* margin-right: 10px;*/
     background-color:white;
-    border-radius: 12px;  
+    border-radius: 7px;  
      /* ボーダーをなくす 
     border-style: none;*/
+    border-color: #006600;
     
 }
 
@@ -192,9 +232,36 @@ span.selectcap {
     /*margin-left: 8px;*/
    /* margin-right: 10px;*/
     background-color:white;
-    border-radius: 12px;  
+    border-radius: 7px;  
      /* ボーダーをなくす 
     border-style: none;*/
+    border-color: #FF99FF;
+}
+
+.my-gray {color: gray}
+
+.mic2 {
+    
+    margin-bottom: 0px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
+    background-color:white;
+    border-radius: 7px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
+    border-color: #FF99FF;
+}
+
+#tclear {
+   margin-bottom: 0px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
+    background-color:white;
+    border-radius: 7px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
+    border-color: #FF99FF;
+    
     
 }
 
@@ -216,6 +283,7 @@ span.selectcap {
     font-size: 20px; 
    margin-top: 10px; 
    border-color:green;
+  border-radius: 12px;  
   
 }
 
@@ -228,7 +296,7 @@ span.selectcap {
     font-size: 20px; 
    margin-top: 10px; 
    border-color:green;
- 
+ border-radius: 12px;  
 }
 
 
@@ -281,97 +349,16 @@ span.selectcap {
     
 }*/
 
-#tclear {
-    margin-top: -50px;
-    margin-left: -30px;
-    
-    /* 文字サイズを1指定 */
-    font-size: 0.8em;
 
-    /* 文字の太さをboldに指定 
-    font-weight: bold;*/
-
-    /* 縦方向に10px、
-     * 横方向に30pxの余白を指定 */
-    padding: 5px 15px;
-
-    /* 文字色を白色に指定 */
-    color: #fff;
-
-    /* ボーダーをなくす */
-    border-style: none;
-
-    /* ボタンの影の指定
-     * 影の横幅を2px
-     * 縦長を2px
-     * ぼかしを3px
-     * 広がりを1px
-     * 色を#666（グレー）に指定 */
-    box-shadow: 2px 2px 3px 1px #666;
-    -moz-box-shadow: 2px 2px 3px 1px #666;
-    -webkit-box-shadow: 2px 2px 3px 1px #666;
-
-    /* テキストの影の指定
-     * 影の横幅を1px
-     * 縦長を1px
-     * ぼかしを2px
-     * 色を#000（黒）に指定 */
-    text-shadow: 1px 1px 2px #000;
-
-    /* グラデーションの指定 */
-    background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
-    background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
-
-    /* 角丸の指定 */
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-}
 #tlink {
-    margin-top: -50px;
-    margin-left: 1px;
-    
-    /* 文字サイズを1指定 */
-    font-size: 0.8em;
-
-    /* 文字の太さをboldに指定 
-    font-weight: bold;*/
-
-    /* 縦方向に10px、
-     * 横方向に30pxの余白を指定 */
-    padding: 5px 15px;
-
-    /* 文字色を白色に指定 */
-    color: #fff;
-
-    /* ボーダーをなくす */
-    border-style: none;
-
-    /* ボタンの影の指定
-     * 影の横幅を2px
-     * 縦長を2px
-     * ぼかしを3px
-     * 広がりを1px
-     * 色を#666（グレー）に指定 */
-    box-shadow: 2px 2px 3px 1px #666;
-    -moz-box-shadow: 2px 2px 3px 1px #666;
-    -webkit-box-shadow: 2px 2px 3px 1px #666;
-
-    /* テキストの影の指定
-     * 影の横幅を1px
-     * 縦長を1px
-     * ぼかしを2px
-     * 色を#000（黒）に指定 */
-    text-shadow: 1px 1px 2px #000;
-
-    /* グラデーションの指定 */
-    background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
-    background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
-
-    /* 角丸の指定 */
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    margin-top: 30px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
+    background-color:white;
+    border-radius: 7px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
+    border-color: #FF99FF;
 }
 
 button.button8:hover {

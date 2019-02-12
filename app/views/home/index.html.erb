@@ -1,12 +1,13 @@
-<div class="jumbotron text-center"> 
-<div class="ontainer-fluid">
-   <div class="col-xs-12"> 
+
+<div class="container">
+    <div class="jumbotron text-center"> 
+  
 
 <meta charset="UTF-8">  
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
  
-          <i class="fa fa-microphone fa-5x"><span id="rscap">日本語でしゃべる</aspan></i>
+          <i class="fa fa-microphone my-gray fa-5x"><span id="rscap">日本語でしゃべる</span></i>
           
 </button>
 
@@ -24,6 +25,17 @@
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
   
+  <button class="mic2" type="submit" onclick ="speak()">
+    
+      <i class="fa fa-volume-up fa-2x"><span class="rcap">もう一度しゃべる</span></i>
+ 
+      </button>
+　　<button id="tclear" type="submit" onclick="txtclear()">
+　　    
+　　   <span class="rcap">テキスト削除</span>
+　　    
+　　</button>
+　　
   <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
   <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
   
@@ -33,14 +45,9 @@
   
   <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget" %></div>
 
-      <div class="low_group"><button class="mic2" type="submit" onclick ="speak()">
-    
-      <i class="fa fa-volume-up fa-4x"><span class="rcap">もう一度しゃべる</span></i>
- 
-      </button>
-　　<button id="tclear" onclick="txtclear()">テキストクリア</button>
+      <div class="low_group">
 
-    <button id= "tlink">この会話を登録</button>
+    <button id= "tlink">この会話を登録して練習する</button><br>
     <a href="/home/e100">登録済会話集</a></div><br>
     
  <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
@@ -56,6 +63,8 @@
      
  <% end %></div>  
  
+  <i class="fa fa-volume-up fa-2x"></i> BUTTON
+ 
 <!-- <button id="gcls" onclick="cls()">語数登録</button>
  <button id="cdel" onclick="cdel()">クッキー削除</button>
  <button id="lout" onclick="lout()">閉じる</button>-->
@@ -70,33 +79,43 @@
 
 <script>
 
-//window.onload = function () {
+ $(window).on('load resize', function(){
+        var w = $(window).width()*1.2;
+        $('div.jumbotron').attr('width', w);
+    });
+
+
+var timer;
+
+    function countDown() {
+        cls();
+     //alert("成功！")
+        return true;
+    }
+
+    function restartTimer() {
+        clearTimeout(timer);
+        timer=setTimeout('countDown()',300000);
+        return true;
+         console.log("restart!");
+    }
+    function load() {
+       timer=setTimeout('countDown()',300000);
+        document.body.addEventListener("mousedown", restartTimer, false);
+        document.body.addEventListener("keypress", restartTimer, false);
+        console.log("操作あり")
+    }
+    document.addEventListener("DOMContentLoaded", load, false);
     
-       // $("#rscape").text("英語音声入力開始");
-        
-     // $('#gcls').click(); 
-        
-   // };
+   
     
-//$(window).load(function () {
-     
-     
- 
-//});
-
-  //DOMの準備ができたら呼ばれる。
-$(function() {    
-  
-       
-
-}); 
-
 //クッキー設定
 var g_cookie
 var a_cookie
    //DOMの準備ができたら呼ばれる。
  $(function() {
      
+     //alert(windowWidth);
         var gcookie = $.cookie('g_cookie');   //google語数
         var acookie = $.cookie('a_cookie');   //ATlk語数
       

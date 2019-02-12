@@ -123,11 +123,18 @@ margin-bottom: 5px;
     z-index: 2;
 }
 
-
 .navbar-nav {
   height: 45px;
   padding: 5px 15px;
+ 
+ background-color: #33FFCC;
 }
+
+.navbar{
+            
+            background: #00CCCC;
+        }
+        
 
 /* navbar deviceのみ*/
 .navbar-default1 {
@@ -233,20 +240,10 @@ div.collapse.navbar-collapse.navbar-right {
  
 }
 
+
 h1 {
-position: relative;
-padding: 0.25em 0;
+    
+    text-shadow: 3px 3px 1px #999999;
 
-font-weight : 200;
-font-family: "Century Gothic";
 }
-h1:after {
-content: "";
-display: block;
-height: 4px;
-background: -moz-linear-gradient(to right, rgb(200,200, 200), transparent);
-background: -webkit-linear-gradient(to right, rgb(200,200, 200) transparent);
-background: linear-gradient(to right, rgb(200,200, 200), transparent);
-}
-
 
