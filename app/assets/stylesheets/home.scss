@@ -1,6 +1,15 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media screen and (min-width: 800px) {
+   /* 表示領域が800px以上の場合に適用するスタイル */
+   div.container { width: 800px; float: left; }
+}
+@media screen and (max-width: 799px) {
+   /* 表示領域が800px未満の場合に適用するスタイル */
+   div.container { width: 100%; }
+}
 div.up_group {
    font-size: 0.9em;   
   display: inline-block;  
@@ -188,21 +197,7 @@ span.selectcap {
 
 
 .rcap {
-  display: inline-block;
-  text-decoration: none;
-  background: #ff8181;
-  color: #FFF;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  border-radius: 50%;
-  text-align: center;
-  font-weight: bold;
-  vertical-align: middle;
-  overflow: hidden;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  border-bottom: solid 3px #bd6565;
-  transition: .4s;
+ 
 }
 
 .rcap:active {
@@ -249,26 +244,17 @@ span.selectcap {
     border-radius: 7px;  
      /* ボーダーをなくす 
     border-style: none;*/
-    border-color: #FF99FF;
+    border-color: #00CCCC;
+    
+    
 }
 
-#tclear {
-   margin-bottom: 0px;
-    /*margin-left: 8px;*/
-   /* margin-right: 10px;*/
-    background-color:white;
-    border-radius: 7px;  
-     /* ボーダーをなくす 
-    border-style: none;*/
-    border-color: #FF99FF;
-    
-    
-}
+
 
 .jumbotron {
   
-  resize: none;
-  width:677px;
+/*resize: none;*/
+  width:800px;
   height:800px;  
     
     
@@ -276,8 +262,8 @@ span.selectcap {
 
 #result_text {
 
- resize: none;
-  width:600px;
+/* resize: none;*/
+  width:700px;
   height:130px;
     
     font-size: 20px; 
@@ -289,8 +275,8 @@ span.selectcap {
 
 #txtTarget {
     
- resize: none;
-  width:600px;
+/* resize: none;*/
+  width:700px;
   height:130px;
     
     font-size: 20px; 
@@ -348,17 +334,103 @@ span.selectcap {
     
     
 }*/
+#tclear {
+    
+    margin-top: 30px;
+    width:240px;
+    margin-left: 0px;
+    
+    /* 文字サイズを1指定 */
+    font-size: 1em;
 
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 5px 5px;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+
+    /* ボタンの影の指定
+     * 影の横幅を2px
+     * 縦長を2px
+     * ぼかしを3px
+     * 広がりを1px
+     * 色を#666（グレー）に指定 */
+     box-shadow: 2px 2px 3px 1px #666;
+    -moz-box-shadow: 2px 2px 3px 1px #666;
+    -webkit-box-shadow: 2px 2px 3px 1px #666;
+
+    /* テキストの影の指定
+     * 影の横幅を1px
+     * 縦長を1px
+     * ぼかしを2px
+     * 色を#000（黒）に指定 */
+    text-shadow: 1px 1px 2px #000;
+
+    /* グラデーションの指定 */
+    background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+    background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
+
+    /* 角丸の指定 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 12px;  
+    color: white;   
+}
 
 #tlink {
-    margin-top: 30px;
-    /*margin-left: 8px;*/
-   /* margin-right: 10px;*/
-    background-color:white;
-    border-radius: 7px;  
-     /* ボーダーをなくす 
-    border-style: none;*/
-    border-color: #FF99FF;
+   margin-top: 30px;
+    width:240px;
+    margin-left: 0px;
+    
+    /* 文字サイズを1指定 */
+    font-size: 1em;
+
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 5px 5px;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+
+    /* ボタンの影の指定
+     * 影の横幅を2px
+     * 縦長を2px
+     * ぼかしを3px
+     * 広がりを1px
+     * 色を#666（グレー）に指定 */
+     box-shadow: 2px 2px 3px 1px #666;
+    -moz-box-shadow: 2px 2px 3px 1px #666;
+    -webkit-box-shadow: 2px 2px 3px 1px #666;
+
+    /* テキストの影の指定
+     * 影の横幅を1px
+     * 縦長を1px
+     * ぼかしを2px
+     * 色を#000（黒）に指定 */
+    text-shadow: 1px 1px 2px #000;
+
+    /* グラデーションの指定 */
+    background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+    background: -webkit-gradient(linear, left bottom, left top, from(#36d), color-stop(0.5, #248), to(#36d));
+
+    /* 角丸の指定 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 12px;  
+    color: white;   
 }
 
 button.button8:hover {

@@ -1,7 +1,8 @@
+<div class="container text-center">
+<div class="jumbotron text-center"> 
+ 
 
-<div class="container">
-    <div class="jumbotron text-center"> 
-  
+ 
 
 <meta charset="UTF-8">  
 
@@ -30,11 +31,7 @@
       <i class="fa fa-volume-up fa-2x"><span class="rcap">もう一度しゃべる</span></i>
  
       </button>
-　　<button id="tclear" type="submit" onclick="txtclear()">
-　　    
-　　   <span class="rcap">テキスト削除</span>
-　　    
-　　</button>
+　
 　　
   <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
   <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
@@ -45,10 +42,12 @@
   
   <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget" %></div>
 
-      <div class="low_group">
 
-    <button id= "tlink">この会話を登録して練習する</button><br>
-    <a href="/home/e100">登録済会話集</a></div><br>
+          
+    <button id="tclear" type="submit" onclick="txtclear()">テキスト削除</button><br>
+　　 
+    <button id= "tlink">この会話を登録して練習する</button>
+    <!--<a href="/home/e100">登録済会話集</a>-->
     
  <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
@@ -63,7 +62,6 @@
      
  <% end %></div>  
  
-  <i class="fa fa-volume-up fa-2x"></i> BUTTON
  
 <!-- <button id="gcls" onclick="cls()">語数登録</button>
  <button id="cdel" onclick="cdel()">クッキー削除</button>
@@ -78,13 +76,6 @@
   
 
 <script>
-
- $(window).on('load resize', function(){
-        var w = $(window).width();
-        $('div.jumbotron').attr('width', w);
-        alert(w);
-    });
-
 
 var timer;
 
