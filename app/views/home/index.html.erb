@@ -352,7 +352,7 @@ recognitione.onsoundstart = function(){
 }; 
 
 recognitione.onspeechstart= function() {
- console.log("リスタート日本語認識中");  
+ console.log("リスタート英語認識中");  
 
 };
 recognitione.onnomatch = function(){
@@ -364,7 +364,7 @@ recognitione.onerror= function(){
   console.log("エラー");
   
 };
-recognitione.onend = function(){
+recognitione.onspeechend = function(){
  console.log("英語認識完了");
  
 };
