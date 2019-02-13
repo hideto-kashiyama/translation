@@ -4,7 +4,8 @@
 
 @media screen and (min-width: 800px) {
    /* 表示領域が800px以上の場合に適用するスタイル */
-   div.container { width: 800px; float: left; }
+   div.container { width: 800px; }
+  
 }
 @media screen and (max-width: 799px) {
    /* 表示領域が800px未満の場合に適用するスタイル */

@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container">
 <div class="jumbotron text-center"> 
  
 
@@ -26,12 +26,7 @@
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
   
-  <button class="mic2" type="submit" onclick ="speak()">
-    
-      <i class="fa fa-volume-up fa-2x"><span class="rcap">もう一度しゃべる</span></i>
- 
-      </button>
-　
+  
 　　
   <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
   <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
@@ -42,7 +37,12 @@
   
   <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget" %></div>
 
-
+<button class="mic2" type="submit" onclick ="speak()">
+    
+      <i class="fa fa-volume-up fa-2x"><span class="rcap">もう一度しゃべる</span></i>
+ 
+</button>
+　
           
     <button id="tclear" type="submit" onclick="txtclear()">テキスト削除</button><br>
 　　 
@@ -51,7 +51,7 @@
     
  <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
-    <button id="aibtn" onclick="AIT()">AITalkでもう一度しゃべる</button>
+  <!--  <button id="aibtn" onclick="AIT()">AITalkでもう一度しゃべる</button>-->
 
  <% end %></div>  
  
@@ -440,6 +440,7 @@ function AITalk_start() {
            audioElem.addEventListener("ended", function(e) {
                
               console.log("end!");
+              audioElem.muted = true;
              audioElem.pause();
              audioElem.currentTime = 0;
              
@@ -474,7 +475,9 @@ function AIT() {
      var audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
-  
+           
+        
+   
 }
 
  var radio_sp
@@ -663,6 +666,7 @@ function speak() {
                 
                 uttr.lang = 'en-US';
                 speechSynthesis.speak(uttr);
+            
                 
               } else {
                  
@@ -670,6 +674,7 @@ function speak() {
                 speechSynthesis.speak(uttr);
                 
              }
+    
              
    } else {
        if (gid) {
@@ -680,14 +685,31 @@ function speak() {
               } else {
                   
                console.log("AITalk")
-               $("#aimbtn").click();
+             //$("#aibtn").click();
               
-               //AIT();
+              AIT();
                 
              }
-       
-               
+     
    }
+   
+    uttr.onend = function (event) {
+       
+             console.log('喋った時間：' + event.elapsedTime + 's');
+             var tm =event.elapsedTime
+             console.log(parseInt(tm));
+             setTimeout(function(){
+                console.log('終了' + $("#txtTarget").val().length);
+                
+                
+            
+             },parseInt(tm));
+             
+              speechSynthesis.cancel();
+              console.log("cancel!")
+            
+    }
+        
   
   
   } else {
