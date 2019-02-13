@@ -1,9 +1,6 @@
 <div class="container">
 <div class="jumbotron text-center"> 
  
-
- 
-
 <meta charset="UTF-8">  
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
@@ -20,22 +17,20 @@
 
 <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
 
-  <div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text" %></div>
+<div><%= text_area_tag :transval, nil, placeholder: "", id:"result_text" %></div>
   
   <div><label class="translabel" ></label>
   <button id="tbtn" onclick="trans()">翻訳</button>
   <button id="tbtnj" onclick="transmasterj()">翻訳j</button>
   
-  
-　　
   <%= text_field_tag :source, nil, placeholder: "", id:"source" %>
   <%= text_field_tag :target, nil, placeholder: "", id:"target" %>
   
   <% end %></div>  
    
-   <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
+ <div><%= form_tag(url_for(:action => 'index'), :remote => true) do %>
   
-  <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget" %></div>
+ <div><%= text_area_tag :speakval, nil, placeholder: "", id:"txtTarget" %></div>
 
 <button class="mic2" type="submit" onclick ="speak()">
     
@@ -174,8 +169,9 @@ var flag_speech = 0;
 var stcnt=0;//日本語しゃべるボタン押した回数
 var stecnt=0; //英語しゃべるボタン押した回数
 function recstart() { //日本語音声入力開始ボタン
+
     stcnt=stcnt+1;//日本語しゃべるボタン押した回数
-    
+    stecnt=0
     //押した回数偶数の場合
 　　if ((stcnt % 2 ) == 0 ) {
 　　    console.log(stcnt+":偶数");
@@ -189,10 +185,11 @@ function recstart() { //日本語音声入力開始ボタン
      //tenmetu('mic');//点滅
               
     $('#rscap').css('color','white'); 
-    $('.mic').css('background-color', 'green');   
+    $('.mic').css('background-color', 'green');  
+     
     
 　　　　recognitione.stop();
-　　　　$('#rscape').text("英語音声入力開始");
+　　　　$('#rscape').text(gval+"日本語でしゃべる");
         $('#rscape').css('color', 'black');
         $('.mic1').css('background-color', 'white');
         $('.translabel').text("");
@@ -247,11 +244,41 @@ recognition.onresult = function(event){
 }
 
 }
+var gval
+ $('[name=sg]').change( function() {
+        
+        var val = $('[name=sg]').val();
+       var values=val.split(','); // , 区切りで配列を取得
+       
+ 
+    if (values[0]=="en") {
+        gval="英語"
+    } else if (values[0]=="zh-cn") {
+        
+        gval="中国語"
+     
+    } else if (values[0]=="ko") {
+        
+        gval="韓国語"
+     
+    } else if (values[0]=="de") {
+        
+        gval="ドイツ語"
+     
+    }　 
+    
+     $('#rscape').text(gval+"でしゃべる");
+    
+         
+     }); 
+     
 
 var flag_speeche = 0;
  
 function recstarte() {　//英語音声入力開始ボタン
- 　　stecnt=stecnt+1;//英語ボタン押した回数
+
+　　　stcnt=0;
+ 　　 stecnt=stecnt+1;//英語ボタン押した回数
      //押した回数偶数の場合
 　　if ((stecnt % 2 ) == 0 ) {
 　　    console.log(stecnt+":偶数");
@@ -259,16 +286,35 @@ function recstarte() {　//英語音声入力開始ボタン
 　　    
 　　} else {
 　　    console.log(stecnt+":奇数");
+    // 選択されている対話言語value属性値を取り出す
+      var val = $('[name=sg]').val();
+       var values=val.split(','); // , 区切りで配列を取得
+       
+ 
+    if (values[0]=="en") {
+        gval="英語"
+    } else if (values[0]=="zh-cn") {
+        
+        gval="中国語"
+     
+    } else if (values[0]=="ko") {
+        
+        gval="韓国語"
+     
+    } else if (values[0]=="de") {
+        
+        gval="ドイツ語"
+     
+    }　 
     
-    
-   $('#rscape').text("英語認識中.........");
+   $('#rscape').text(gval+"認識中.........");
   　  　　　
       //tenmetu('mic');//点滅
 　 $('#rscape').css('color', 'white');
 　 $('.mic1').css('background-color', '#FF69B4'); 
 　 
         recognition.stop();
-  　　 　 $('#rscap').text("日本語音声入力開始");
+  　　 $('#rscap').text("日本語でしゃべる");
         $('#rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
         $('.translabel').text("");
@@ -328,13 +374,36 @@ recognitione.onresult = function(event){
 }
 
 function recstop() {　//音声入力停止
-　      
+　       stcnt=0;
+　       stecnt=0;
 　      recognition.stop();
 　    　recognitione.stop();
 　      $('#rscap').text("日本語でしゃべる");
         $('#rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
-        $('#rscape').text("英語でしゃべる");
+          var val = $('[name=sg]').val();
+                   var values=val.split(','); // , 区切りで配列を取得
+                   
+             
+                if (values[0]=="en") {
+                    gval="英語"
+                } else if (values[0]=="zh-cn") {
+                    
+                    gval="中国語"
+                 
+                } else if (values[0]=="ko") {
+                    
+                    gval="韓国語"
+                 
+                } else if (values[0]=="de") {
+                    
+                    gval="ドイツ語"
+                 
+                }　 
+    
+     　$('#rscape').text(gval+"でしゃべる");
+     　
+     　
         $('#rscape').css('color', 'black');
         $('.mic1').css('background-color', 'white');
         $('.translabel').text("");
@@ -349,21 +418,31 @@ function recstop() {　//音声入力停止
 //$(function() {
   
  　$("#result_text").keyup(function(e){
- 　   
+ 　 
+       
      if(e.which == 13){　//エンターキー　アップ時
                //result_text"の言語判定　gid取得
          　　　　　let error;
                 let value = $(this).val();
                 
-                if(value.match(/[ぁ-ん]/g)){
+                
+                if (value.match(/[ぁ-龥]/g)) {
+                    
+                    error = false;
+                    
+                }　else if(value.match(/[ぁ-ん]/g)){
                     
                   error = true;
+                  
                 } else if (value.match(/[\u4E00-\u9FFF]/)) {
                     
                    error = true; 
                   //m = t.match(/[\u4E00-\u9FFF]/); 
                   
+                
                 }
+                
+                
                 
                 if(error){
                     
@@ -430,7 +509,7 @@ function AITalk_start() {
        speak();
        
 }
-
+var audioElem;
 //AITalkでもう一度しゃべる
 function AIT() {
  
@@ -447,11 +526,11 @@ function AIT() {
       
            audioElem.addEventListener("ended", function(e) {
                
-              console.log("end!");
-              //audioElem.muted = true;
-             //audioElem.pause();
-             //audioElem.currentTime = 0;
-             
+              
+              audioElem.muted = true;
+             audioElem.pause();
+             audioElem.currentTime = 0;
+             console.log("AIT end!");
               var cnt =$("#txtTarget").val().length
                 var acnt = $('#acnt').val();
                 
