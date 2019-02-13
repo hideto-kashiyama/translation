@@ -427,7 +427,15 @@ function AITalk_start() {
     
      <%= atk %>
      
-         var txt = $('#txtfn').val();
+       AIT();
+       
+}
+
+//AITalkでもう一度しゃべる
+function AIT() {
+ 
+    
+   var txt = $('#txtfn').val();
          var mp3fn="/tempmp3/" + txt + ".mp3";
          
             console.log(mp3fn);
@@ -463,19 +471,6 @@ function AITalk_start() {
           
      },500); 
  
-}
-
-//AITalkでもう一度しゃべる
-function AIT() {
- 
-    
-   var txt = $('#txtfn').val();
-  var mp3fn="/tempmp3/" + txt + ".mp3";
-   
-     var audioElem = new Audio();
-           audioElem.src = mp3fn;
-           audioElem.play();
-           
         
    
 }
