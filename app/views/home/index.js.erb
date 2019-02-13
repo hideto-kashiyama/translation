@@ -14,8 +14,11 @@
  
    var text =  $('#txtTarget').val();
    
+    txt1="";
+        $('.translabel').text("");
+        $('.translabel').text("翻訳完了！");
+        tenmetut('translabel');//点滅
    
- 
  if (gid) {
        var val = $('[name=sg]').val();
        var values=val.split(','); // , 区切りで配列を取得
@@ -112,10 +115,7 @@
             
                 //AITalk_start();//AITalk ruby音声
                   console.log("AITruby")
-                  
-                  
-    
-         
+              
          }   
 
      }

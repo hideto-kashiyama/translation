@@ -385,8 +385,10 @@ recognitione.onresult = function(event){
     }
     
 };
+
     flag_speeche = 0;
     recognitione.start();
+    
 }
 
 }
@@ -401,8 +403,7 @@ function recstop() {　//音声入力停止
         $('.mic').css('background-color', 'white');
           var val = $('[name=sg]').val();
                    var values=val.split(','); // , 区切りで配列を取得
-                   
-             
+                 
                 if (values[0]=="en") {
                     gval="英語"
                 } else if (values[0]=="zh-cn") {
@@ -459,9 +460,7 @@ function recstop() {　//音声入力停止
                   
                 
                 }
-                
-                
-                
+             
                 if(error){
                     
                     gid=true;
@@ -493,8 +492,7 @@ function recstop() {　//音声入力停止
 　    
 　    }
 
-
-});
+ });
 	
 //AITalkのmp3削除
 
@@ -620,12 +618,7 @@ function trans() {
  $('#txtTarget').val(txt);
  
     var text =  $('#txtTarget').val();
-    txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
-        
-   
+    
     
 }
 
@@ -641,9 +634,9 @@ function transj() {
         
        $("#target").val("ja"); 
   
-     var txt1;
+     //var txt1;
     
-　   txt1=""//"翻訳中......"
+　  // txt1=""//"翻訳中......"
 　   //wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
 　   
   //helpers/home_helper.rb  translate英訳　translatej 和訳
@@ -656,10 +649,7 @@ function transj() {
  
     var text =  $('#txtTarget').val();
     
-     txt1="";
-        $('.translabel').text("");
-        $('.translabel').text("翻訳完了！");
-        tenmetut('translabel');//点滅
+    
     
    
 }
