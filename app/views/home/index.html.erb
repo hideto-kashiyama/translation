@@ -440,7 +440,7 @@ function AITalk_start() {
            audioElem.addEventListener("ended", function(e) {
                
               console.log("end!");
-             //audioElem.pause();
+             audioElem.pause();
              //audioElem.currentTime = 0;
              
               var cnt =$("#txtTarget").val().length
