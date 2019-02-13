@@ -186,10 +186,28 @@ function recstart() { //日本語音声入力開始ボタン
               
     $('#rscap').css('color','white'); 
     $('.mic').css('background-color', 'green');  
-     
-    
+       
+        var val = $('[name=sg]').val();
+        var values=val.split(','); // , 区切りで配列を取得
+       
+            if (values[0]=="en") {
+                gval="英語"
+            } else if (values[0]=="zh-cn") {
+                
+                gval="中国語"
+             
+            } else if (values[0]=="ko") {
+                
+                gval="韓国語"
+             
+            } else if (values[0]=="de") {
+                
+                gval="ドイツ語"
+             
+            }　 
+         
 　　　　recognitione.stop();
-　　　　$('#rscape').text(gval+"日本語でしゃべる");
+　　　　$('#rscape').text(gval+"でしゃべる");
         $('#rscape').css('color', 'black');
         $('.mic1').css('background-color', 'white');
         $('.translabel').text("");
