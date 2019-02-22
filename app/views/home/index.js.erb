@@ -109,26 +109,8 @@
         
           } else {
            
-          // $("#aimbtn").click();//AITalk ruby音声
-                     //ファイル名作成  
-              var dt = new Date();
-              
-              var y= dt.getFullYear();
-              
-              //1月が0、12月が11。そのため+1をする。
-              var m = dt.getMonth()+1;
-              
-              var d= dt.getDate();
-              
-              var h = dt.getHours();
-              
-              var m = dt.getMinutes();
-              
-              var s= dt.getSeconds();
-              
-              var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
-              
-              $('#txtfn').val(fn);
+           $("#aimbtn").click();//AITalk ruby音声
+                    
      
               var txt = $('#txtfn').val();
               var mp3fn="/tempmp3/" + txt + ".mp3";
