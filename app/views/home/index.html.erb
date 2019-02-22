@@ -516,8 +516,6 @@ function AITalk_start() {
     var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
     
     $('#txtfn').val(fn);
-     
-   
   
 }
 
@@ -531,39 +529,11 @@ function AIT() {
          
             console.log(mp3fn);
 
-     setTimeout(function(){  
+    
            audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
       
-           audioElem.addEventListener("ended", function(e) {
-               
-              
-              audioElem.muted = true;
-             audioElem.pause();
-             audioElem.currentTime = 0;
-             console.log("AIT end!");
-              var cnt =$("#txtTarget").val().length
-                var acnt = $('#acnt').val();
-                
-                   if (acnt==0) {
-                       
-                     $("#acnt").val(cnt);
-                     
-                   } else {
-                       
-                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
-                     
-                   }
-                   
-                    $.cookie('a_cookie', $('#acnt').val()); 
-            
-          });  
-          
-     },500); 
- 
-        
-   
 }
 
  var radio_sp
