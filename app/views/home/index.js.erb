@@ -120,7 +120,7 @@
               　 
              var audioElem 
              
-            
+             setTimeout(function(){  
                     audioElem = new Audio();
                     audioElem.src = mp3fn;
                     audioElem.play();
@@ -140,7 +140,13 @@
                    
                     $.cookie('a_cookie', $('#acnt').val()); 
                
-           
+             },800); 
+             
+                 audioElem.addEventListener("ended", function(e) {
+               
+                    audioElem.pause();
+            
+                  });
         
             
         
