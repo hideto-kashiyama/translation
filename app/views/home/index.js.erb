@@ -111,22 +111,9 @@
           
            $("#aimbtn").click();//AITalk ruby音声
           
-              
+               <%= atk %>
               　 
-         var txt = $('#txtfn').val();
-         var mp3fn="/tempmp3/" + txt + ".mp3";
-         
-            console.log(mp3fn);
-            
-     　 <%= atk %>
-            　 
-     var audioElem;
-       
- 
-           audioElem = new Audio();
-           audioElem.src = mp3fn;
-           audioElem.play();
-      
+        
         
                 //AITalk_start();//AITalk ruby音声
                   console.log("AITruby")
