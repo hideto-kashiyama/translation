@@ -111,20 +111,26 @@
           
            $("#aimbtn").click();//AITalk ruby音声
           
-              　 <%= atk %>
+              
               　 
          var txt = $('#txtfn').val();
          var mp3fn="/tempmp3/" + txt + ".mp3";
          
             console.log(mp3fn);
-
+            
+     　 <%= atk %>
+            　 
+       var audioElem;
+       
      setTimeout(function(){  
-          var audioElem = new Audio();
+           audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
       
            audioElem.addEventListener("ended", function(e) {
                
+              audioElem.pause();
+       
              console.log("AIT end!");
               var cnt =$("#txtTarget").val().length
                 var acnt = $('#acnt').val();
