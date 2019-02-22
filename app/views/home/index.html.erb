@@ -516,7 +516,20 @@ function AITalk_start() {
     var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
     
     $('#txtfn').val(fn);
-    
+     var txt = $('#txtfn').val();
+             var mp3fn="/tempmp3/" + txt + ".mp3";
+         
+            console.log(mp3fn);
+            
+     　 <%= atk %>
+           var audioElem 　 
+    setTimeout(function(){  
+           audioElem = new Audio();
+           audioElem.src = mp3fn;
+           audioElem.play();
+      
+       
+  },500);   
    
   
 }
