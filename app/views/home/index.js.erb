@@ -120,16 +120,16 @@
             
      　 <%= atk %>
             　 
-       var audioElem;
+     var audioElem;
        
-     setTimeout(function(){  
+    // setTimeout(function(){  
            audioElem = new Audio();
            audioElem.src = mp3fn;
            audioElem.play();
       
            audioElem.addEventListener("ended", function(e) {
                
-              audioElem.pause();
+            audioElem.pause();
        
              console.log("AIT end!");
               var cnt =$("#txtTarget").val().length
@@ -149,7 +149,7 @@
             
           });  
           
-     },500); 
+    //},500); 
  
                 //AITalk_start();//AITalk ruby音声
                   console.log("AITruby")
