@@ -493,9 +493,6 @@ function recstop() {　//音声入力停止
 　    }
 
  });
-	
-//AITalkのmp3削除
-
 
 //AITalk音声合成
 function AITalk_start() {
@@ -519,12 +516,9 @@ function AITalk_start() {
     var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
     
     $('#txtfn').val(fn);
-    
-     <%= atk %>
-     
-       speak();
-       
+  
 }
+
 var audioElem;
 //AITalkでもう一度しゃべる
 function AIT() {
@@ -574,8 +568,6 @@ function AIT() {
 
 function transmasterj() {
     
-    
-  
       radio_sp = $("#select_jp").val(); //$("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk   2 :google
          
          if ( radio_sp==2 ) {
@@ -601,8 +593,6 @@ function trans() {
        var values=val.split(','); // , 区切りで配列を取得
        $("#target").val(values[0]); 
  
-    
-    
   // $("#txtTarget").val("");
      var txt1;
     
@@ -634,24 +624,21 @@ function transj() {
         
        $("#target").val("ja"); 
   
-     //var txt1;
+     　　//var txt1;
     
-　  // txt1=""//"翻訳中......"
-　   //wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
+　 　　 // txt1=""//"翻訳中......"
+　 　　  //wfin(txt1,'translabel');//1文字ずつタイプライター風に表示する
 　   
-  //helpers/home_helper.rb  translate英訳　translatej 和訳
+　　　  //helpers/home_helper.rb  translate英訳　translatej 和訳
   
-       var transtext="<%= translatej %>";
+     var transtext="<%= translatej %>";
   
- var txt=transtext.replace( /&amp;#39;/g , "'" );
-
- $('#txtTarget').val(txt);
+     var txt=transtext.replace( /&amp;#39;/g , "'" );
+    
+     $('#txtTarget').val(txt);
  
-    var text =  $('#txtTarget').val();
-    
-    
-    
-   
+   　 var text =  $('#txtTarget').val();
+  
 }
 
 //英和翻訳→日本語音声合成AITalk

@@ -109,10 +109,46 @@
         
           } else {
           
+           $("#aimbtn").click();//AITalk ruby音声
+          
+              　 <%= atk %>
+              　 
+         var txt = $('#txtfn').val();
+         var mp3fn="/tempmp3/" + txt + ".mp3";
+         
+            console.log(mp3fn);
+
+     setTimeout(function(){  
+           audioElem = new Audio();
+           audioElem.src = mp3fn;
+           audioElem.play();
+      
+           audioElem.addEventListener("ended", function(e) {
+               
               
+              audioElem.muted = true;
+             audioElem.pause();
+             audioElem.currentTime = 0;
+             console.log("AIT end!");
+              var cnt =$("#txtTarget").val().length
+                var acnt = $('#acnt').val();
                 
-                $("#aimbtn").click();//AITalk ruby音声
+                   if (acnt==0) {
+                       
+                     $("#acnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
+                     
+                   }
+                   
+                    $.cookie('a_cookie', $('#acnt').val()); 
             
+          });  
+          
+     },500); 
+ 
                 //AITalk_start();//AITalk ruby音声
                   console.log("AITruby")
               
@@ -121,7 +157,7 @@
      }
  	
 
- <%= atk %>
+
 
  
 
