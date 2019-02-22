@@ -125,8 +125,23 @@
                     audioElem = new Audio();
                     audioElem.src = mp3fn;
                     audioElem.play();
+                    
+                    var cnt =$("#txtTarget").val().length
+                    var acnt = $('#acnt').val();
+                
+                   if (acnt==0) {
+                       
+                     $("#acnt").val(cnt);
+                     
+                   } else {
+                       
+                       $('#acnt').val(parseInt(cnt) + parseInt(acnt));
+                     
+                   }
+                   
+                    $.cookie('a_cookie', $('#acnt').val()); 
                
-             },500);   
+             },800);   
         
         
                 //AITalk_start();//AITalk ruby音声
