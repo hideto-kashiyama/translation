@@ -111,18 +111,14 @@
            
          $("#aimbtn").click();//AITalk ruby音声
                     
-      var txt = $('#txtfn').val();
-              var mp3fn="/tempmp3/" + txt + ".mp3";
-                  
-                     console.log(mp3fn);
+     
               
               if (audioflag==0) {
                console.log(audioflag);
                
             setTimeout(function(){  
-                    audioElem = new Audio();
-                    audioElem.src = mp3fn;
-                    audioElem.play();
+             $("#aitbtn").click();
+                
                     
                     audioflag=1;
                      console.log(audioflag);
