@@ -46,8 +46,7 @@
     
  <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
-  <!--  <button id="aibtn" onclick="AIT()">AITalkでもう一度しゃべる</button>-->
-
+ 
  <% end %></div>  
  
  <div><%= form_tag('/home/counts', method: :post, id: "toucnt") do %>
@@ -56,21 +55,70 @@
       <input type="text" id="acnt" name="cntait" size="10">
      
  <% end %></div>  
- 
- 
-<!-- <button id="gcls" onclick="cls()">語数登録</button>
- <button id="cdel" onclick="cdel()">クッキー削除</button>
- <button id="lout" onclick="lout()">閉じる</button>-->
- 
- 
+
   </div>
   
   </div>
   
   </div>
-  
 
 <script>
+var audioflag=0
+//AITalk音声合成
+function AITalk_start() {
+    
+        //ファイル名作成  
+    var dt = new Date();
+    
+    var y= dt.getFullYear();
+    
+    //1月が0、12月が11。そのため+1をする。
+    var m = dt.getMonth()+1;
+    
+    var d= dt.getDate();
+    
+    var h = dt.getHours();
+    
+    var m = dt.getMinutes();
+    
+    var s= dt.getSeconds();
+    
+    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
+    
+    $('#txtfn').val(fn);
+  
+}
+
+//AITalkでもう一度しゃべる
+function AIT() {
+ 
+    var audioElem;
+   var txt = $('#txtfn').val();
+         var mp3fn="/tempmp3/" + txt + ".mp3";
+         
+            console.log(mp3fn);
+
+    
+           audioElem = new Audio();
+           audioElem.src = mp3fn;
+           audioElem.play();
+      
+}
+
+
+
+　$("#txtTarget").keyup(function(e){
+　    
+　    if(e.which == 13){　//エンターキー　アップ時
+　    console.log("up!")
+　    
+　      $("#aimbtn").click();//
+　    //AITalk_auto();
+　    }
+
+ });
+ 
+ 
 
 var timer;
 
@@ -483,58 +531,7 @@ function recstop() {　//音声入力停止
      
 　});
 
-　$("#txtTarget").keyup(function(e){
-　    
-　    if(e.which == 13){　//エンターキー　アップ時
-　    console.log("up!")
-　    
-　      $("#aimbtn").click();//
-　    
-　    }
 
- });
-
-//AITalk音声合成
-function AITalk_start() {
-    
-        //ファイル名作成  
-    var dt = new Date();
-    
-    var y= dt.getFullYear();
-    
-    //1月が0、12月が11。そのため+1をする。
-    var m = dt.getMonth()+1;
-    
-    var d= dt.getDate();
-    
-    var h = dt.getHours();
-    
-    var m = dt.getMinutes();
-    
-    var s= dt.getSeconds();
-    
-    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
-    
-    $('#txtfn').val(fn);
-  
-}
-
-
-//AITalkでもう一度しゃべる
-function AIT() {
- 
-    var audioElem;
-   var txt = $('#txtfn').val();
-         var mp3fn="/tempmp3/" + txt + ".mp3";
-         
-            console.log(mp3fn);
-
-    
-           audioElem = new Audio();
-           audioElem.src = mp3fn;
-           audioElem.play();
-      
-}
 
  var radio_sp
 
@@ -615,7 +612,9 @@ function transj() {
 
 //英和翻訳→日本語音声合成AITalk
 function trans_aitj() {
-    
+     audioflag=0;
+     console.log(audioflag+"audioflagリセット！");
+     
      // 選択されている対話言語value属性値を取り出す
       var val = $('[name=sg]').val();
       var values=val.split(','); // , 区切りで配列を取得
