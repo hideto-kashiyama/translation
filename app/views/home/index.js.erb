@@ -99,7 +99,11 @@
                     
                    }
                    
-                    $.cookie('g_cookie', $('#gcnt').val()); 
+                   
+                      $.cookie('dt_cookie', $('#dtcnt').val());
+                    
+                   　 $.cookie('g_cookie', $('#gcnt').val());
+                    
             
              },parseInt(tm));
              
@@ -133,9 +137,12 @@
                    } else {
                        
                        $('#acnt').val(parseInt(cnt) + parseInt(acnt));
+                       
+                      
                      
                    }
                    
+                   $.cookie('dt_cookie', $('#dtcnt').val());
                     $.cookie('a_cookie', $('#acnt').val()); 
                
              },500); 

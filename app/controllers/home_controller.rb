@@ -71,10 +71,10 @@ before_action :authenticate_user!
    
    def counts
     
-        countg=Count.new(user_id: 11, dt: Time.now, chrcnt: params[:cntgoogle], kubun: 1)
+        countg=Count.new(user_id: 11, dt: params[:cntdt], chrcnt: params[:cntgoogle], kubun: 1)
         countg.save
      
-        counta=Count.new(user_id: 11, dt: Time.now, chrcnt: params[:cntait], kubun: 0)
+        counta=Count.new(user_id: 11, dt: params[:cntdt], chrcnt: params[:cntait], kubun: 0)
         counta.save
       
       redirect_to :action => "index"

@@ -53,7 +53,8 @@
      
       <input type="text" id="gcnt" name="cntgoogle" size="10">
       <input type="text" id="acnt" name="cntait" size="10">
-     
+      <input type="text" id="dtcnt" name="cntdt" size="30">
+      
  <% end %></div>  
 
   </div>
@@ -63,6 +64,23 @@
   </div>
 
 <script>
+
+function tdt() {　　　//語数登録日時を#dtcntに入れる
+    
+     var date1 = new Date();
+     
+        console.log(date1.toLocaleString()); 
+    
+        //時間の計算
+        date1.setHours(date1.getHours() + 9); // +9時間
+        console.log(date1.toLocaleString()); 
+        
+         $("#dtcnt").val(date1.toLocaleString());//DB登録時に現在の時間になる
+
+    
+}
+
+
 var audioflag=0
 //AITalk音声合成
 function AITalk_start() {
@@ -79,11 +97,11 @@ function AITalk_start() {
     
     var h = dt.getHours();
     
-    var m = dt.getMinutes();
+    var min = dt.getMinutes();
     
     var s= dt.getSeconds();
     
-    var fn ="" + y + m + d + h + m + s;//日付数字のみ連結
+    var fn ="" + y + m + d + h + min + s;//日付数字のみ連結
     
     $('#txtfn').val(fn);
   
@@ -147,13 +165,14 @@ var timer;
 //クッキー設定
 var g_cookie
 var a_cookie
+var dt_cookie
    //DOMの準備ができたら呼ばれる。
  $(function() {
      
      //alert(windowWidth);
         var gcookie = $.cookie('g_cookie');   //google語数
         var acookie = $.cookie('a_cookie');   //ATlk語数
-      
+        var dcookie = $.cookie('dt_cookie');  //日時語数登録時
        
         //google語数
            if(gcookie){
@@ -177,6 +196,17 @@ var a_cookie
             
            }
            
+           //日時語数登録時
+           if(dcookie){
+                
+             $('#dtcnt').val(dcookie);
+             
+           } else {
+               
+            $('#dtcnt').val("");
+            
+           }
+           
   
 }); 
 
@@ -189,6 +219,7 @@ function cls() {//語数登録、クッキーを削除完了！
      console.log("クッキーを削除、語数登録完了！")
       $.removeCookie('g_cookie');
     　$.removeCookie('a_cookie');
+    　 $.removeCookie('dt_cookie');
     //alert("語数登録、クッキーを削除完了！");
         
  
@@ -549,7 +580,9 @@ function transmasterj() {
             console.log("AIT")
             trans_aitj()//AITalk
          
-         }   
+         }  
+         
+        
   
 }
 
@@ -578,6 +611,7 @@ function trans() {
  
     var text =  $('#txtTarget').val();
     
+    tdt();//語数登録日時を#dtcntに入れる
     
 }
 
@@ -607,7 +641,9 @@ function transj() {
      $('#txtTarget').val(txt);
  
    　 var text =  $('#txtTarget').val();
-  
+   　 
+     tdt();//語数登録日時を#dtcntに入れる
+     
 }
 
 //英和翻訳→日本語音声合成AITalk
@@ -636,8 +672,9 @@ function trans_aitj() {
   
  var txt=transtext.replace( /&amp;#39;/g , "'" );
 
- $('#txtTarget').val(txt);
-
+  $('#txtTarget').val(txt);
+  
+  tdt();//語数登録日時を#dtcntに入れる
 }
 
 $(function(){
