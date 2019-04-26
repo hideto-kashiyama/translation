@@ -2,16 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
    /* 表示領域が800px以上の場合に適用するスタイル */
-   div.container { width: 800px; }
-  
+   div.jumbotron { width: 768px; }
+   div.container { width: 768px; }
+   button.mic { width:320px; }
+   button.mic1 { width:320px; }
+    div.up_group {
+   font-size: 0.9em;   
+  display: inline-block;  
+    /* インラインブロック要素にする */
+ border-style: none;
+ margin-top: -150px;  
+    
+  }
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width:  768px) {
    /* 表示領域が800px未満の場合に適用するスタイル */
-   div.container { width: 100%; }
-}
-div.up_group {
+     div.jumbotron {  width: 100vw; }
+   div.container { width: 100vw; }
+   
+ .mic { width: 384px; }
+ .mic1 { width: 384px; }
+ 
+ div.up_group {
+      width: 768px;
    font-size: 0.9em;   
   display: inline-block;  
     /* インラインブロック要素にする */
@@ -19,6 +34,9 @@ div.up_group {
  margin-top: -150px;  
     
 }
+}
+
+
 
 button,
 button::after {
@@ -214,8 +232,8 @@ span.selectcap {
 
 
 .mic {
-     resize: none;
-  width:320px;
+     /*resize: none;*/
+ 
     margin-bottom: 0px;
     /*margin-left: 8px;*/
    /* margin-right: 10px;*/
@@ -228,8 +246,8 @@ span.selectcap {
 }
 
 .mic1 {
-    resize: none;
-  width:320px;
+    /*resize: none;*/
+  
     margin-bottom: 0px;
     /*margin-left: 8px;*/
    /* margin-right: 10px;*/

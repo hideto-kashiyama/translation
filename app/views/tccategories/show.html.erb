@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ctg:</strong>
+  <%= @tccategory.ctg %>
+</p>
+
+<p>
+  <strong>Bunrui:</strong>
+  <%= @tccategory.bunrui_id %>
+</p>
+
+<%= link_to 'Edit', edit_tccategory_path(@tccategory) %> |
+<%= link_to 'Back', tccategories_path %>

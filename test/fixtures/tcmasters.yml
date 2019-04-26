@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  j: MyString
+  e: MyString
+  tccategory_id: 1
+  bunrui_id: 1
+  memo: MyString
+  s_category_id: 1
+  kubun: 1
+
+two:
+  j: MyString
+  e: MyString
+  tccategory_id: 1
+  bunrui_id: 1
+  memo: MyString
+  s_category_id: 1
+  kubun: 1

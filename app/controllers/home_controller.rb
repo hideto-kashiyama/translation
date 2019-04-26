@@ -20,7 +20,7 @@ before_action :authenticate_user!
       format.html
       format.js
     end
-  
+   
  end 
  
  
@@ -33,12 +33,17 @@ before_action :authenticate_user!
        
   end
   
+  
+  
   def e100
       
      @ctg = Category.find_by_id(params[:category_id])
    # @masters = Master.all
     @masters = Master.where(category_id: params[:category_id])
-      
+       #@bunruis = Bunrui.all
+       
+        render layout: false #application.html.erbを適用したくない
+       
   end
   
   def ctg
@@ -46,7 +51,39 @@ before_action :authenticate_user!
        @categories=Category.all
        
   end
+  
+ def tctop
+    
+       @bunruis = Bunrui.all
+       
+        render layout: false #application.html.erbを適用したくない
+       
+  end
+  
+  
+  def tcctg
+   
+    @bunrui = Bunrui.find_by_id(params[:bunrui_id])
+    @page_title = @bunrui.bunrui
+      
+       @tccategories=Tccategory.where(bunrui_id: params[:bunrui_id])
+       
+         render layout: false #application.html.erbを適用したくない
+         
+  end
  
+ 
+   def tc
+    
+     @tcmasters=Tcmaster.where(tccategory_id: params[:tccategory_id])
+     @tccategory=Tccategory.find_by_id(params[:tccategory_id])
+     @title = @tccategory.ctg
+     
+     
+     render layout: false #application.html.erbを適用したくない
+   end
+   
+   
    def ctgs 
     
      str = Time.now.to_s

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tcmasters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>J</th>
+      <th>E</th>
+      <th>Tccategory</th>
+      <th>Bunrui</th>
+      <th>Memo</th>
+      <th>S category</th>
+      <th>Kubun</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tcmasters.each do |tcmaster| %>
+      <tr>
+        <td><%= tcmaster.j %></td>
+        <td><%= tcmaster.e %></td>
+        <td><%= tcmaster.tccategory_id %></td>
+        <td><%= tcmaster.bunrui_id %></td>
+        <td><%= tcmaster.memo %></td>
+        <td><%= tcmaster.s_category_id %></td>
+        <td><%= tcmaster.kubun %></td>
+        <td><%= link_to 'Show', tcmaster %></td>
+        <td><%= link_to 'Edit', edit_tcmaster_path(tcmaster) %></td>
+        <td><%= link_to 'Destroy', tcmaster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tcmaster', new_tcmaster_path %>

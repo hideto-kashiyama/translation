@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>J:</strong>
+  <%= @tcmaster.j %>
+</p>
+
+<p>
+  <strong>E:</strong>
+  <%= @tcmaster.e %>
+</p>
+
+<p>
+  <strong>Tccategory:</strong>
+  <%= @tcmaster.tccategory_id %>
+</p>
+
+<p>
+  <strong>Bunrui:</strong>
+  <%= @tcmaster.bunrui_id %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @tcmaster.memo %>
+</p>
+
+<p>
+  <strong>S category:</strong>
+  <%= @tcmaster.s_category_id %>
+</p>
+
+<p>
+  <strong>Kubun:</strong>
+  <%= @tcmaster.kubun %>
+</p>
+
+<%= link_to 'Edit', edit_tcmaster_path(@tcmaster) %> |
+<%= link_to 'Back', tcmasters_path %>

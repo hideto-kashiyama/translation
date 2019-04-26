@@ -34,6 +34,19 @@
    
 }*/
 
+
+.tempsp { visibility:hidden; }
+.tempi { visibility:hidden; }
+
+ul li {
+    text-align:left; 
+
+}
+li a {
+  margin-bottom: 5px;  
+    
+}
+
 .aitjs {
     
     visibility: hidden;
@@ -52,10 +65,22 @@
     display: flex;
     
 }
+a { text-decoration: none; }
+a:hover { 
+    text-decoration: underline; 
+    background-color: white;
+}
 
 
 li {
 margin-bottom: 5px;
+text-decoration: none;
+
+}
+
+li:hover {
+text-decoration: underline;
+background-color: white;
 }
 
 .toplink {
@@ -102,7 +127,7 @@ margin-bottom: 5px;
 
 
 .main {
- margin-top: 280px;
+ margin-top: 200px;
    /*padding-top:10px;
   margin-top:50px;
   height:auto;
@@ -225,7 +250,9 @@ div.collapse.navbar-collapse.navbar-right {
       color: #000033;
       border-color: #000033; }
 
-
+.navbar-default .navbar-nav > li > a {
+color: #ffffff;
+}
 
 .hogewaku{
     
@@ -235,11 +262,16 @@ div.collapse.navbar-collapse.navbar-right {
 
 .hoge{
  
- font-size: 1.5em;
+ font-size: 1em;
   
  
 }
-
+ h2 {
+     position:fixed; 
+    
+    text-align: center;
+   
+  }
 
 h1 {
     

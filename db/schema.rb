@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190131023943) do
+ActiveRecord::Schema.define(version: 20190402014606) do
+
+  create_table "bunruis", force: :cascade do |t|
+    t.string   "bunrui"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "ctg"
@@ -40,6 +46,32 @@ ActiveRecord::Schema.define(version: 20190131023943) do
     t.integer  "public"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "s_categories", force: :cascade do |t|
+    t.string   "s_ctg"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "tccategories", force: :cascade do |t|
+    t.string   "ctg"
+    t.integer  "bunrui_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tcmasters", force: :cascade do |t|
+    t.string   "j"
+    t.string   "e"
+    t.integer  "tccategory_id"
+    t.integer  "bunrui_id"
+    t.string   "memo"
+    t.integer  "s_category_id"
+    t.integer  "kubun"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

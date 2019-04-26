@@ -1,0 +1,21 @@
+<div class="container">
+<div class="jumbotron text-center"> 
+
+<h2>カテゴリ一覧</h2>
+<ul class="hoge">
+ 
+   
+  
+     <% @bunruis.each do |br| %>
+    
+    　　  <li><a href="<%= home_tcctg_path(bunrui_id: br.id) %>"><%= br.bunrui %></a></li>
+          
+     <% end %>
+  
+</ul>
+
+</div>
+</div>
+
+
+

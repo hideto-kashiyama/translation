@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :tcmasters
+  resources :s_categories
+  resources :bunruis
+  resources :tccategories
   resources :counts
   resources :masters
   resources :categories
@@ -12,11 +16,15 @@ Rails.application.routes.draw do
    post 'home/aitalk'
    
    get 'home/ctg'
+   get 'home/test'
+   get 'home/tctop'
+   get 'home/tcctg'
+   get 'home/tc'
    
    post 'home/ctgs'
    
    get 'home/master'
-   
+ 
    get 'home/e100'
    
    get 'home/count'

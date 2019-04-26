@@ -1,0 +1,45 @@
+<%= form_for(@tcmaster) do |f| %>
+  <% if @tcmaster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tcmaster.errors.count, "error") %> prohibited this tcmaster from being saved:</h2>
+
+      <ul>
+      <% @tcmaster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :j %><br>
+    <%= f.text_field :j %>
+  </div>
+  <div class="field">
+    <%= f.label :e %><br>
+    <%= f.text_field :e %>
+  </div>
+  <div class="field">
+    <%= f.label :tccategory_id %><br>
+    <%= f.number_field :tccategory_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bunrui_id %><br>
+    <%= f.number_field :bunrui_id %>
+  </div>
+  <div class="field">
+    <%= f.label :memo %><br>
+    <%= f.text_field :memo %>
+  </div>
+  <div class="field">
+    <%= f.label :s_category_id %><br>
+    <%= f.number_field :s_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :kubun %><br>
+    <%= f.number_field :kubun %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

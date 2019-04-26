@@ -1,6 +1,7 @@
-<div class="container">
 <div class="jumbotron text-center"> 
- 
+<div class="container text-center">
+
+
 <meta charset="UTF-8">  
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
@@ -41,8 +42,8 @@
           
     <button id="tclear" type="submit" onclick="txtclear()">テキスト削除</button><br>
 　　 
-    <button id= "tlink">この会話を登録して練習する</button>
-    <!--<a href="/home/e100">登録済会話集</a>-->
+    <!--<button id= "tlink">この会話を登録して練習する</button>-->
+    <a href="/home/tctop">旅行・日常会話集</a>
     
  <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
@@ -282,8 +283,20 @@ function recstart() { //日本語音声入力開始ボタン
             } else if (values[0]=="de") {
                 
                 gval="ドイツ語"
+                
+            } else if (values[0]=="fr") {
+                
+                gval="フランス語"   
              
-            }　 
+            } else if (values[0]=="th") {
+                
+                gval="タイ語"
+             
+           } else if (values[0]=="vi") {
+                
+                gval="ベトナム語"
+             
+            }　 　 
          
 　　　　recognitione.stop();
 　　　　$('#rscape').text(gval+"でしゃべる");
@@ -361,8 +374,19 @@ var gval
     } else if (values[0]=="de") {
         
         gval="ドイツ語"
+    } else if (values[0]=="fr") {
+        
+        gval="フランス語"
+        
+    } else if (values[0]=="th") {
+                
+                gval="タイ語"
+             
+   } else if (values[0]=="vi") {
+        
+        gval="ベトナム語"
      
-    }　 
+    }　 　 　 
     
      $('#rscape').text(gval+"でしゃべる");
     
@@ -401,8 +425,21 @@ function recstarte() {　//英語音声入力開始ボタン
     } else if (values[0]=="de") {
         
         gval="ドイツ語"
+        
+    } else if (values[0]=="fr") {
+        
+        gval="フランス語"
+        
+    } else if (values[0]=="th") {
+                
+                gval="タイ語"
+             
+   } else if (values[0]=="vi") {
+        
+        gval="ベトナム語"
      
-    }　 
+    }　 　 　  
+    　 
     
    $('#rscape').text(gval+"認識中.........");
   　  　　　
@@ -496,8 +533,20 @@ function recstop() {　//音声入力停止
                 } else if (values[0]=="de") {
                     
                     gval="ドイツ語"
+                    
+                } else if (values[0]=="fr") {
+                    
+                    gval="フランス語"
                  
-                }　 
+                } else if (values[0]=="th") {
+                
+                gval="タイ語"
+             
+               } else if (values[0]=="vi") {
+                    
+                    gval="ベトナム語"
+                 
+                }　 　 　  
     
      　$('#rscape').text(gval+"でしゃべる");
      　

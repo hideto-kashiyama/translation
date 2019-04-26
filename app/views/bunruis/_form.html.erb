@@ -1,0 +1,21 @@
+<%= form_for(@bunrui) do |f| %>
+  <% if @bunrui.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bunrui.errors.count, "error") %> prohibited this bunrui from being saved:</h2>
+
+      <ul>
+      <% @bunrui.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bunrui %><br>
+    <%= f.text_field :bunrui %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
