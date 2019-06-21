@@ -50,7 +50,7 @@
   <button id="aitbtn" onclick="AIT()">AITalk</button>
  <% end %></div>  
  
- <div><%= form_tag('/home/counts', method: :post, id: "toucnt") do %>
+ <div id="box"><%= form_tag('/home/counts', method: :post, id: "toucnt") do %>
      
       <input type="text" id="gcnt" name="cntgoogle" size="10">
       <input type="text" id="acnt" name="cntait" size="10">
@@ -63,6 +63,13 @@
   </div>
   
   </div>
+  
+  <style>
+  #box {
+       visibility:hidden;
+  }
+      
+  </style>
 
 <script>
 
