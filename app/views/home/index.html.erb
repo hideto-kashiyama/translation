@@ -43,7 +43,7 @@
     <button id="tclear" type="submit" onclick="txtclear()">テキスト削除</button><br>
 　　 
     <!--<button id= "tlink">この会話を登録して練習する</button>-->
-    <a href="/home/tctop">旅行・日常会話集</a>
+     <!--<a href="/home/tctop">旅行・日常会話集</a>-->
     
  <div class="hide_group"><%= text_field_tag :fnval, nil, placeholder: "", id:"txtfn" %></div>
  <button id="aimbtn" onclick="AITalk_start()">AITalk</button>
@@ -76,7 +76,7 @@ function tdt() {　　　//語数登録日時を#dtcntに入れる
         date1.setHours(date1.getHours() + 9); // +9時間
         console.log(date1.toLocaleString()); 
         
-         $("#dtcnt").val(date1.toLocaleString());//DB登録時に現在の時間になる
+         $("#dtcnt").val(date1.toLocaleString());//DB登録時に現在の時�����になる
 
     
 }
