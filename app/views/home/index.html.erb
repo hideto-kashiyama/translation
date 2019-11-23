@@ -1,17 +1,20 @@
-<div class="jumbotron text-center"> 
-<div class="container text-center">
 
-
+<div class="continer-fluid text-center">
+ <div class="mt-1 row">
+  <div class="col-lg col-md col-sm col-xs">
+<!--<div class="mt-1 row">
+    <div class="offset-sm-3 col-sm-6 offset-sm-3">
+        <div class="text-center">　-->
 <meta charset="UTF-8">  
 
 <div class="up_group"><button class="mic" type="submit" onclick ="recstart()">
  
-          <i class="fa fa-microphone my-gray fa-5x"><span id="rscap">日本語でしゃべる</span></i>
+          <i class="fa fa-microphone fa-3x"><span id="rscap">日本語でしゃべる</span></i>
           
 </button>
 
 <button class="mic1" type="submit" onclick ="recstarte()">
-   <i class="fa fa-microphone fa-5x"><span id="rscape">英語でしゃべる</span></i>
+   <i class="fa fa-microphone fa-3x"><span id="rscape">英語でしゃべる</span></i>
 </button></div>
 
 <!--<button id="stcap" onclick="recstop()">Stop!</button></div>-->
@@ -41,7 +44,9 @@
 　
           
     <button id="tclear" type="submit" onclick="txtclear()">テキスト削除</button><br>
-　　 
+    <ul>
+   <li id="out"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></li>
+　　 </ul>
     <!--<button id= "tlink">この会話を登録して練習する</button>-->
      <!--<a href="/home/tctop">旅行・日常会話集</a>-->
     
@@ -58,11 +63,12 @@
       
  <% end %></div>  
 
-  </div>
+
   
   </div>
-  
   </div>
+  </div>
+
   
   <style>
   #box {
@@ -624,8 +630,8 @@ function recstop() {　//音声入力停止
 
 function transmasterj() {
     
-      radio_sp = $("#select_jp").val(); //$("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk   2 :google
-         
+      //radio_sp = $("#select_jp").val(); //$("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk   2 :google
+         radio_sp = 2
          if ( radio_sp==2 ) {
              
             console.log("google")
@@ -707,7 +713,7 @@ function trans_aitj() {
      audioflag=0;
      console.log(audioflag+"audioflagリセット！");
      
-     // 選択されている対話言語value属性値を取り出す
+     // 選択されている対話言語value属性���を取り出す
       var val = $('[name=sg]').val();
       var values=val.split(','); // , 区切りで配列を取得
       console.log(values[0]);
@@ -777,8 +783,8 @@ $(function(){
 //もう一度しゃべる
 function speak() {
     
- radio_sp = $("#select_jp").val();// $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
-    
+ //radio_sp = $("#select_jp").val();// $("input[name='sp']:checked").val();　//日本語音声選択値 0 :AITalk 2 :google
+    radio_sp = 2
  var text = $('#txtTarget').val();
  
  if (text!="") {

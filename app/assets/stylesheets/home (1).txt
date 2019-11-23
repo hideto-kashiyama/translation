@@ -1,36 +1,45 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@media screen and (min-width: 768px) {
-   /* 表示領域が800px以上の場合に適用するスタイル
-   
-   div.container { width: 760px; } */
-  
-    button.mic { width:340px; height:60px; border-radius: 12px; border-color:green;  background: none;}
-   button.mic1 { width:340px; height:60px; border-radius: 12px; border-color:pink; background: none;}
-          #rscap {
-        font-size: 0.7em;  
-      /*margin-left: 10px;*/
-         }
-    
-        #rscape {
-            font-size: 0.7em;  
-          /*margin-left: 10px;*/
-          }
-            div.up_group {
-           font-size: 0.9em;   
-          display: inline-block;  
-            /* インラインブロック要素にする */
-         border-style: none;
-        
-        
-          }
 
+@media screen and (min-width: 768px) {
+   /* 表示領域が800px以上の場合に適用するスタイル */
+   div.jumbotron { width: 768px; }
+   div.container { width: 768px; }
+   button.mic { width:320px; }
+   button.mic1 { width:320px; }
+      #rscap {
+    font-size: 0.3em;  
+  /*margin-left: 10px;*/
+     }
+    
+    #rscape {
+        font-size: 0.3em;  
+      /*margin-left: 10px;*/
+      }
+    div.up_group {
+   font-size: 0.9em;   
+  display: inline-block;  
+    /* インラインブロック要素にする */
+ border-style: none;
+ margin-top: -150px;  
+
+  }
+  
+              .jumbotron {
+              
+            /*resize: none;*/
+              width:800px;
+              height:800px;  
+                
+                
+            }
+            
             #result_text {
             
             /* resize: none;*/
               width:700px;
-              height:300px;
+              height:130px;
                 
                 font-size: 20px; 
                margin-top: 10px; 
@@ -43,7 +52,7 @@
                 
             /* resize: none;*/
               width:700px;
-              height:300px;
+              height:130px;
                 
                 font-size: 20px; 
                margin-top: 10px; 
@@ -52,67 +61,68 @@
             }
 
 }
-
 @media screen and (max-width:  768px) {
-   /* 表示領域が800px未満の場合に適用するスタイル
-    
-   div.container { width:370px; 
-        
-   } */
+   /* 表示領域が800px未満の場合に適用するスタイル */
+     div.jumbotron {  width:300px; }
+   div.container { width:300px; }
    
-   button.mic { width:170px; height:50px; border-radius: 12px; border-color:green;  background: none;}
-   button.mic1 { width:170px; height:50px; border-radius: 12px; border-color:pink; background: none;}
- .rcap {
-        font-size: 0.5em;  
-      /*margin-left: 10px;*/
-         }
+  button.mic { width:150px; }
+   button.mic1 { width:150px; }
+  button.mic { height:40px; }
+   button.mic1 { height:40px; }
+   
+   
+    #rscap {
+    font-size: 0.1em;  
+  /*margin-left: 10px;*/
+     }
     
-       #rscap {
-        font-size: 0.3em;  
+    #rscape {
+        font-size: 0.1em;  
       /*margin-left: 10px;*/
-         }
+      }
+      
+ div.up_group {
+      width: 350px;
+   font-size: 0.9em;   
+  display: inline-block;  
+    /* インラインブロック要素にする */
+ border-style: none;
+ margin-top: -150px;  
     
-        #rscape {
-            font-size: 0.3em;  
-          /*margin-left: 10px;*/
-          }
-          
-    div.up_group {
-           font-size: 0.9em;   
-          display: inline-block;  
-            /* インラインブロック要素にする */
-            text-align:  center;   
-         border-style: none;
-        
-          }
-          
-         #result_text {
-            
-            /* resize: none;*/
-              width:350px;
-              height:150px;
-                
-                font-size: 20px; 
-               margin-top: 10px; 
-               border-color:green;
-              border-radius: 12px;  
-              
-            }
-            
-            #txtTarget {
-                
-            /* resize: none;*/
-              width:350px;
-              height:150px;
-                
-                font-size: 20px; 
-               margin-top: 10px; 
-               border-color:green;
-             border-radius: 12px;  
-            }
+  }
+  
+     
 
+#result_text {
+
+/* resize: none;*/
+  width:300px;
+  height:130px;
+    
+    font-size: 20px; 
+   margin-top: 10px; 
+   border-color:green;
+  border-radius: 12px;  
+  
+}
+
+#txtTarget {
+    
+/* resize: none;*/
+  width:300px;
+  height:130px;
+    
+    font-size: 20px; 
+   margin-top: 10px; 
+   border-color:green;
+ border-radius: 12px;  
+}
 
 }
+
+
+
 button,
 button::after {
   -webkit-transition: all 0.3s;
@@ -148,25 +158,16 @@ button::after {
 }
 span.selectcap {
 
-  
+   margin-left : 10px;
    color: white;
     
 }
 
-/* #select_gengo {
-    margin-left : 2px ; 
-    width: 100px;
-    cursor: pointer;
-    background-color: #EEEEEE;
-    box-shadow: 0 2px 0 gray;
-    border-radius: 7px;
- }*/
-
 #select_gengo{
     
-   
-    margin-left : 2px ; 
-    width: 100px;
+    margin-top : 10px ; 
+    margin-left : 5px ; 
+    width: 140px;
     
     cursor: pointer;
     text-indent: 0.01px;
@@ -183,8 +184,8 @@ span.selectcap {
     border-right:none;
     border:solid 3px #eaeaea;
     outline: 0;
-    font-size: 0.8em; 
-  
+    font-size: 1.4em; 
+  border-color: #FF0066	;
 }
 
 #select_jp{
@@ -290,6 +291,9 @@ span.selectcap {
 }
 
 
+.rcap {
+ 
+}
 
 .rcap:active {
   -webkit-transform: translateY(2px);
@@ -299,10 +303,50 @@ span.selectcap {
 }
 
 
+.mic {
+     /*resize: none;*/
+ 
+    margin-bottom: 0px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
+    background-color:white;
+    border-radius: 7px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
+    border-color: #006600;
+    
+}
 
-
+.mic1 {
+    /*resize: none;*/
+  
+    margin-bottom: 0px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
+    background-color:white;
+    border-radius: 7px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
+    border-color: #FF99FF;
+}
 
 .my-gray {color: gray}
+
+.mic2 {
+    
+    margin-bottom: 0px;
+    /*margin-left: 8px;*/
+   /* margin-right: 10px;*/
+    background-color:white;
+    border-radius: 7px;  
+     /* ボーダーをなくす 
+    border-style: none;*/
+    border-color: #00CCCC;
+    
+    
+}
+
+
 
 
 

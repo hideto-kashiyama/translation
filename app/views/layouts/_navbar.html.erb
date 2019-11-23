@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<header class="mb-0">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <!-- ホームへ戻るリンク。ブランドロゴなどを置く。 -->
+            
+            <span class="navbar-brand">通訳アプリ</span>
+             <span class="selectcap" >対話言語</span>
+             
+			<select id="select_gengo" name="sg">
+			  
+              <option value="en,en-US">英語</option>
+              <option value="zh-cn,zh-CN">中国語</option>
+              <option value="ko,ko-KR">韓国語</option>
+              <option value="de,de-DE">ドイツ語</option>
+              <option value="fr,fr-FR">フランス語</option>
+    　　　　      <option value="th,th-TH">タイ語</option>
+              <option value="vi,vi-VN">ベトナム語</option>
+         
+             </select>
+            
+            <!-- 横幅が狭い時に出るハンバーガーボタン -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            
+            
+            <!-- メニュー項目 -->
+            <div class="collapse navbar-collapse" id="nav-bar">
+                <ul class="navbar-nav">
+               
+                    <li class="nav-item"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></li>
+                      
+                   <!--<li class="nav-item"><a href="#" class="nav-link">お問い合わせ</a></li>-->
+                </ul>
+            </div>
+        </nav>
+
+</header>

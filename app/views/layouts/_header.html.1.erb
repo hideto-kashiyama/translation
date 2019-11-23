@@ -1,13 +1,12 @@
-<header class="mb-0">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
 <!-- <h6>自動翻訳アプリ</h6><h1 align="center">Smart Speech</h1>
-<nav class="navbar  navbar-default">
- <nav class="navbar navbar-expand-sm mb-3">-->
+<nav class="navbar  navbar-default">-->
+ <nav class="navbar navbar-expand-sm mb-3">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="navbar">
+        <div class="collapse navbar-collapse justify-content-center">
             
             <span class="selectcap" >対話言語選択</span>
 			<select id="select_gengo" name="sg">
@@ -21,9 +20,7 @@
               <option value="vi,vi-VN">ベトナム語</option>
               
               
-      </select>
-      
-      <!--<span class="selectcap" >日本語音声選択</span>
+      </select><span class="selectcap" >日本語音声選択</span>
             
 			<select id="select_jp">
 			    
@@ -31,15 +28,13 @@
               <option value=0>プレミアム</option>
               
               
-            </select>-->
-              
-        </div>
+            </select>
             
-     <ul class="navbar-nav">
+            
           <span class="lout"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></span>
-          </ul>
-          
-       
+            </ul>
+         
+        </div>
        
     </nav>
      
