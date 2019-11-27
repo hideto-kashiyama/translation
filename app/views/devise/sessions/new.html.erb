@@ -1,8 +1,17 @@
-<div class="continer-fluid text-center">
- <div class="mt-1 row">
-  <div class="col-lg col-md col-sm col-xs">
+<!DOCTYPE html>
+<html>
+  
+  <body>
 
+<div class="continer text-center">
+ <div class="jumbotron"> 
+ 
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+ 
+<h1>ログイン</h1>
 
+<div class="form-group">
  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email %><br />
@@ -21,15 +30,16 @@
           <%= f.submit "ログイン", class: "login_btn"%>
           
         </div>
-        
-        
-          
-        
+     
       <% end %>
 
      <!-- <%= render "devise/shared/links" %>-->
-
-
+     </div>
+</div>
+</div>
+</div>
    </div>
   </div><!-- End of row -->
 </div><!-- End of container -->
+
+</body>

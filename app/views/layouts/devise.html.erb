@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>login</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,17 +9,18 @@
 </head>
 <body>
 
- <header class="mb-0">
+<header>
+<div class="continer-fluid text-center">
+ <div class="mt-1 row">
+  <div class="col-lg col-md col-sm col-xs">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
- <div class="container-fluid">
-     
-     	<ul class="nav navbar-nav">
-			  
-				<li><a id="logincap">自動翻訳システムログイン画面</a></li>
-				
-		</ul>
- </div>
+  
+			<span class="navbar-brand">即時通訳 ログイン画面</span>
+
 </nav>
+</div>
+</div>
+</div>
 </header>
     
     <!--アラート表示-->
@@ -28,9 +30,11 @@
        <div class="alert alert-<%= type %>"><%= msg %><i class="fa fa-times"></i></div>
     <% end %>
   
-    <div class="container">
+    <div class="container-fluid">
       <%= yield %>
     </div>
     
 </body>
+
+
 </html>

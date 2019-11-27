@@ -44,9 +44,7 @@
 　
           
     <button id="tclear" type="submit" onclick="txtclear()">テキスト削除</button><br>
-    <ul>
-   <li id="out"><%= current_user.name %><%= link_to "ログアウト", destroy_user_session_path, method: "delete" , :style=>"color:white;" %></li>
-　　 </ul>
+   
     <!--<button id= "tlink">この会話を登録して練習する</button>-->
      <!--<a href="/home/tctop">旅行・日常会話集</a>-->
     
@@ -312,7 +310,7 @@ function recstart() { //日本語音声入力開始ボタン
             }　 　 
          
 　　　　recognitione.stop();
-　　　　$('#rscape').text(gval+"でしゃべる");
+　　　　$('#rscape').text(gval);
         $('#rscape').css('color', 'black');
         $('.mic1').css('background-color', 'white');
         $('.translabel').text("");
@@ -401,7 +399,7 @@ var gval
      
     }　 　 　 
     
-     $('#rscape').text(gval+"でしゃべる");
+     $('#rscape').text(gval);
     
          
      }); 
@@ -454,14 +452,14 @@ function recstarte() {　//英語音声入力開始ボタン
     }　 　 　  
     　 
     
-   $('#rscape').text(gval+"認識中.........");
+   $('#rscape').text(gval+"認識中..");
   　  　　　
       //tenmetu('mic');//点滅
 　 $('#rscape').css('color', 'white');
 　 $('.mic1').css('background-color', '#FF69B4'); 
 　 
         recognition.stop();
-  　　 $('#rscap').text("日本語でしゃべる");
+  　　 $('#rscap').text("日本語");
         $('#rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
         $('.translabel').text("");
@@ -527,7 +525,7 @@ function recstop() {　//音声入力停止
 　       stecnt=0;
 　      recognition.stop();
 　    　recognitione.stop();
-　      $('#rscap').text("日本語でしゃべる");
+　      $('#rscap').text("日本語");
         $('#rscap').css('color', 'black');
         $('.mic').css('background-color', 'white');
           var val = $('[name=sg]').val();
@@ -561,7 +559,7 @@ function recstop() {　//音声入力停止
                  
                 }　 　 　  
     
-     　$('#rscape').text(gval+"でしゃべる");
+     　$('#rscape').text(gval);
      　
      　
         $('#rscape').css('color', 'black');
